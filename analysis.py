@@ -40,3 +40,8 @@ amountOfPsychiatristsWorking = pd.read_csv("https://ourworldindata.org/grapher/p
 
 # Fetch the metadata
 metadataAmountOfPsychiatristsWorking = requests.get("https://ourworldindata.org/grapher/psychiatrists-working-in-the-mental-health-sector.metadata.json?v=1&csvType=full&useColumnShortNames=false").json()
+
+print(mentalIssuesDealtByFriendsFamily)
+print(opinionThatScienceHelpsALotForMentalHealth)
+print(amountOfPsychiatristsWorking)
+print(perceivedComfortSpeakingAboutAnxietyDepression)
