@@ -4,9 +4,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy as sp
 
+dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value': [10, 22, 56, 17]}
+dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value': [5, 30, 74, 23]}
+
+df1 = pd.DataFrame(dataset1)
+df2 = pd.DataFrame(dataset2)
+
 def merge_datasets(df, df1, relatedColumn):
-    print(pd.merge(df, df1, on=relatedColumn))
-    pass
+    mergedDataset = pd.merge(df, df1, how='inner', on=relatedColumn)
+    cleanedDataset = mergedDataset.transpose().drop_duplicates().transpose()
+    return cleanedDataset
 def create_model(df):
     pass
 def calculate_mean_average(df):
@@ -19,3 +26,5 @@ def remove_values_from_column(df):
     pass
 def replace_values_in_column(df):
     pass
+
+print(merge_datasets(df1, df2, 'index1'))

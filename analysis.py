@@ -33,5 +33,6 @@ opinionThatScienceHelpsALotForMentalHealth = pd.read_csv('Datasets/opinionThatSc
 perceivedComfortSpeakingAboutAnxietyDepression = pd.read_csv('Datasets/perceivedComfortSpeakingAboutAnxietyDepression')
 amountOfPsychiatristsWorking = pd.read_csv('Datasets/amountOfPsychiatristsWorking')
 
-
-merge_datasets(mentalIssuesDealtByFriendsFamily, mentalIssuesDealtByMedication, 'Code')
+print(mentalIssuesDealtByFriendsFamily)
+print(mentalIssuesDealtByMedication)
+merge_datasets(mentalIssuesDealtByFriendsFamily, mentalIssuesDealtByMedication, 'Entity')
