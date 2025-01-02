@@ -6,6 +6,7 @@ import scipy as sp
  
 def merge_datasets(df, df1, relatedColumn):
     # print(pd.merge(df, df1, relatedColumn))
+    pass
 def create_model(df):
     pass
 def calculate_mean_average(df):
