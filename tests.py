@@ -1,6 +1,7 @@
 import unittest
 import pandas as pd
 import numpy as np
+from functions import *
 
 dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd', 'ee'], 'value': [10, 22, 56, 17]}
 dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd', 'ee'], 'value': [5, 30, 74, 23]}
@@ -10,8 +11,10 @@ df2 = pd.DataFrame(dataset2)
 
 class TestSuite(unittest.TestCase):
     def test_merge_datasets(self):
-        pass
-    def test_model(self):
+        result = merge_datasets(df1, df2, 'index1')
+        mergedDataset = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd', 'ee'], 'value': [5, 30, 74, 23], 'value1': [10, 22, 56, 17]}
+        self.assertEqual(result, mergedDataset)
+    def test_create_model(self):
         pass
     def test_calculate_mean_average(self):
         pass
