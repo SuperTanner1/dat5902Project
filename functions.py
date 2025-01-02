@@ -3,9 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy as sp
- 
+
 def merge_datasets(df, df1, relatedColumn):
-    # print(pd.merge(df, df1, relatedColumn))
+    print(pd.merge(df, df1, on=relatedColumn))
     pass
 def create_model(df):
     pass
