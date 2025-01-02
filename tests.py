@@ -13,7 +13,7 @@ class TestSuite(unittest.TestCase):
     def test_merge_datasets(self):
         result = merge_datasets(df1, df2, 'index1')
         mergedDataset = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2_x': ['aa', 'bb', 'cc', 'dd'], 'value_x': [5, 30, 74, 23], 'value_y': [10, 22, 56, 17]})
-        self.assertEqual(result, mergedDataset)
+        self.failUnless(result.equals(mergedDataset))
     def test_create_model(self):
         pass
     def test_calculate_mean_average(self):
