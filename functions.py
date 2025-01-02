@@ -9,6 +9,7 @@ dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 
 
 df1 = pd.DataFrame(dataset1)
 df2 = pd.DataFrame(dataset2)
+mergedDataset = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2_x': ['aa', 'bb', 'cc', 'dd'], 'value_x': [5, 30, 74, 23], 'value_y': [10, 22, 56, 17]})
 
 def merge_datasets(df, df1, relatedColumn):
     mergedDataset = pd.merge(df, df1, how='inner', on=relatedColumn)
@@ -27,4 +28,5 @@ def remove_values_from_column(df):
 def replace_values_in_column(df):
     pass
 
+print(mergedDataset)
 print(merge_datasets(df1, df2, 'index1'))

@@ -12,7 +12,7 @@ df2 = pd.DataFrame(dataset2)
 class TestSuite(unittest.TestCase):
     def test_merge_datasets(self):
         result = merge_datasets(df1, df2, 'index1')
-        mergedDataset = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2_x': ['aa', 'bb', 'cc', 'dd'], 'value_x': [5, 30, 74, 23], 'value_y': [10, 22, 56, 17]})
+        mergedDataset = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2_x': ['aa', 'bb', 'cc', 'dd'], 'value_y': [5, 30, 74, 23], 'value_x': [10, 22, 56, 17]})
         self.assertTrue(result.equals(mergedDataset))
     def test_create_model(self):
         pass
