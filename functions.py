@@ -8,7 +8,7 @@ import scipy as sp
 
 def merge_datasets(df, df1, relatedColumn):
     mergedDataset = pd.merge(df, df1, how='inner', on=relatedColumn)
-    cleanedDataset = mergedDataset.transpose().drop_duplicates().transpose()
+    cleanedDataset = mergedDataset.T.drop_duplicates().T
     return cleanedDataset
 def create_model(x, y, degree):
     return np.polyfit(x, y, degree)
