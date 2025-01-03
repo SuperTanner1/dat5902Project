@@ -33,4 +33,13 @@ class TestSuite(unittest.TestCase):
         newDataFrame = pd.DataFrame({'index1': ['c', 'd'], 'index2': ['cc', 'dd'], 'value_x': [56, 17]})
         self.assertTrue(newDataFrame.equals(result))
     def test_replace_values_in_column(self):
+        result = replace_values_in_column(df2, 'index2', 'cc', 'cd')
+        newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cd', 'dd'], 'value_y': [15, 30, 74, 23]})
+        self.assertTrue(newDataFrame.equals(result))
+    def test_replace_values_in_column_mapping(self):
         pass
+    def test_replace_values_in_column_mapping_multiple(self):
+        mapping = {'cc': 'cd', 'aa':'ab'}
+        result = replace_values_in_column(df2, 'index2', mapping=mapping)
+        newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2': ['ab', 'bb', 'cd', 'dd'], 'value_y': [15, 30, 74, 23]})
+        self.assertTrue(newDataFrame.equals(result))
