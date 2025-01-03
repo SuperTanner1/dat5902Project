@@ -24,7 +24,9 @@ class TestSuite(unittest.TestCase):
         m, c = np.polyfit(df1['value_x'], df2['value_y'], 1)
         self.assertTrue(m == mr and c == cr)
     def test_calculate_correlation_columns(self):
-        pass
+        correlation = calculate_correlation_columns(df1['value_x'], df2['value_y'])
+        correlationTest = np.corrcoef(df1['value_x'], df2['value_y'])
+        self.assertEqual(correlation, correlationTest)
     def test_remove_row_from_df(self):
         result = remove_rows_from_df(df1, 'index1', 'c')
         newDataFrame = df1.drop(2)

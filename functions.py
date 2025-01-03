@@ -26,25 +26,3 @@ def replace_values_in_column(df, column, original=None, replace=None, mapping=No
     else:
         df[column] = df[column].replace(mapping)
         return df
-
-"""
-mapping = {'cc': 'cd', 'aa':'ab'}
-result = replace_values_in_column(df2, 'index2', mapping=mapping)
-newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2': ['ab', 'bb', 'cd', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
-print(pd.testing.assert_frame_equal(newDataFrame, result))
-"""
-
-dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_x': [10.3, 22.6, 56.1, 17.9]}
-dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]}
-
-df1 = pd.DataFrame(dataset1)
-df2 = pd.DataFrame(dataset2)
-
-mapping = {'d': 'e'}
-result = replace_values_in_column(df2, 'index1', mapping=mapping)
-newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'e'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
-print(pd.testing.assert_frame_equal(newDataFrame, result))
-
-
-print(result)
-print(newDataFrame)
