@@ -8,8 +8,8 @@ def merge_datasets(df, df1, relatedColumn):
     mergedDataset = pd.merge(df, df1, how='inner', on=relatedColumn)
     cleanedDataset = mergedDataset.transpose().drop_duplicates().transpose()
     return cleanedDataset
-def create_model(x, y, power):
-    pass
+def create_model(x, y, degree):
+    return np.polyfit(x, y, degree)
 def calculate_mean_average(df):
     pass
 def calculate_sum_column(df):
