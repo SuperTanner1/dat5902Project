@@ -41,10 +41,10 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(newDataFrame.equals(result))
     def test_replace_values_in_column_mapping(self):
         mapping = {'d': 'e'}
-        result = replace_values_in_column(df2, 'index1', mapping=mapping)
-        newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'e'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
-        print(pd.testing.assert_frame_equal(newDataFrame, result))
-        self.assertTrue(newDataFrame.equals(result))
+        resultM = replace_values_in_column(df2, 'index1', mapping=mapping)
+        newDataFrameM = pd.DataFrame({'index1': ['a', 'b', 'c', 'e'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
+        print(pd.testing.assert_frame_equal(newDataFrameM, resultM))
+        self.assertTrue(newDataFrameM.equals(resultM))
     def test_replace_values_in_column_mapping_multiple(self):
         mapping = {'cc': 'cd', 'aa':'ab'}
         result = replace_values_in_column(df2, 'index2', mapping=mapping)
