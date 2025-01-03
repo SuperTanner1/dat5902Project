@@ -10,9 +10,9 @@ def merge_datasets(df, df1, relatedColumn):
     return cleanedDataset
 def create_model(x, y, degree):
     return np.polyfit(x, y, degree)
-def calculate_correlation_columns(df):
+def calculate_correlation_columns(series, series1):
     pass
-def remove_values_from_column(df):
+def remove_values_from_column(df, column, values):
     pass
 def replace_values_in_column(df):
     pass

@@ -24,7 +24,12 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(m == mr and c == cr)
     def test_calculate_correlation_columns(self):
         pass
-    def test_remove_values_from_column(self):
+    def test_remove_row_from_column(self):
+        result = remove_values_from_column(df1, 'index1', 'a')
+        newDataFrame = pd.DataFrame({'index1': ['b', 'c', 'd'], 'index2': ['bb', 'cc', 'dd'], 'value_x': [22, 56, 17]})
+        self.assertTrue(newDataFrame.equals(result))
+    def test_remove_rows_from_column(self):
         pass
+        #remove_values_from_column(df1, 'index2', ['aa', 'bb'])
     def test_replace_values_in_column(self):
         pass
