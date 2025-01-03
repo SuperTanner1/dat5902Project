@@ -8,7 +8,7 @@ def merge_datasets(df, df1, relatedColumn):
     mergedDataset = pd.merge(df, df1, how='inner', on=relatedColumn)
     cleanedDataset = mergedDataset.transpose().drop_duplicates().transpose()
     return cleanedDataset
-def create_model(df):
+def create_model(x, y, power):
     pass
 def calculate_mean_average(df):
     pass
