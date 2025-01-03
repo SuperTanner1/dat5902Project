@@ -25,12 +25,12 @@ class TestSuite(unittest.TestCase):
     def test_calculate_correlation_columns(self):
         pass
     def test_remove_row_from_df(self):
-        result = remove_rows_from_df(df1, 'index1', 'a')
-        newDataFrame = pd.DataFrame({'index1': ['b', 'c', 'd'], 'index2': ['bb', 'cc', 'dd'], 'value_x': [22, 56, 17]})
+        result = remove_rows_from_df(df1, 'index1', 'c')
+        newDataFrame = df1.drop(2)
         self.assertTrue(newDataFrame.equals(result))
     def test_remove_rows_from_df(self):
         result = remove_rows_from_df(df1, 'index2', ['aa', 'bb'])
-        newDataFrame = pd.DataFrame({'index1': ['c', 'd'], 'index2': ['cc', 'dd'], 'value_x': [56, 17]})
+        newDataFrame = df1.drop([0, 1])
         print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))
     def test_replace_values_in_column(self):
@@ -46,3 +46,5 @@ class TestSuite(unittest.TestCase):
         newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2': ['ab', 'bb', 'cd', 'dd'], 'value_y': [15, 30, 74, 23]})
         print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))
+
+
