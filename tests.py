@@ -31,10 +31,12 @@ class TestSuite(unittest.TestCase):
     def test_remove_rows_from_df(self):
         result = remove_rows_from_df(df1, 'index2', ['aa', 'bb'])
         newDataFrame = pd.DataFrame({'index1': ['c', 'd'], 'index2': ['cc', 'dd'], 'value_x': [56, 17]})
+        print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))
     def test_replace_values_in_column(self):
         result = replace_values_in_column(df2, 'index2', 'cc', 'cd')
         newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cd', 'dd'], 'value_y': [15, 30, 74, 23]})
+        print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))
     def test_replace_values_in_column_mapping(self):
         pass
@@ -42,4 +44,5 @@ class TestSuite(unittest.TestCase):
         mapping = {'cc': 'cd', 'aa':'ab'}
         result = replace_values_in_column(df2, 'index2', mapping=mapping)
         newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2': ['ab', 'bb', 'cd', 'dd'], 'value_y': [15, 30, 74, 23]})
+        print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))
