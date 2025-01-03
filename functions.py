@@ -13,7 +13,7 @@ def merge_datasets(df, df1, relatedColumn):
 def create_model(x, y, degree):
     return np.polyfit(x, y, degree)
 def calculate_correlation_columns(series, series1):
-    pass
+    return np.corrcoef(series, series1)[0, 1]
 def remove_rows_from_df(df, column, values):
     if type(values) != list:
         return df[np.invert(df[column] == values)]

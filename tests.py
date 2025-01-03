@@ -25,7 +25,8 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(m == mr and c == cr)
     def test_calculate_correlation_columns(self):
         correlation = calculate_correlation_columns(df1['value_x'], df2['value_y'])
-        correlationTest = np.corrcoef(df1['value_x'], df2['value_y'])
+        # corrcoef returns the matrix correlations of [X,X, X,Y, Y,X , Y,Y], I am selecting X,Y using [0,1]
+        correlationTest = np.corrcoef(df1['value_x'], df2['value_y'])[0, 1]
         self.assertEqual(correlation, correlationTest)
     def test_remove_row_from_df(self):
         result = remove_rows_from_df(df1, 'index1', 'c')
@@ -55,4 +56,5 @@ class TestSuite(unittest.TestCase):
         df2 = pd.DataFrame(dataset2)
         result = replace_values_in_column(df2, 'index1', mapping=mapping)
         newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'e'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
+        print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))
