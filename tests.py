@@ -29,7 +29,8 @@ class TestSuite(unittest.TestCase):
         newDataFrame = pd.DataFrame({'index1': ['b', 'c', 'd'], 'index2': ['bb', 'cc', 'dd'], 'value_x': [22, 56, 17]})
         self.assertTrue(newDataFrame.equals(result))
     def test_remove_rows_from_column(self):
-        pass
-        #remove_values_from_column(df1, 'index2', ['aa', 'bb'])
+        result = remove_values_from_column(df1, 'index2', ['aa', 'bb'])
+        newDataFrame = pd.DataFrame({'index1': ['c', 'd'], 'index2': ['cc', 'dd'], 'value_x': [56, 17]})
+        self.assertTrue(newDataFrame.equals(result))
     def test_replace_values_in_column(self):
         pass
