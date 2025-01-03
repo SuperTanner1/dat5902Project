@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from functions import *
 
-#
+# mock datasets similar in structure and properties to the original datasets that have been imported
 dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_x': [10.3, 22.6, 56.1, 17.9]}
 dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]}
 
@@ -42,7 +42,7 @@ class TestSuite(unittest.TestCase):
     def test_replace_values_in_column_mapping(self):
         mapping = {'d': 'e'}
         result = replace_values_in_column(df2, 'index1', mapping=mapping)
-        newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'e'], 'index2': ['ab', 'bb', 'cd', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
+        newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'e'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
         print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))
     def test_replace_values_in_column_mapping_multiple(self):
