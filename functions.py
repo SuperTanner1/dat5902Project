@@ -4,12 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy as sp
 
-dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_x': [10, 22, 56, 17]}
-dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15, 30, 74, 23]}
-
-df2 = pd.DataFrame(dataset1)
-df3 = pd.DataFrame(dataset2)
-
 def merge_datasets(df, df1, relatedColumn):
     mergedDataset = pd.merge(df, df1, how='inner', on=relatedColumn)
     cleanedDataset = mergedDataset.transpose().drop_duplicates().transpose()
