@@ -23,7 +23,7 @@ def remove_rows_from_df(df, column, values):
         return df1[np.invert(df1[column] == values)]
     else:
         return df1[np.invert(df1[column].isin(values))]
-def replace_values_in_column(df, column, original, replace, mapping):
+def replace_values_in_column(df, column, original=None, replace=None, mapping=None):
     if mapping == None:
         df1[column] = df1[column].replace(original, replace)
     else:
