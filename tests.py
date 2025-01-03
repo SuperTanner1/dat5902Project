@@ -22,10 +22,6 @@ class TestSuite(unittest.TestCase):
         mr, cr = create_model(df1['value_x'], df2['value_y'], 1)
         m, c = np.polyfit(df1['value_x'], df2['value_y'], 1)
         self.assertTrue(m == mr and c == cr)
-    def test_calculate_mean_average(self):
-        pass
-    def test_calculate_sum_column(self):
-        pass
     def test_calculate_correlation_columns(self):
         pass
     def test_remove_values_from_column(self):

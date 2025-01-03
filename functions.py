@@ -10,10 +10,6 @@ def merge_datasets(df, df1, relatedColumn):
     return cleanedDataset
 def create_model(x, y, degree):
     return np.polyfit(x, y, degree)
-def calculate_mean_average(df):
-    pass
-def calculate_sum_column(df):
-    pass
 def calculate_correlation_columns(df):
     pass
 def remove_values_from_column(df):
