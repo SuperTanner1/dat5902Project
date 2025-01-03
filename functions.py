@@ -4,11 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy as sp
 
-dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_x': [10.3, 22.6, 56.1, 17.9]}
-dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]}
 
-df1 = pd.DataFrame(dataset1)
-df2 = pd.DataFrame(dataset2)
 
 def merge_datasets(df, df1, relatedColumn):
     mergedDataset = pd.merge(df, df1, how='inner', on=relatedColumn)
@@ -38,7 +34,11 @@ newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'd'], 'index2': ['ab', 'b
 print(pd.testing.assert_frame_equal(newDataFrame, result))
 """
 
+dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_x': [10.3, 22.6, 56.1, 17.9]}
+dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]}
 
+df1 = pd.DataFrame(dataset1)
+df2 = pd.DataFrame(dataset2)
 
 mapping = {'d': 'e'}
 result = replace_values_in_column(df2, 'index1', mapping=mapping)
