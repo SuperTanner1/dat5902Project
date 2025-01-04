@@ -78,6 +78,13 @@ mappingFriendsAndFamily = {'Share - Question: mh8c - Talked to friends or family
 mappingReligiousSpirituality = {'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'}
 mappingMedication = {'share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all': 'Proportion that took prescribed medication when anxious/depressed (%)'}
 
+mappingPerceivedComfortSpeakingAboutDepressionAnxiety = {'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_very_comfortable__gender_all__age_group_all': 'Proportion of local people very comfortable speaking about anxiety/depression with someone they know (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_somewhat_comfortable__gender_all__age_group_all': 'Proportion of local people somewhat comfortable speaking about anxiety/depression with someone they know (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_dont_know_refused__gender_all__age_group_all': 'Proportion of local people that don\'t know how comfortable they are speaking about anxiety/depression with someone they know (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_not_at_all_comfortable__gender_all__age_group_all': 'Proportion of local people not comfortable speaking about anxiety/depression with someone they know (%)',
+'very_comfortable and somewhat_comfortable': 'Proportion of local people very or somewhat comfortable speaking about anxiety/depression with someone they know (%)'}
+
+
 def remove_rows_from_ourworldindata_datasets(df):
     return remove_rows_from_df(df, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
 def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
@@ -91,9 +98,12 @@ depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', 
 mentalIssuesDealtByFriendsFamily = mentalIssuesDealtByFriendsFamily.rename(columns=mappingFriendsAndFamily)
 mentalIssuesDealtByReligionSpirituality = mentalIssuesDealtByReligionSpirituality.rename(columns=mappingReligiousSpirituality)
 mentalIssuesDealtByMedication = mentalIssuesDealtByMedication.rename(columns=mappingMedication)
+perceivedComfortSpeakingAboutAnxietyDepression = perceivedComfortSpeakingAboutAnxietyDepression.rename(columns=mappingPerceivedComfortSpeakingAboutDepressionAnxiety)
+
 
 depressionPrevalence = depressionPrevalence.rename(columns={'val': 'Proportion of people that are depressed (%)'})
 
+# exploring models and scatter graphs for every our world in dataset against depression prevalence
 def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
     mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
@@ -115,6 +125,7 @@ def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssu
         sns.lineplot(x=x, y=yModel, ax=ax)
 
     sns.scatterplot(x=x, y=y, ax=ax)
+    ax.set_ylabel(depressionDataColumn)
 
     return fig, ax, mergedDataset
 
@@ -138,4 +149,10 @@ yModel = m*x+c
 sns.lineplot(x=x, y=yModel, ax=ax)
 
 ax.set_xlim(0, 35000)
+
+# there is little correlation, histograms are likely to be better suited for this
+for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiety.values()):
+    print(comfortSpeaking)
+    explore_data_ourworldindata_ihme(perceivedComfortSpeakingAboutAnxietyDepression, depressionPrevalence, comfortSpeaking)
+
 plt.show()
