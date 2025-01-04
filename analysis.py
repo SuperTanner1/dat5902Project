@@ -101,10 +101,11 @@ def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssu
         mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
     print(len(mentalIssueData))
     print(len(depressionDataNew))
-    x, y = mentalIssueData[mentalIssueDataColumn], depressionDataNew[depressionDataColumn]
+    mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on='Entity', right_on='location_name')
+    x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
 
     fig, ax = plt.subplots()
-    
+
     try:
         m, c = create_model(x, y, 1)
     except np.linalg.LinAlgError:
@@ -126,4 +127,37 @@ explore_data_ourworldindata_ihme(mentalIssuesDealtByMedication, depressionPreval
 opinionThatScienceHelpsALotForMentalHealth.drop('Population (historical)', axis=1)
 opinionThatScienceHelpsALotForMentalHealth = opinionThatScienceHelpsALotForMentalHealth[opinionThatScienceHelpsALotForMentalHealth['Year'] == 2021]
 
-explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
+#explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
+
+mentalIssueData = opinionThatScienceHelpsALotForMentalHealth
+depressionData = depressionPrevalence
+mentalIssueDataColumn = 'GDP per capita, PPP (constant 2017 international $)'
+depressionLocationColumn='location_name'
+mentalIssueLocationColumn='Entity'
+depressionDataColumn='Proportion of people that are depressed (%)'
+
+mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
+depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
+if len(mentalIssueData) != len(depressionDataNew):
+    mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
+print(len(mentalIssueData))
+print(len(depressionDataNew))
+x, y = mentalIssueData[mentalIssueDataColumn], depressionDataNew[depressionDataColumn]
+
+fig, ax = plt.subplots()
+
+try:
+    m, c = create_model(x, y, 1)
+except np.linalg.LinAlgError:
+    print("Invalid model for this graph")
+else:
+    yModel = m * x + c
+    sns.lineplot(x=x, y=yModel, ax=ax)
+
+#sns.scatterplot(x=x, y=y, ax=ax)
+print(x)
+print(y)
+sns.scatterplot(x=x, y=y)
+print(x)
+print(y)
+plt.show()
