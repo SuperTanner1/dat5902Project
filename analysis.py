@@ -93,12 +93,6 @@ mappingPerceivedComfortSpeakingAboutDepressionAnxiety = {'share__question_mh5__s
 'very_comfortable and somewhat_comfortable': 'Proportion of people very or somewhat comfortable speaking about anxiety/depression (%)'}
 
 
-def remove_rows_from_ourworldindata_datasets(df):
-    return remove_rows_from_df(df, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
-def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
-    unsharedValues = df[columnName][np.invert(df[columnName].isin(df1[columnName1]))].unique()
-    return remove_rows_from_df(df, columnName, list(unsharedValues))
-
 # removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
 depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', ['Number', 'Rate'])
 
@@ -126,29 +120,40 @@ def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, d
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
     if len(mentalIssueData) != len(depressionDataNew):
         mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
-    print(len(mentalIssueData))
-    print(len(depressionDataNew))
+    
     mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on=mentalIssueLocationColumn, right_on=depressionLocationColumn)
     return mergedDataset
 
 def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, mentalIssueDataColumn=None, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)', mergedDataset=None):
     if type(mergedDataset) != pd.DataFrame:
         mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
+    
+    
+    mergedDataset[mentalIssueDataColumn] = mergedDataset[mentalIssueDataColumn][np.invert(mergedDataset[mentalIssueDataColumn].isna())]
+    mergedDataset[depressionDataColumn] = mergedDataset[depressionDataColumn][np.invert(mergedDataset[depressionDataColumn].isna())]
     x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
+
+    x = x.fillna(x.mean())
+    y = y.fillna(y.mean())
 
     fig, ax = plt.subplots()
 
     try:
         m, c = create_model(x, y, 1)
+        print(m,c)
     except np.linalg.LinAlgError:
-        x[x.isna()] = x.mean()
-        y[y.isna()] = y.mean()
+        print("mean: " + str(mergedDataset[depressionDataColumn].mean()))
+        print("mean2: " + str(mergedDataset[mentalIssueDataColumn].mean()))
+        print(x[x.isna()])
+        print(y[y.isna()])
         try:
             m, c = create_model(x, y, 1)
+            print(m,c)
         except np.linalg.LinAlgError:
             print("Invalid model")
         else:
             yModel = m * x + c
+            print(yModel)
             sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
     else:
         yModel = m * x + c
@@ -236,14 +241,29 @@ correlationMatrix = mentalIssueDealtyByMasterDataset.select_dtypes('number').cor
 
 sns.heatmap(correlationMatrix,annot=True)
 
-fig,ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='GDP per capita, PPP (constant 2017 international $)', depressionDataColumn='IndividualismScore_2023')
+GDPColumnName = 'GDP per capita, PPP (constant 2017 international $)'
+
+fig,ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='IndividualismScore_2023')
 
 ax.set_xlim(0, 60000)
 
 print("benchmark")
-fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='GDP per capita, PPP (constant 2017 international $)', depressionDataColumn='Total number of psychiatrists per 100,000 population')
-fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='GDP per capita, PPP (constant 2017 international $)', depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)')
+fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Total number of psychiatrists per 100,000 population')
+#mergedDataset = mergedDataset[np.invert(mergedDataset['Total number of psychiatrists per 100,000 population'].isna())]
+#print(mergedDataset['Total number of psychiatrists per 100,000 population'][mergedDataset['Total number of psychiatrists per 100,000 population'].isna()])
+#x = mergedDataset[GDPColumnName]
+#y = mergedDataset['Total number of psychiatrists per 100,000 population']
 
-mergedDataset
+#m,c = create_model(x, y, 1)
+
+
+
+#print(m,c)
+
+#yModel = m*x+c
+
+#sns.lineplot(x=x, y=yModel, ax=ax)
+
+fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)')
 
 plt.show()

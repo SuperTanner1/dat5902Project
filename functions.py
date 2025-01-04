@@ -26,3 +26,8 @@ def replace_values_in_column(df, column, original=None, replace=None, mapping=No
     else:
         df[column] = df[column].replace(mapping)
         return df
+def remove_rows_from_ourworldindata_datasets(df, list):
+    return remove_rows_from_df(df, 'Entity', list)
+def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
+    unsharedValues = df[columnName][np.invert(df[columnName].isin(df1[columnName1]))].unique()
+    return remove_rows_from_df(df, columnName, list(unsharedValues))
