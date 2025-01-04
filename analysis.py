@@ -34,6 +34,7 @@ mentalIssuesDealtByMedication = pd.read_csv('Datasets/mentalIssuesDealtByMedicat
 opinionThatScienceHelpsALotForMentalHealth = pd.read_csv('Datasets/opinionThatScienceHelpsALotForMentalHealth.csv')
 perceivedComfortSpeakingAboutAnxietyDepression = pd.read_csv('Datasets/perceivedComfortSpeakingAboutAnxietyDepression.csv')
 amountOfPsychiatristsWorking = pd.read_csv('Datasets/amountOfPsychiatristsWorking.csv')
+depressionPrevalence = pd.read_csv('Datasets/')
 
 # fact sheet from 13/11/2024 cited in Zotero
 socialMediaFactSheet = pd.read_excel('Datasets/Social media fact sheet.xlsx')

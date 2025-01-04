@@ -1,0 +1,613 @@
+measure_id,measure_name,location_id,location_name,sex_id,sex_name,age_id,age_name,cause_id,cause_name,metric_id,metric_name,year,val,upper,lower
+5,Prevalence,7,North Korea,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,887635.4510457988,1074799.6203657538,722959.3652931851
+5,Prevalence,7,North Korea,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0351067940944283,0.0425496623705764,0.0286429631223671
+5,Prevalence,7,North Korea,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3363.24095483667,4072.40393249064,2739.2850783190597
+5,Prevalence,6,China,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,53114656.12085356,59334612.52792427,47435175.59726526
+5,Prevalence,6,China,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0389613119007773,0.0434941459969271,0.0348212024186527
+5,Prevalence,6,China,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3733.2494964655198,4170.42919074613,3334.05802365192
+5,Prevalence,23,Kiribati,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3454.0693459940635,4198.234698439502,2828.849351529372
+5,Prevalence,23,Kiribati,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0291418855828319,0.0353954755702516,0.0238925782053529
+5,Prevalence,23,Kiribati,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2850.81017930074,3465.00576987127,2334.78593485717
+5,Prevalence,22,Fiji,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,29795.18414397945,36462.34782431639,24552.9206321987
+5,Prevalence,22,Fiji,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0332694326182059,0.040632269797583,0.0273929425772394
+5,Prevalence,22,Fiji,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3222.9337587298796,3944.11832320514,2655.88010460135
+5,Prevalence,8,Taiwan (Province of China),3,Both,22,All ages,567,Depressive disorders,1,Number,2021,866213.1497743159,1028186.3950567148,714852.2626630709
+5,Prevalence,8,Taiwan (Province of China),3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0380432567985582,0.0452143536568118,0.0313662470819092
+5,Prevalence,8,Taiwan (Province of China),3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3664.6974349709303,4349.95941312836,3024.33327645403
+5,Prevalence,20,Vietnam,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2935091.796016135,3522608.092792696,2422691.431227816
+5,Prevalence,20,Vietnam,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0303626102431411,0.0363224379431246,0.0250886703719107
+5,Prevalence,20,Vietnam,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2927.2510293987702,3513.1978426678097,2416.2194843796997
+5,Prevalence,15,Myanmar,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1490807.6100852925,1808106.589874852,1224917.5819082963
+5,Prevalence,15,Myanmar,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.027144168313747,0.032915183615801,0.0222873255530717
+5,Prevalence,15,Myanmar,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2642.35436926443,3204.74507611233,2171.08250766109
+5,Prevalence,11,Indonesia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,8347347.000970677,9410130.755900484,7396640.580820225
+5,Prevalence,11,Indonesia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0309415325614184,0.0347842796584516,0.027453532353653
+5,Prevalence,11,Indonesia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2992.8012033527298,3373.84448576184,2651.94136873335
+5,Prevalence,18,Thailand,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2663108.091087241,3155243.453216072,2212343.8030599337
+5,Prevalence,18,Thailand,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0409937570423902,0.0486116351116142,0.0340481075572283
+5,Prevalence,18,Thailand,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3993.66893734747,4731.68843992868,3317.6906166833496
+5,Prevalence,16,Philippines,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3709737.095878728,4210611.1712952405,3283798.474586929
+5,Prevalence,16,Philippines,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0340768694333298,0.0386828658518986,0.0301936932868601
+5,Prevalence,16,Philippines,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3275.71947294171,3717.99420021451,2899.61318832291
+5,Prevalence,17,Sri Lanka,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,810661.6801281907,979304.3232704382,672484.0402713215
+5,Prevalence,17,Sri Lanka,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0376595370093301,0.0454941465046463,0.0311979718222665
+5,Prevalence,17,Sri Lanka,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3640.1423106657,4397.40423106081,3019.67845310261
+5,Prevalence,14,Maldives,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,18624.09750514219,22803.656426312693,15498.58706135174
+5,Prevalence,14,Maldives,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0371849596136286,0.0455937825008726,0.0308763619458728
+5,Prevalence,14,Maldives,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3600.89325109652,4408.993912492199,2996.58856142394
+5,Prevalence,19,Timor-Leste,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,37193.89628268306,45563.9449104759,29870.051271019205
+5,Prevalence,19,Timor-Leste,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0274279632339702,0.0334813894697058,0.0221015045794022
+5,Prevalence,19,Timor-Leste,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2661.01514078007,3259.8452810359704,2137.0350146689602
+5,Prevalence,10,Cambodia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,561155.0872821703,673598.0307764686,450413.96190476767
+5,Prevalence,10,Cambodia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0338563489288107,0.0406731760910369,0.0272625378912605
+5,Prevalence,10,Cambodia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3292.3758460812496,3952.09441517756,2642.64208330583
+5,Prevalence,12,Laos,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,211888.26175332165,261864.6953910356,170566.0591849277
+5,Prevalence,12,Laos,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0297559985411742,0.0369417875373038,0.0239884232793799
+5,Prevalence,12,Laos,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2872.06734451203,3549.4794949460797,2311.9601086607
+5,Prevalence,13,Malaysia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1224107.845367913,1513419.1134335073,1002662.8029524058
+5,Prevalence,13,Malaysia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0403297290434935,0.0500027097425665,0.0331009906099444
+5,Prevalence,13,Malaysia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3847.91640191132,4757.35063016167,3151.81596104169
+5,Prevalence,33,Armenia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,131265.95497731413,159620.21768673236,107304.9281872033
+5,Prevalence,33,Armenia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0455562407030066,0.0554968822968408,0.0372746361683606
+5,Prevalence,33,Armenia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4382.42726987591,5329.05881753391,3582.46769743874
+5,Prevalence,28,Solomon Islands,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,18686.615630721823,23021.03925229794,15095.433683211935
+5,Prevalence,28,Solomon Islands,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0278551192109558,0.0343462454909686,0.0225006250064899
+5,Prevalence,28,Solomon Islands,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2733.70264797328,3367.79421200482,2208.34140582724
+5,Prevalence,39,Tajikistan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,302516.7982378386,373322.9716116133,245784.72993186105
+5,Prevalence,39,Tajikistan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.031265170441407,0.0386530249339559,0.0254294010214892
+5,Prevalence,39,Tajikistan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2977.54449574879,3674.45961921365,2419.15481722224
+5,Prevalence,30,Vanuatu,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,8686.891947182066,10750.583402978182,7131.849375337989
+5,Prevalence,30,Vanuatu,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0283434731741667,0.0350908052039698,0.0232995677245789
+5,Prevalence,30,Vanuatu,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2775.52546170818,3434.88996347682,2278.67799561376
+5,Prevalence,37,Kyrgyzstan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,261329.58149502444,319242.3564222103,214066.0870646093
+5,Prevalence,37,Kyrgyzstan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0402094552710079,0.0492989353719378,0.0329202836717461
+5,Prevalence,37,Kyrgyzstan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3807.7570532107197,4651.58719267848,3119.09447147301
+5,Prevalence,38,Mongolia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,136589.87562912135,170856.79345138284,111793.1279232978
+5,Prevalence,38,Mongolia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0431418965513365,0.0540362062121966,0.0352235045482506
+5,Prevalence,38,Mongolia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4094.06126304043,5121.156867408929,3350.81873672426
+5,Prevalence,35,Georgia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,181744.6646331955,221727.2131509377,146492.28946841287
+5,Prevalence,35,Georgia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0522243231158041,0.0635769015910597,0.042133509563571
+5,Prevalence,35,Georgia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5038.26560608698,6146.6486194051695,4061.0108972125304
+5,Prevalence,36,Kazakhstan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,765561.3175165544,922433.4075638936,613346.1526874439
+5,Prevalence,36,Kazakhstan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0423375527215418,0.0510813733373946,0.0339004461436705
+5,Prevalence,36,Kazakhstan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4038.72470403222,4866.30463910862,3235.71241428134
+5,Prevalence,34,Azerbaijan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,388047.90031863,462756.77526470274,319157.032993239
+5,Prevalence,34,Azerbaijan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.038476286382019,0.0460225421822569,0.0315934679488464
+5,Prevalence,34,Azerbaijan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3695.63502436634,4407.13670922279,3039.54204734562
+5,Prevalence,26,Papua New Guinea,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,287340.40594493947,352293.7188354494,233218.5096841711
+5,Prevalence,26,Papua New Guinea,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0281008069848897,0.0344676455980092,0.0229196368860763
+5,Prevalence,26,Papua New Guinea,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2746.6275452679297,3367.50283690953,2229.28752626467
+5,Prevalence,27,Samoa,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,5530.748529461622,6776.948561984973,4497.201063343414
+5,Prevalence,27,Samoa,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.026927706077304,0.0329944545549522,0.0218632248557223
+5,Prevalence,27,Samoa,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2588.8187041606498,3172.1368456629298,2105.03843505752
+5,Prevalence,29,Tonga,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2668.593542419589,3264.9534288955683,2204.906296226379
+5,Prevalence,29,Tonga,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0262396322046832,0.0321220017638196,0.0216664762837175
+5,Prevalence,29,Tonga,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2510.4475721508297,3071.46602825273,2074.2393212728703
+5,Prevalence,25,Federated States of Micronesia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3077.573760339619,3798.237750340983,2488.32715376273
+5,Prevalence,25,Federated States of Micronesia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0306250166801199,0.0377888504134688,0.0247432949524824
+5,Prevalence,25,Federated States of Micronesia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3000.2346512343897,3702.7884299813,2425.79575070933
+5,Prevalence,24,Marshall Islands,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1653.6467254586576,2036.336613720699,1354.693466676007
+5,Prevalence,24,Marshall Islands,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0301365251551702,0.0371308613270681,0.0247046690151456
+5,Prevalence,24,Marshall Islands,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2938.60956726553,3618.6678588154996,2407.35528368797
+5,Prevalence,55,Slovenia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,99922.9293491768,124113.13509756874,80886.34060292346
+5,Prevalence,55,Slovenia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0499895236413849,0.0620047981225751,0.040505510239409
+5,Prevalence,55,Slovenia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4828.00754331941,5996.81330780581,3908.21070925334
+5,Prevalence,54,Slovakia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,229964.74291162848,277490.2591440131,186495.7037431025
+5,Prevalence,54,Slovakia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0438416273791248,0.0529098073497499,0.0355541300188968
+5,Prevalence,54,Slovakia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4235.50318641101,5110.83073831946,3434.88805046702
+5,Prevalence,52,Romania,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,778529.8954025644,939581.7848274596,637637.6991546451
+5,Prevalence,52,Romania,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0422916863971911,0.0509894952545012,0.0346865456995763
+5,Prevalence,52,Romania,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4110.81990824494,4961.21154666235,3366.8761641799597
+5,Prevalence,53,Serbia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,381112.9450205588,467570.165941422,308083.94267013075
+5,Prevalence,53,Serbia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0441613983381032,0.0542125983891428,0.0356876868569247
+5,Prevalence,53,Serbia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4272.8018607474905,5242.10657540575,3454.04600055332
+5,Prevalence,50,Montenegro,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,26148.09854996812,32070.792784667567,21260.70016561229
+5,Prevalence,50,Montenegro,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0439479988179109,0.0540187054881017,0.0356970137380953
+5,Prevalence,50,Montenegro,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4230.67102198482,5188.942263885509,3439.9070328528096
+5,Prevalence,49,Macedonia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,87485.78834202078,106504.02000196732,71700.46254453209
+5,Prevalence,49,Macedonia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0414018450664766,0.0503623606479066,0.0339669434457133
+5,Prevalence,49,Macedonia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4019.6830227928604,4893.50795339945,3294.3994387968205
+5,Prevalence,51,Poland,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1281239.608039537,1440334.2662307946,1138663.266244386
+5,Prevalence,51,Poland,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0345957159039969,0.0389858903999398,0.0307806170225897
+5,Prevalence,51,Poland,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3350.6573173717698,3766.7166377973704,2977.79617576922
+5,Prevalence,48,Hungary,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,428251.903845424,514916.10028162703,348082.0669967752
+5,Prevalence,48,Hungary,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0461133959811152,0.0554818240236194,0.0375129079727245
+5,Prevalence,48,Hungary,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4462.20750598644,5365.21254663068,3626.87100303683
+5,Prevalence,47,Czech Republic,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,466479.0453730648,563973.8482778352,378771.60927481565
+5,Prevalence,47,Czech Republic,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0454588113750887,0.0549801357277926,0.0368257464134011
+5,Prevalence,47,Czech Republic,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4387.34231178391,5304.30327328014,3562.4337778020895
+5,Prevalence,46,Croatia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,196332.4728480142,240482.8747745435,155655.21335539175
+5,Prevalence,46,Croatia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0481740502960127,0.0590606965593325,0.0381274210553953
+5,Prevalence,46,Croatia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4664.9867810444,5714.02894089382,3698.46873606927
+5,Prevalence,45,Bulgaria,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,310731.0308474645,376233.6522188261,248386.241207304
+5,Prevalence,45,Bulgaria,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0469967609524312,0.0568668315802603,0.0376426714653529
+5,Prevalence,45,Bulgaria,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4578.3718219700595,5543.50026483559,3659.7714898542704
+5,Prevalence,44,Bosnia and Herzegovina,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,142703.71319057047,174607.8656774818,116758.56510990747
+5,Prevalence,44,Bosnia and Herzegovina,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0444247890658139,0.0543939676665641,0.0363181499819846
+5,Prevalence,44,Bosnia and Herzegovina,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4320.60558224053,5286.55983983941,3535.0706502961098
+5,Prevalence,71,Australia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1335679.717361389,1630653.752301284,1086649.04150815
+5,Prevalence,71,Australia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0543895026422076,0.0664534197552382,0.0442407549439665
+5,Prevalence,71,Australia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5178.6697132943,6322.336927144891,4213.13313894992
+5,Prevalence,69,Singapore,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,143564.7325002343,173669.8184157614,117921.1199426431
+5,Prevalence,69,Singapore,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0265692895077016,0.0321795953820279,0.0218124894469415
+5,Prevalence,69,Singapore,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2506.6801212352398,3032.32328650501,2058.93552048751
+5,Prevalence,68,South Korea,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1477946.3533624588,1756526.3391324475,1221230.7212569152
+5,Prevalence,68,South Korea,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0298021148092639,0.0354067788990569,0.0245996335452822
+5,Prevalence,68,South Korea,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2865.87667326316,3406.06940829703,2368.08097178897
+5,Prevalence,67,Japan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3831422.2019034247,4214943.236769485,3454826.968059748
+5,Prevalence,67,Japan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0314971136152309,0.0346030052493117,0.0283767171218966
+5,Prevalence,67,Japan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3000.39029899904,3300.7259790247303,2705.47822021208
+5,Prevalence,66,Brunei,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,9165.65256238038,11275.813430370832,7513.614488269695
+5,Prevalence,66,Brunei,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0217633108707077,0.0267806610243206,0.017864017904883
+5,Prevalence,66,Brunei,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2031.68393003953,2499.42803184968,1665.48859543125
+5,Prevalence,40,Turkmenistan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,180174.22713671523,216537.9277257738,146366.98887539926
+5,Prevalence,40,Turkmenistan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0367564582910832,0.0441791121350143,0.0298539671741899
+5,Prevalence,40,Turkmenistan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3492.85000026311,4197.79517266939,2837.4642991754
+5,Prevalence,43,Albania,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,94653.35535040256,114180.12969808393,77936.48049086693
+5,Prevalence,43,Albania,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0366417716490879,0.0442455637009848,0.030163111222895
+5,Prevalence,43,Albania,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3547.9105252482304,4279.83648789178,2921.30858341699
+5,Prevalence,62,Russian Federation,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,6769071.968633997,7639646.250994084,6009569.258319497
+5,Prevalence,62,Russian Federation,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.048697423972469,0.0551136512107659,0.0432936675757636
+5,Prevalence,62,Russian Federation,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4673.03595613261,5274.0378279998395,4148.71246089933
+5,Prevalence,61,Moldova,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,181854.6435139585,220676.2326002263,148124.6615387337
+5,Prevalence,61,Moldova,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0524272461656491,0.0636995959941743,0.0426951281235363
+5,Prevalence,61,Moldova,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5060.73374509061,6141.07858606155,4122.0804629696195
+5,Prevalence,41,Uzbekistan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1223301.9101681574,1506327.4581412582,993165.8200033868
+5,Prevalence,41,Uzbekistan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0373506622495927,0.0460238797762486,0.0302061106986127
+5,Prevalence,41,Uzbekistan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3573.4717753280997,4400.23726876187,2901.20533328917
+5,Prevalence,60,Lithuania,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,183515.69361458023,229059.55475563405,150897.90828499553
+5,Prevalence,60,Lithuania,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0696379262798775,0.0869319198744056,0.0572296002026163
+5,Prevalence,60,Lithuania,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6726.374085697411,8395.68661863626,5530.83913360474
+5,Prevalence,87,Luxembourg,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,28620.26529539445,34835.96991309626,23380.719159411565
+5,Prevalence,87,Luxembourg,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0466531781285094,0.0567223196228089,0.038058743774904
+5,Prevalence,87,Luxembourg,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4442.30331163267,5407.0758223819,3629.0455409202996
+5,Prevalence,63,Ukraine,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2701440.0439754007,3270503.30805198,2201974.761638404
+5,Prevalence,63,Ukraine,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0648050644791124,0.0785255312985629,0.0528306006232176
+5,Prevalence,63,Ukraine,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6271.070893217399,7592.08339531179,5111.62180560156
+5,Prevalence,57,Belarus,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,589484.2167003598,733752.3942705223,476048.4916396091
+5,Prevalence,57,Belarus,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0659009347970437,0.0820106631989318,0.0533183998277719
+5,Prevalence,57,Belarus,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6321.77877571331,7868.94743118468,5105.265188444149
+5,Prevalence,58,Estonia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,77324.35875878508,95152.2038341654,62979.61001586093
+5,Prevalence,58,Estonia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0616765702802384,0.0758859628043246,0.0502428923723731
+5,Prevalence,58,Estonia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5898.86786952691,7258.906338466891,4804.5454746909
+5,Prevalence,59,Latvia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,115857.4470927434,142989.2536373268,90313.0127033918
+5,Prevalence,59,Latvia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0646085068179392,0.079758969107699,0.0504933574945379
+5,Prevalence,59,Latvia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6194.49925588097,7645.143644036611,4828.72619780493
+5,Prevalence,86,Italy,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3209198.572798574,3615106.046652284,2836973.392574996
+5,Prevalence,86,Italy,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0554438376741347,0.062411287089405,0.049086359715609
+5,Prevalence,86,Italy,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5365.52523589529,6044.17030724136,4743.19428546625
+5,Prevalence,85,Israel,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,486164.9746483615,601480.8052609153,392370.8748613264
+5,Prevalence,85,Israel,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0541185842137902,0.0670896489822787,0.0438120281315606
+5,Prevalence,85,Israel,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5067.4193440133995,6269.38513996504,4089.7799409302797
+5,Prevalence,84,Ireland,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,276289.44792109827,344858.1191143218,226086.45353179905
+5,Prevalence,84,Ireland,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.059096655565137,0.0736652811586554,0.0482785794540984
+5,Prevalence,84,Ireland,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5591.34832955877,6978.992077885279,4575.37601889123
+5,Prevalence,83,Iceland,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,13048.80418916852,15755.00623969804,10691.552621389124
+5,Prevalence,83,Iceland,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0393710309906653,0.0474796658117654,0.0322959472238293
+5,Prevalence,83,Iceland,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3724.1232375445998,4496.47216666973,3051.36462970276
+5,Prevalence,82,Greece,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,742471.244482913,935687.065920192,592811.0569577186
+5,Prevalence,82,Greece,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0759337090776424,0.0954851967291524,0.0606278224086683
+5,Prevalence,82,Greece,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,7297.079005659681,9196.02273532987,5826.20424722542
+5,Prevalence,79,Finland,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,317876.4419856782,380438.7754037649,259440.16107520135
+5,Prevalence,79,Finland,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0601717455032695,0.0719871438151098,0.0491322368089294
+5,Prevalence,79,Finland,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5742.06517314333,6872.18036389649,4686.48228260882
+5,Prevalence,81,Germany,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4109394.300756479,5124057.724665685,3326509.629339701
+5,Prevalence,81,Germany,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0503650578085106,0.0628624112806649,0.0407950150340568
+5,Prevalence,81,Germany,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4813.52391955618,6002.04619408862,3896.4948353855902
+5,Prevalence,80,France,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3522678.519413551,4292024.841967264,2901493.6879386613
+5,Prevalence,80,France,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0559170320510264,0.0680090430609625,0.0460019179870511
+5,Prevalence,80,France,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5306.0476876402,6464.87846180354,4370.38571324202
+5,Prevalence,102,United States,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,19166791.10065233,21241047.032924093,17355637.761317786
+5,Prevalence,102,United States,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0605729520905318,0.0670363968932887,0.0548663765356554
+5,Prevalence,102,United States,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5761.9630314337,6385.53042655573,5217.490118325771
+5,Prevalence,78,Denmark,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,278863.0102112394,336572.3866561564,228092.59211118185
+5,Prevalence,78,Denmark,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0503475131420129,0.0607140793065397,0.0412379263830056
+5,Prevalence,78,Denmark,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4765.43626971647,5751.620688385,3897.83037369099
+5,Prevalence,101,Canada,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1615263.6431108827,1980943.61412133,1315798.8568774585
+5,Prevalence,101,Canada,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0456503808207429,0.0560723894909906,0.0372414356629165
+5,Prevalence,101,Canada,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4310.90960679644,5286.8575932229305,3511.68055872314
+5,Prevalence,99,Uruguay,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,141599.13602943002,178001.64840479963,112048.92155504948
+5,Prevalence,99,Uruguay,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0433820924570338,0.054500932348269,0.0342739600750967
+5,Prevalence,99,Uruguay,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4157.80994895152,5226.7057936951205,3290.1197978640503
+5,Prevalence,74,Andorra,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4553.8274422886525,5607.22085802876,3657.942871679728
+5,Prevalence,74,Andorra,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0551381418543174,0.0678608253966643,0.0443973873012494
+5,Prevalence,74,Andorra,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5320.30622169017,6551.001854029049,4273.63058118074
+5,Prevalence,75,Austria,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,370660.69097552507,456971.9524909982,302954.4734098033
+5,Prevalence,75,Austria,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0431843446224189,0.0530913897790563,0.0353039068340362
+5,Prevalence,75,Austria,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4126.562413566489,5087.46497569109,3372.78965218696
+5,Prevalence,97,Argentina,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1545527.324743889,1858875.688969564,1271194.9272414937
+5,Prevalence,97,Argentina,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0354252801104534,0.0426159309133988,0.0291594308138401
+5,Prevalence,97,Argentina,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3397.7178973585396,4086.5891506791604,2794.62011843468
+5,Prevalence,98,Chile,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,931251.2481002146,1196167.130221995,731665.3780047499
+5,Prevalence,98,Chile,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0517426535281036,0.0664946110097027,0.0407226102152616
+5,Prevalence,98,Chile,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4954.03136387654,6363.3197718090605,3892.28281614937
+5,Prevalence,76,Belgium,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,551178.110528722,668930.6315334045,451939.1408285712
+5,Prevalence,76,Belgium,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0506421778680432,0.0615995608099677,0.0416042913412057
+5,Prevalence,76,Belgium,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4805.6941053048395,5832.37238818179,3940.4345411195704
+5,Prevalence,72,New Zealand,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,207189.0305805828,251479.5388531544,173331.53048880043
+5,Prevalence,72,New Zealand,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0424433964946065,0.051642012765932,0.0355913971684098
+5,Prevalence,72,New Zealand,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4007.90188770749,4864.66544905889,3352.9563138483904
+5,Prevalence,77,Cyprus,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,57000.98151275639,70343.52458457997,46279.38119926018
+5,Prevalence,77,Cyprus,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0438370106965514,0.054191224608967,0.035662524348117
+5,Prevalence,77,Cyprus,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4198.11395842457,5180.79030581638,3408.4696621651296
+5,Prevalence,94,Switzerland,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,490965.31739778834,606699.1692359401,397509.6665490952
+5,Prevalence,94,Switzerland,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0577042960654314,0.071383275104991,0.0467521130611551
+5,Prevalence,94,Switzerland,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5502.36112769443,6799.41699894784,4454.982174087821
+5,Prevalence,95,United Kingdom,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3973992.4960037614,4493874.845700271,3520775.807747141
+5,Prevalence,95,United Kingdom,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0616357610090197,0.0697759971084873,0.0545292864761093
+5,Prevalence,95,United Kingdom,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5857.1654981169595,6623.40674411438,5189.18105871578
+5,Prevalence,92,Spain,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2891040.951222348,3535436.5795887853,2323616.9051643936
+5,Prevalence,92,Spain,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0664508475664339,0.0810674920416724,0.0534761380309312
+5,Prevalence,92,Spain,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6347.055086122411,7761.77546521941,5101.31981696353
+5,Prevalence,93,Sweden,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,581393.4962639739,688003.1250873847,496716.45973310433
+5,Prevalence,93,Sweden,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0588952986676814,0.0697811359186732,0.0502500998249896
+5,Prevalence,93,Sweden,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5604.59589477681,6632.305856939979,4788.31471108206
+5,Prevalence,91,Portugal,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,728476.7295436421,910918.0141058136,584791.1194922053
+5,Prevalence,91,Portugal,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0713833433435155,0.089404072196852,0.0573770572193841
+5,Prevalence,91,Portugal,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6867.33710118648,8587.20782793818,5512.81542493336
+5,Prevalence,90,Norway,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,262860.06495227944,298653.96065337985,228707.10087765928
+5,Prevalence,90,Norway,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0511211647124732,0.0578883906925128,0.0444330704413236
+5,Prevalence,90,Norway,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4851.54410878068,5512.1833118125805,4221.191180565051
+5,Prevalence,119,Trinidad and Tobago,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,74050.9639098777,94514.74263620874,58528.77358440226
+5,Prevalence,119,Trinidad and Tobago,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0547653831487149,0.0698140914851545,0.0433164618610956
+5,Prevalence,119,Trinidad and Tobago,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5315.41703360867,6784.317805060069,4201.22606972923
+5,Prevalence,118,Suriname,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,35669.36000492274,44899.96479821272,28219.384339802407
+5,Prevalence,118,Suriname,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0633484648645317,0.0797101030038891,0.0501716604493589
+5,Prevalence,118,Suriname,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6157.88303525982,7751.43516666739,4871.73495873107
+5,Prevalence,89,Netherlands,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,846284.7096921292,1054223.1316217275,687337.5378860699
+5,Prevalence,89,Netherlands,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0517496593365984,0.0646665905510079,0.042033419697973
+5,Prevalence,89,Netherlands,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4917.211898204319,6125.40728528396,3993.672910155
+5,Prevalence,88,Malta,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,18516.32812319195,22496.59956516546,15282.459767009892
+5,Prevalence,88,Malta,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0437681879988762,0.0531384179990171,0.0361380492250188
+5,Prevalence,88,Malta,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4187.13884727061,5087.20656407105,3455.85693591967
+5,Prevalence,115,Jamaica,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,107967.89182889464,136473.41858702042,85941.19201714161
+5,Prevalence,115,Jamaica,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.039569374051635,0.0501542461937936,0.0315332172781409
+5,Prevalence,115,Jamaica,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3856.1426676409596,4874.23588159193,3069.4449232223897
+5,Prevalence,113,Guyana,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,46214.329321573525,58658.82536859748,36377.46860406175
+5,Prevalence,113,Guyana,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0622358122426238,0.0788493700382038,0.048957465152473
+5,Prevalence,113,Guyana,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6043.1431846799205,7670.42789436504,4756.841756609069
+5,Prevalence,117,Saint Vincent and the Grenadines,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4856.726287655131,5884.408678027376,3943.723306624338
+5,Prevalence,117,Saint Vincent and the Grenadines,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0437785213009242,0.0530944705286431,0.0355506242425189
+5,Prevalence,117,Saint Vincent and the Grenadines,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4257.4753940439105,5158.35640539992,3457.1239852549097
+5,Prevalence,111,Dominican Republic,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,467824.57781442464,595302.2288178224,370695.4501414556
+5,Prevalence,111,Dominican Republic,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0440086816749388,0.0560997503082672,0.034803915504083
+5,Prevalence,111,Dominican Republic,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4247.96916520593,5405.49947976355,3366.0113567348403
+5,Prevalence,116,Saint Lucia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,8166.515548079053,10190.817009870476,6457.088321246571
+5,Prevalence,116,Saint Lucia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0471109189493616,0.0587161138350237,0.0372280312323061
+5,Prevalence,116,Saint Lucia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4600.53252102844,5740.9044033213095,3637.54218530023
+5,Prevalence,109,Cuba,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,618898.751041127,762955.6441197083,499826.9329121201
+5,Prevalence,109,Cuba,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0561356267432445,0.0692080271279144,0.0453872683085851
+5,Prevalence,109,Cuba,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5491.78885181599,6770.07554750787,4435.20684665552
+5,Prevalence,135,Brazil,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,10667497.046261225,12124713.301946916,9463555.226184178
+5,Prevalence,135,Brazil,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0497080346618358,0.0564350812521455,0.044092250222396
+5,Prevalence,135,Brazil,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4841.02775460261,5502.32855530966,4294.66568478958
+5,Prevalence,114,Haiti,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,466385.7971156032,592653.8490445872,370165.4065393076
+5,Prevalence,114,Haiti,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0368923603970232,0.0469770946475581,0.0292749267002777
+5,Prevalence,114,Haiti,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3625.5035261527296,4607.0627210085295,2877.52327572567
+5,Prevalence,108,Belize,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,15453.918322591464,19229.394527948203,12422.818505656564
+5,Prevalence,108,Belize,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0373944492845215,0.0463765782606429,0.0300812555931149
+5,Prevalence,108,Belize,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3601.6847767195404,4481.59593516158,2895.25771793195
+5,Prevalence,107,Barbados,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,13184.959822733492,16715.686340803724,10382.741243882769
+5,Prevalence,107,Barbados,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0451179137334959,0.0572694610210559,0.0355005477319176
+5,Prevalence,107,Barbados,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4409.31988862368,5590.0669570050095,3472.20075605771
+5,Prevalence,110,Dominica,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2635.741460116908,3317.004037386423,2122.534693008467
+5,Prevalence,110,Dominica,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.040432163364617,0.0508300142341472,0.0325809510886496
+5,Prevalence,110,Dominica,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3929.4354065938896,4945.0802764786295,3164.3327316562495
+5,Prevalence,106,The Bahamas,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,15050.467586650951,18748.78165590333,11845.009126884946
+5,Prevalence,106,The Bahamas,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0398888567326132,0.0496674389607421,0.0314680672199744
+5,Prevalence,106,The Bahamas,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3879.32926388468,4832.58722170469,3053.10717240851
+5,Prevalence,112,Grenada,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4118.142852352343,5016.336050544214,3324.708660562518
+5,Prevalence,112,Grenada,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0412645941436072,0.0502971175850832,0.0333023811483426
+5,Prevalence,112,Grenada,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4012.7479074746702,4887.95379657919,3239.6199449502997
+5,Prevalence,105,Antigua and Barbuda,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3461.725139715041,4263.91092882959,2793.5818031296703
+5,Prevalence,105,Antigua and Barbuda,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0397044003547497,0.0489481014520568,0.032076308262022
+5,Prevalence,105,Antigua and Barbuda,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3872.36348629875,4769.70652585927,3124.9633445243603
+5,Prevalence,133,Venezuela,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1012033.4459472316,1268988.2238860442,816579.9859755782
+5,Prevalence,133,Venezuela,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0393556966260707,0.0493118096330822,0.0317498038642195
+5,Prevalence,133,Venezuela,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3800.5164419211596,4765.46563633501,3066.52480238855
+5,Prevalence,132,Panama,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,153690.8686938283,192191.2760338247,122343.5126687648
+5,Prevalence,132,Panama,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0374809677143892,0.0469162141934698,0.0298893198336295
+5,Prevalence,132,Panama,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3580.86740706072,4477.8943740759105,2850.50049299704
+5,Prevalence,131,Nicaragua,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,245235.5482502098,303807.6389019903,191518.10778028076
+5,Prevalence,131,Nicaragua,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0382457827431021,0.0475209295956093,0.0298257599791511
+5,Prevalence,131,Nicaragua,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3677.25935283012,4555.53646110775,2871.77677990149
+5,Prevalence,129,Honduras,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,351345.0226357191,441835.4032536241,273613.3804686158
+5,Prevalence,129,Honduras,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0361905120787486,0.0454165748926143,0.0281486418808298
+5,Prevalence,129,Honduras,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3475.1692185667803,4370.213591020531,2706.32209461636
+5,Prevalence,130,Mexico,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,5968590.729795432,6765298.381836468,5318409.453629086
+5,Prevalence,130,Mexico,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0484326430343524,0.0550337731180642,0.0432401209954872
+5,Prevalence,130,Mexico,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4616.93647435546,5233.22075059909,4113.99603417918
+5,Prevalence,126,Costa Rica,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,202051.0665432945,249386.86614829037,161811.02462510666
+5,Prevalence,126,Costa Rica,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0442708064852659,0.0546820322691149,0.035459516877952
+5,Prevalence,126,Costa Rica,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4255.59189882544,5252.57671444522,3408.05766243109
+5,Prevalence,127,El Salvador,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,256860.9844725018,320943.5613574482,206496.97263699188
+5,Prevalence,127,El Salvador,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0416422619571556,0.0520423161986595,0.033477930820258
+5,Prevalence,127,El Salvador,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3982.19960438796,4975.69269109968,3201.38990524804
+5,Prevalence,128,Guatemala,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,630395.0172067641,813533.2747429307,501508.1736481313
+5,Prevalence,128,Guatemala,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0417519626148507,0.0537265106094259,0.0332457257735943
+5,Prevalence,128,Guatemala,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3998.0982961504,5159.59979192625,3180.67072206956
+5,Prevalence,123,Peru,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1004952.1832824023,1226641.5484448294,825676.0086327638
+5,Prevalence,123,Peru,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0284022232555629,0.0346602066819686,0.0233990087454381
+5,Prevalence,123,Peru,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2770.69349594763,3381.89997163295,2276.42188845908
+5,Prevalence,125,Colombia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1326251.4672354902,1609027.9192385038,1088956.6742172132
+5,Prevalence,125,Colombia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0281331193214652,0.0340528153375322,0.0230994487415706
+5,Prevalence,125,Colombia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2703.3019968377403,3279.68601317504,2219.6233705342
+5,Prevalence,151,Qatar,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,159779.6200800042,205656.1011127896,126252.77267296826
+5,Prevalence,151,Qatar,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0557590805660645,0.0717355400537688,0.0440576928820909
+5,Prevalence,151,Qatar,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5367.0242147135905,6908.02290068819,4240.85179180714
+5,Prevalence,147,Libya,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,381599.1509657311,484944.1431255143,306474.5383771938
+5,Prevalence,147,Libya,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0572400409663423,0.0725079043722044,0.045941046795324
+5,Prevalence,147,Libya,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5554.11419768051,7058.28391808269,4460.68755792702
+5,Prevalence,121,Bolivia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,497235.9784678689,629762.1641959776,397340.5256602729
+5,Prevalence,121,Bolivia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0435639386530364,0.0551829389697459,0.0348558762595505
+5,Prevalence,121,Bolivia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4214.89002429656,5338.2666952781,3368.11230557899
+5,Prevalence,149,Palestine,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,340434.29358609853,428337.7881111165,265124.9208872962
+5,Prevalence,149,Palestine,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0706371572996163,0.0889817585239691,0.0549671793171996
+5,Prevalence,149,Palestine,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6628.9251431842995,8340.579039425169,5162.503564612421
+5,Prevalence,150,Oman,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,229420.03613707804,291706.788666704,178049.11593325064
+5,Prevalence,150,Oman,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0505350080121884,0.0641338916756792,0.0392431931871717
+5,Prevalence,150,Oman,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4877.37507786604,6201.56567422569,3785.25056185609
+5,Prevalence,148,Morocco,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2326645.588754174,2890351.430859396,1867016.766852932
+5,Prevalence,148,Morocco,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0653606191811306,0.0812375405606306,0.0523145365854593
+5,Prevalence,148,Morocco,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6258.358289059909,7774.64987493042,5022.0196471369
+5,Prevalence,144,Jordan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,555445.4607582405,707039.582753197,447867.35875673377
+5,Prevalence,144,Jordan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0475790151007646,0.0605901231443285,0.0384197410404228
+5,Prevalence,144,Jordan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4506.81213146158,5736.827094825369,3633.93742200198
+5,Prevalence,142,Iran,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,5211454.315618403,6082844.211863927,4452302.750873419
+5,Prevalence,142,Iran,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0632007870798388,0.0737910568757504,0.0539194622458386
+5,Prevalence,142,Iran,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6105.55989915811,7126.4502082419895,5216.16414312141
+5,Prevalence,141,Egypt,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4491163.230776776,5511911.034358038,3545567.6164914705
+5,Prevalence,141,Egypt,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0449111686232928,0.055069777555354,0.0354515435034139
+5,Prevalence,141,Egypt,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4251.89042963818,5218.2565121220605,3356.67270182647
+5,Prevalence,145,Kuwait,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,236054.01417866017,299405.0061079991,185647.75681369333
+5,Prevalence,145,Kuwait,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0530877987181786,0.0675836114810146,0.0419360160650732
+5,Prevalence,145,Kuwait,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5076.34105989466,6438.70400311731,3992.35460523631
+5,Prevalence,146,Lebanon,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,366343.0393455595,469143.5428160941,289150.4261927861
+5,Prevalence,146,Lebanon,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0690620756452875,0.0885744884588108,0.0542453443676617
+5,Prevalence,146,Lebanon,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6612.182690213091,8467.64502084,5218.921168408569
+5,Prevalence,143,Iraq,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1729589.150462943,2167736.6489683264,1404187.3751987612
+5,Prevalence,143,Iraq,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0440383032311206,0.055086305772306,0.0356456264295053
+5,Prevalence,143,Iraq,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4195.553942104059,5258.391011870181,3406.21000998476
+5,Prevalence,122,Ecuador,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,722920.8894691515,880139.0779688448,585493.0226186365
+5,Prevalence,122,Ecuador,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0414693560806762,0.0505069970901697,0.0336237644172279
+5,Prevalence,122,Ecuador,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4001.69010885421,4871.96302393512,3240.96546599534
+5,Prevalence,140,Bahrain,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,92743.75947497648,117200.773881117,72331.1472400343
+5,Prevalence,140,Bahrain,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0624662422550122,0.0788660949940533,0.0488746812259191
+5,Prevalence,140,Bahrain,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6063.28217018505,7662.20138829936,4728.772673139911
+5,Prevalence,164,Nepal,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1769725.4863537368,2187136.235648839,1403701.761410863
+5,Prevalence,164,Nepal,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0588520877818272,0.0728629964208352,0.0467551748748366
+5,Prevalence,164,Nepal,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5684.986146854199,7025.85756764153,4509.18807999837
+5,Prevalence,136,Paraguay,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,278755.38701298885,350112.4963032731,222730.8493179144
+5,Prevalence,136,Paraguay,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0401508225606746,0.0504871978896149,0.0320943358175694
+5,Prevalence,136,Paraguay,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3888.43041948674,4883.80904654822,3106.92976780226
+5,Prevalence,139,Algeria,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2043955.913676672,2576582.8908620635,1635214.8503002478
+5,Prevalence,139,Algeria,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0488703833297024,0.0616417684039597,0.0389731282381386
+5,Prevalence,139,Algeria,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4624.54906070587,5829.64334408431,3699.75264603703
+5,Prevalence,165,Pakistan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,8897907.519259831,10460220.93479348,7584840.830596974
+5,Prevalence,165,Pakistan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0393832284363141,0.0464088545997002,0.0336848588858009
+5,Prevalence,165,Pakistan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3777.44479682581,4440.69654109767,3220.0062169980697
+5,Prevalence,162,Bhutan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,32389.68570308594,39791.17270427618,26395.257337380222
+5,Prevalence,162,Bhutan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0444530192953631,0.0545168679167333,0.0363275023800223
+5,Prevalence,162,Bhutan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4279.2550725254905,5257.12349287441,3487.28418938743
+5,Prevalence,161,Bangladesh,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,8825525.466982828,10921276.061022747,7036451.065211525
+5,Prevalence,161,Bangladesh,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0553054001576541,0.0684435848515819,0.0441224621639637
+5,Prevalence,161,Bangladesh,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5360.62539404066,6633.58459584861,4273.9413539976495
+5,Prevalence,163,India,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,62492651.85650945,70496443.11024351,56015611.65243047
+5,Prevalence,163,India,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0450600256670437,0.0509000914528663,0.0403717023470325
+5,Prevalence,163,India,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4418.01865482907,4983.85956600607,3960.11386763258
+5,Prevalence,160,Afghanistan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1439500.040028158,1865842.6520792125,1121776.9749519092
+5,Prevalence,160,Afghanistan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0479834427811309,0.0623374819073147,0.0373907756650637
+5,Prevalence,160,Afghanistan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4610.5022560936795,5976.01355867885,3592.88303579939
+5,Prevalence,157,Yemen,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1450562.2918400068,1875176.7666861007,1157458.993530589
+5,Prevalence,157,Yemen,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0444779831282475,0.0577034081432942,0.035535346187769
+5,Prevalence,157,Yemen,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4311.5712609210095,5573.671880119669,3440.36720123942
+5,Prevalence,183,Mauritius,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,67635.9408064514,82341.52990761408,55104.35883387142
+5,Prevalence,183,Mauritius,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0544225060045879,0.066301028892154,0.0443688408398746
+5,Prevalence,183,Mauritius,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5317.44326727703,6473.576157940721,4332.22778281867
+5,Prevalence,182,Malawi,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,690570.2887896828,854632.0863927352,551574.8290836628
+5,Prevalence,182,Malawi,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0365043866473543,0.0450008952539047,0.029160656728168
+5,Prevalence,182,Malawi,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3550.8841597352903,4394.48320791821,2836.1751950472
+5,Prevalence,178,Eritrea,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,279508.5828905302,343289.24860465364,226471.726060238
+5,Prevalence,178,Eritrea,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0435706273384103,0.0536187680378443,0.0353279308358333
+5,Prevalence,178,Eritrea,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4236.3212165963,5203.0013255903095,3432.47770120864
+5,Prevalence,176,Comoros,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,32600.417105845296,40820.5792716854,26196.02751430723
+5,Prevalence,176,Comoros,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0451535052044516,0.0564503584610462,0.0362975463164167
+5,Prevalence,176,Comoros,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4379.57408797193,5483.87926000562,3519.20170030244
+5,Prevalence,156,United Arab Emirates,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,522502.0444110448,683075.6908728558,404771.8645776474
+5,Prevalence,156,United Arab Emirates,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0555859650909275,0.0725522197410628,0.0430985396222405
+5,Prevalence,156,United Arab Emirates,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5425.12577067678,7092.357960157369,4202.73623281284
+5,Prevalence,154,Tunisia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,860332.3096984201,1074970.8616444252,674521.6435580275
+5,Prevalence,154,Tunisia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0756773422241506,0.0945802346491845,0.0593143235581716
+5,Prevalence,154,Tunisia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,7264.73843266293,9077.16941994022,5695.7332095741995
+5,Prevalence,155,Turkey,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4275537.495162272,5422087.130544938,3389191.079793352
+5,Prevalence,155,Turkey,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0531732179396034,0.0674306864185306,0.0422673927938156
+5,Prevalence,155,Turkey,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5113.5425597528,6484.815847387899,4053.47230594222
+5,Prevalence,181,Madagascar,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1169871.528404549,1450217.856822505,942548.548270463
+5,Prevalence,181,Madagascar,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0420929115944735,0.0522091281768122,0.0339386185254897
+5,Prevalence,181,Madagascar,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4096.55824070246,5078.2515583418,3300.53764787776
+5,Prevalence,180,Kenya,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2130735.819913476,2421470.9356664103,1898726.431724309
+5,Prevalence,180,Kenya,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0436567623475989,0.0496057920144792,0.0388919859799723
+5,Prevalence,180,Kenya,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4256.16029426418,4836.90580210766,3792.7198542628703
+5,Prevalence,152,Saudi Arabia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1993938.7553571027,2518009.3336396264,1588811.507542673
+5,Prevalence,152,Saudi Arabia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0546867019902092,0.0690182539557539,0.0435472614179091
+5,Prevalence,152,Saudi Arabia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5288.374746365989,6678.32797539902,4213.8860236555
+5,Prevalence,179,Ethiopia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4286656.240560955,4977452.922386413,3712084.442057875
+5,Prevalence,179,Ethiopia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.04025319673622,0.046719361542256,0.0348799349595468
+5,Prevalence,179,Ethiopia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3934.95039045454,4569.06950809065,3407.52029203173
+5,Prevalence,175,Burundi,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,510984.2530901485,636512.902394852,401402.69569543656
+5,Prevalence,175,Burundi,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0396337103754697,0.0494864159643558,0.0311650272975343
+5,Prevalence,175,Burundi,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3865.1503199374097,4814.66509673777,3036.26138830787
+5,Prevalence,172,Equatorial Guinea,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,80217.99096058538,104687.7663262207,64026.76837102379
+5,Prevalence,172,Equatorial Guinea,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0548558599808428,0.0715252824055937,0.043756473515159
+5,Prevalence,172,Equatorial Guinea,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5304.3284254169,6922.36601874533,4233.70123573496
+5,Prevalence,153,Syria,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,705460.0090092012,901228.3699640484,557102.4849402152
+5,Prevalence,153,Syria,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0520607429046236,0.0665308772497203,0.0410908261463661
+5,Prevalence,153,Syria,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5028.068947782121,6423.380948610829,3970.67115001216
+5,Prevalence,177,Djibouti,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,55796.22771433972,69305.9911362812,45304.00274362274
+5,Prevalence,177,Djibouti,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0458141062059318,0.0568443899868267,0.0371968967381608
+5,Prevalence,177,Djibouti,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4432.8930500008,5506.21536646428,3599.30782288009
+5,Prevalence,173,Gabon,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,106925.39259201572,134565.93402738485,85383.52536022154
+5,Prevalence,173,Gabon,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0601694004074847,0.0755997882533362,0.0479763840882759
+5,Prevalence,173,Gabon,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5887.68848026977,7409.6739829874305,4701.51744577963
+5,Prevalence,200,Benin,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,456971.7102398381,572156.7363529869,368856.9502638513
+5,Prevalence,200,Benin,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0345268667841753,0.0431231778558463,0.0278553960240329
+5,Prevalence,200,Benin,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3385.1826228985497,4238.45721316082,2732.44078438291
+5,Prevalence,198,Zimbabwe,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,469516.99393324886,574362.0094505801,381746.1622113132
+5,Prevalence,198,Zimbabwe,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0313900138961667,0.0382413930573329,0.0255181829303086
+5,Prevalence,198,Zimbabwe,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3010.61713799901,3682.89994060003,2447.8166992228703
+5,Prevalence,171,Democratic Republic of the Congo,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4282124.270817507,5437001.313935028,3394779.236826624
+5,Prevalence,171,Democratic Republic of the Congo,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0480899199199667,0.0609977422900978,0.0381090195135756
+5,Prevalence,171,Democratic Republic of the Congo,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4756.97695312549,6039.92044807338,3771.2325867297195
+5,Prevalence,196,South Africa,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3078884.417052944,3522584.492951308,2727067.3222933672
+5,Prevalence,196,South Africa,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0555614026460379,0.0636340829973529,0.0491968338815299
+5,Prevalence,196,South Africa,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5415.385459757889,6195.80025097419,4796.58172392979
+5,Prevalence,170,Congo,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,307723.7318567571,389427.8879741405,239508.6684175224
+5,Prevalence,170,Congo,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0578257032730407,0.0731901608071605,0.045074175709441
+5,Prevalence,170,Congo,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5707.4630602630095,7222.85951700103,4442.25367136167
+5,Prevalence,197,Swaziland,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,60474.72389019842,77368.12683257821,47286.84945296961
+5,Prevalence,197,Swaziland,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0544800282989447,0.069634416691943,0.0425468289262783
+5,Prevalence,197,Swaziland,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5234.83568713389,6697.168756408731,4093.26196342756
+5,Prevalence,169,Central African Republic,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,287235.2884703486,363771.8533421328,223347.72487437117
+5,Prevalence,169,Central African Republic,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0527589675924001,0.0668447802334236,0.041007053811442
+5,Prevalence,169,Central African Republic,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5237.56784899496,6633.167441161219,4072.6154128828
+5,Prevalence,168,Angola,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1601651.5255774765,2063235.998326964,1269517.0656414807
+5,Prevalence,168,Angola,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0501727346035076,0.0645179292816301,0.0398360470812141
+5,Prevalence,168,Angola,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4897.050647129579,6308.34549178554,3881.5493061764196
+5,Prevalence,195,Namibia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,103121.1643718494,127918.9259736928,82984.54549730704
+5,Prevalence,195,Namibia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0441937499284911,0.0547761413752901,0.0354490181489803
+5,Prevalence,195,Namibia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4241.62621246667,5261.61891970177,3413.35772879518
+5,Prevalence,194,Lesotho,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,124289.37175054249,157994.73584069547,99595.86235092806
+5,Prevalence,194,Lesotho,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0688620052045684,0.0875769002241401,0.0552006336294318
+5,Prevalence,194,Lesotho,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,6630.94194341504,8429.15131011816,5313.52256232221
+5,Prevalence,216,Senegal,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,565371.6585507062,697707.4215156827,460772.3742850866
+5,Prevalence,216,Senegal,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0364839430469224,0.0450276895885332,0.029757930022178
+5,Prevalence,216,Senegal,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3564.8652231126503,4399.2883004512805,2905.33030444191
+5,Prevalence,193,Botswana,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,121311.0432475246,153589.35965986643,96681.9313780241
+5,Prevalence,193,Botswana,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0524725266386763,0.066245454942543,0.0416919047321553
+5,Prevalence,193,Botswana,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5068.87007086395,6417.58975557193,4039.76534399633
+5,Prevalence,215,Sao Tome and Principe,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,7371.304795494697,9081.305887645452,6061.112992281456
+5,Prevalence,215,Sao Tome and Principe,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0350783446369557,0.0432295918594739,0.0288157105566205
+5,Prevalence,215,Sao Tome and Principe,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3402.90465630781,4192.3131586299105,2798.06495539954
+5,Prevalence,214,Nigeria,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,6457991.266399887,7365493.117022535,5772062.137054871
+5,Prevalence,214,Nigeria,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0285215318582552,0.0324909372265588,0.0254808388257284
+5,Prevalence,214,Nigeria,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2793.66352605577,3186.23990396189,2496.9373288432803
+5,Prevalence,184,Mozambique,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1248401.8577904052,1576400.8748464822,990971.2546303696
+5,Prevalence,184,Mozambique,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0410332274252785,0.0518305004226906,0.032547120547956
+5,Prevalence,184,Mozambique,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4017.6865869411204,5073.27397102952,3189.2069792490497
+5,Prevalence,187,Somalia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,827424.614485615,1041766.9381195188,652041.0914250686
+5,Prevalence,187,Somalia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0383921021584553,0.0483480224066962,0.0302617411633611
+5,Prevalence,187,Somalia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3829.51343526211,4821.53952891611,3017.79772590833
+5,Prevalence,190,Uganda,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2282259.477740753,2867107.154657967,1814596.5081196984
+5,Prevalence,190,Uganda,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0540649447485244,0.0678611959078507,0.0429799967217419
+5,Prevalence,190,Uganda,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5268.97537866163,6619.19345859473,4189.29767484314
+5,Prevalence,189,Tanzania,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2298479.114446493,2880326.713520661,1866414.129537283
+5,Prevalence,189,Tanzania,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0404279444685297,0.0506588871913877,0.0328230192440335
+5,Prevalence,189,Tanzania,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3932.52964259821,4928.02832538035,3193.2980568052703
+5,Prevalence,213,Niger,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,668673.5149813066,826231.4508968514,542867.7202418421
+5,Prevalence,213,Niger,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0269644847597793,0.0333140225467866,0.0218678787780443
+5,Prevalence,213,Niger,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2670.61477283476,3299.88532386768,2168.15908046473
+5,Prevalence,210,Liberia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,204564.0754117105,255501.34868690337,163820.70996384922
+5,Prevalence,210,Liberia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0380023504396585,0.04737244348298,0.030457945973085
+5,Prevalence,210,Liberia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3746.95077271182,4679.95650734137,3000.66438620681
+5,Prevalence,186,Seychelles,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3644.1805403703047,4395.791648770244,2991.3397938313974
+5,Prevalence,186,Seychelles,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.035942162923241,0.0433618488289892,0.0294893008666785
+5,Prevalence,186,Seychelles,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3456.44393157881,4169.334422529139,2837.23546710672
+5,Prevalence,191,Zambia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,707341.4030104822,878335.1479613887,573465.3558048491
+5,Prevalence,191,Zambia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.037017024413009,0.0460125834121733,0.0299671878981049
+5,Prevalence,191,Zambia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3624.5533538786804,4500.7581810191305,2938.54674683152
+5,Prevalence,211,Mali,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,617956.4053540094,758966.3656397562,498644.43783106457
+5,Prevalence,211,Mali,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0259891261186146,0.0319279275109532,0.0209855673556066
+5,Prevalence,211,Mali,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2563.69312757828,3148.6959901953596,2068.70793359654
+5,Prevalence,212,Mauritania,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,134221.68921061882,161745.54217308876,108972.36884471105
+5,Prevalence,212,Mauritania,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0316678438781723,0.0382770180196287,0.0257276110631285
+5,Prevalence,212,Mauritania,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3053.10579790691,3679.1837109079197,2478.76608533337
+5,Prevalence,185,Rwanda,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,616988.3677735443,759114.9397622584,489556.0006623219
+5,Prevalence,185,Rwanda,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0479745896308769,0.0590553638137506,0.0380315581828363
+5,Prevalence,185,Rwanda,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4649.48644783473,5720.5205302491995,3689.1846093459503
+5,Prevalence,208,Guinea,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,462803.79310509627,570008.9734472712,378630.6218874579
+5,Prevalence,208,Guinea,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0350195398497769,0.0431347560385294,0.028647412159084
+5,Prevalence,208,Guinea,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3446.1085603019296,4244.3748994933,2819.34212017686
+5,Prevalence,209,Guinea-Bissau,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,72606.08101081006,91118.93006327355,58189.11815978024
+5,Prevalence,209,Guinea-Bissau,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0359869815079286,0.0451570019810421,0.0287714053550935
+5,Prevalence,209,Guinea-Bissau,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3517.88779846014,4414.86674140431,2819.3614904923497
+5,Prevalence,298,American Samoa,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1420.178330360862,1724.5346550828544,1179.083081699252
+5,Prevalence,298,American Samoa,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0296766577880882,0.0361498704890432,0.0247447041601225
+5,Prevalence,298,American Samoa,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2854.13412222724,3465.79939913932,2369.60470701139
+5,Prevalence,206,The Gambia,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,110356.4417599512,136981.5974099268,86510.8760856402
+5,Prevalence,206,The Gambia,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.047425296995166,0.0590197427189298,0.0371661875598705
+5,Prevalence,206,The Gambia,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4609.41179641951,5721.50189806903,3613.42071553134
+5,Prevalence,205,Cote d'Ivoire,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,862072.1840677507,1061538.403868259,694710.3394805528
+5,Prevalence,205,Cote d'Ivoire,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0317479538426266,0.0391157259662124,0.0256328481871831
+5,Prevalence,205,Cote d'Ivoire,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3094.09243807153,3810.00339511381,2493.40838013624
+5,Prevalence,207,Ghana,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1347070.835168211,1670927.504938297,1068753.742077463
+5,Prevalence,207,Ghana,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0402712229250545,0.0499847169841421,0.0319067959823173
+5,Prevalence,207,Ghana,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3933.5198738434196,4879.1989083526205,3120.81887229135
+5,Prevalence,204,Chad,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,602403.2139899617,765165.7946663107,467897.76136893727
+5,Prevalence,204,Chad,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0344225396137983,0.0436540546358413,0.0267598013562193
+5,Prevalence,204,Chad,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3393.94355905831,4310.94897920438,2636.13897903667
+5,Prevalence,305,Bermuda,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2914.7259953775165,3608.041300843345,2308.801047392061
+5,Prevalence,305,Bermuda,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0469925318865375,0.0582124615115049,0.037264433663877
+5,Prevalence,305,Bermuda,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4587.16887605531,5678.30210626954,3633.5697840540997
+5,Prevalence,203,Cape Verde,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,32720.374568434505,40673.659903587904,26136.43352150934
+5,Prevalence,203,Cape Verde,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0608810845638849,0.0757266400720216,0.0485806792398152
+5,Prevalence,203,Cape Verde,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5850.634106779979,7272.73770603679,4673.37893919001
+5,Prevalence,201,Burkina Faso,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,738114.3159959641,930138.3962828232,603501.9027997295
+5,Prevalence,201,Burkina Faso,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0329854907637183,0.0415818331702967,0.0269985112955673
+5,Prevalence,201,Burkina Faso,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3242.87200850268,4086.52115799856,2651.45843300246
+5,Prevalence,202,Cameroon,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1159143.0137277788,1451721.4162729096,931075.3029691274
+5,Prevalence,202,Cameroon,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0375424906544641,0.0470471126255557,0.0301340280894185
+5,Prevalence,202,Cameroon,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3647.43993850695,4568.08746685265,2929.78623481968
+5,Prevalence,218,Togo,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,314859.21209572646,392059.887506982,252313.53186485425
+5,Prevalence,218,Togo,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0383597954278393,0.0477133566451645,0.0307518742886946
+5,Prevalence,218,Togo,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3761.340960258,4683.5882740690195,3014.16374611933
+5,Prevalence,217,Sierra Leone,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,307499.40893315495,387378.8558601639,246585.4276704608
+5,Prevalence,217,Sierra Leone,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0352577017533049,0.044238662738726,0.0282675868827476
+5,Prevalence,217,Sierra Leone,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3467.80553363698,4368.6410475600605,2780.8518837697998
+5,Prevalence,349,Greenland,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,4476.694604223645,5524.265911792742,3587.3162940219254
+5,Prevalence,349,Greenland,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0850711525764538,0.1053395073228006,0.0682098261179469
+5,Prevalence,349,Greenland,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,7979.49030622417,9846.735189522591,6394.2167434207095
+5,Prevalence,320,Cook Islands,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,681.1031414034078,839.9492352648886,549.0076736790445
+5,Prevalence,320,Cook Islands,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0397376114664815,0.0489814226426188,0.0320658561279386
+5,Prevalence,320,Cook Islands,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3837.7380635526597,4732.77093537698,3093.43404600838
+5,Prevalence,422,"Virgin Islands, U.S.",3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3903.994609074369,4788.225833851911,3161.0988953741776
+5,Prevalence,422,"Virgin Islands, U.S.",3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0465860011843349,0.0572698961712033,0.0376791158907549
+5,Prevalence,422,"Virgin Islands, U.S.",3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4544.71277011471,5574.06279268901,3679.8940459625096
+5,Prevalence,416,Tuvalu,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,403.5280898107292,506.51960400966,322.090870287064
+5,Prevalence,416,Tuvalu,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.033637770609994,0.042421838177779,0.0268627235234047
+5,Prevalence,416,Tuvalu,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3262.9191452840696,4095.70623487456,2604.41960229784
+5,Prevalence,413,Tokelau,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,46.88756865080863,59.00325312042672,37.57925253406113
+5,Prevalence,413,Tokelau,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0354356419549824,0.0446901389012692,0.0284253646563759
+5,Prevalence,413,Tokelau,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3420.03885620732,4303.77228167524,2741.07844684541
+5,Prevalence,393,Saint Kitts and Nevis,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,3042.6529182636336,3882.175114789552,2316.5622555675645
+5,Prevalence,393,Saint Kitts and Nevis,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0532754253385827,0.0678801589464408,0.0405857182660673
+5,Prevalence,393,Saint Kitts and Nevis,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5188.23061518353,6619.755958083149,3950.12495318497
+5,Prevalence,396,San Marino,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1945.776201783509,2462.411444053699,1494.943008830162
+5,Prevalence,396,San Marino,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0618397955455388,0.0782021817122684,0.0476067008245216
+5,Prevalence,396,San Marino,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5943.10262697284,7521.09307762608,4566.09537870262
+5,Prevalence,522,Sudan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1935911.5621196989,2482152.76280942,1504962.999608534
+5,Prevalence,522,Sudan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0466256645664028,0.0597990424542148,0.036251186104456
+5,Prevalence,522,Sudan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,4458.66906140581,5716.7372444966195,3466.13559018569
+5,Prevalence,385,Puerto Rico,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,126122.31780553189,154522.4793823046,104082.22405681122
+5,Prevalence,385,Puerto Rico,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0392034076885371,0.0479810716390022,0.0323575597315413
+5,Prevalence,385,Puerto Rico,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3828.4484319541198,4690.53656946749,3159.4204294517003
+5,Prevalence,374,Niue,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,62.13477858890818,76.61291305024926,51.03709490447946
+5,Prevalence,374,Niue,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0383689004177185,0.0472980717869154,0.0314899651750439
+5,Prevalence,374,Niue,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3716.9228813272102,4583.0096443352895,3053.0557950808
+5,Prevalence,376,Northern Mariana Islands,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,1705.4894059992814,2093.200543560649,1417.7125705972817
+5,Prevalence,376,Northern Mariana Islands,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0363535457576897,0.0446128024604274,0.0302093273194262
+5,Prevalence,376,Northern Mariana Islands,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3517.04141158209,4316.5750362052,2923.5912008433897
+5,Prevalence,380,Palau,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,722.0283648664858,901.127666881156,590.1333449795343
+5,Prevalence,380,Palau,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0409467255603357,0.0511476058719332,0.0335701251901616
+5,Prevalence,380,Palau,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3989.80234086644,4979.4737294106,3260.973551445
+5,Prevalence,367,Monaco,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,2191.3941988517145,2702.003600113489,1721.1169996278177
+5,Prevalence,367,Monaco,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.060289373162481,0.0742097641391416,0.0474283119885271
+5,Prevalence,367,Monaco,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,5787.62415747819,7136.1790214669,4545.5894380445
+5,Prevalence,369,Nauru,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,327.5812575632701,413.7631749177178,258.69374467117615
+5,Prevalence,369,Nauru,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0308606521399971,0.038990528383752,0.0243706703096738
+5,Prevalence,369,Nauru,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,2971.4109619208302,3753.14644902177,2346.54886672756
+5,Prevalence,351,Guam,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,6217.129574522923,7501.802728037777,5125.608686672672
+5,Prevalence,351,Guam,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0405193430155919,0.0489596639750897,0.0334654757789928
+5,Prevalence,351,Guam,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3905.3205557871797,4712.29432298174,3219.67633536416
+5,Prevalence,435,South Sudan,3,Both,22,All ages,567,Depressive disorders,1,Number,2021,359972.3020499706,456977.198024503,288232.52207827475
+5,Prevalence,435,South Sudan,3,Both,22,All ages,567,Depressive disorders,2,Percent,2021,0.0378396954479723,0.0480527185448317,0.030315119827538
+5,Prevalence,435,South Sudan,3,Both,22,All ages,567,Depressive disorders,3,Rate,2021,3721.59699232747,4724.48840103852,2979.91062409173
