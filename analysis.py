@@ -69,7 +69,10 @@ countriesInIHMENotInOurWorldInData = depressionPrevalence['location_name'][np.in
 # removed continents (asia and europe), and categories of countries (low-income, lower-middle-income, upper-middle-income 
 # and high-income, and north+south america, oceania, kosovo, hong kong, czechia, and world) from ourworldindata datasets 
 # to allow comparison of ways of dealing with mental issues and prevalence of depression
-listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry = ['Asia', 'Africa', 'Europe', 'North America', 'South America', 'World', 'High-income countries', 'Upper-middle-income countries', 'Lower-middle-income countries', 'Low-income countries', 'Kosovo', 'Hong Kong', 'Czechia', 'Oceania']
+continents = ['Asia', 'Africa', 'Europe', 'World']
+categoriesOfCountry = ['High-income countries', 'Upper-middle-income countries', 'Lower-middle-income countries', 'Low-income countries']
+countries = ['Kosovo', 'Hong Kong', 'Czechia', 'Oceania', 'North America', 'South America']
+listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry = continents + categoriesOfCountry + countries
 
 def remove_rows_from_ourworldindata_datasets(df):
     return remove_rows_from_df(df, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
@@ -77,25 +80,29 @@ def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
     unsharedValues = df[columnName][np.invert(df[columnName].isin(df1[columnName1]))].unique()
     return remove_rows_from_df(df, columnName, list(unsharedValues))
 
-
-mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
-mentalIssuesDealtByMedication = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByMedication)
-mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
-opinionThatScienceHelpsALotForMentalHealth = remove_rows_from_ourworldindata_datasets(opinionThatScienceHelpsALotForMentalHealth)
-perceivedComfortSpeakingAboutAnxietyDepression = remove_rows_from_ourworldindata_datasets(perceivedComfortSpeakingAboutAnxietyDepression)
-amountOfPsychiatristsWorking = remove_rows_from_ourworldindata_datasets(amountOfPsychiatristsWorking)
-
 # removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
 depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', ['Number', 'Rate'])
+
+mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
+depressionPrevalenceReligionSpirituality = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByReligionSpirituality, 'Entity').copy()
+
+print(len(mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all']))
+print(len(depressionPrevalenceReligionSpirituality))
+
+print(mentalIssuesDealtByReligionSpirituality['Entity'][np.invert(mentalIssuesDealtByReligionSpirituality['Entity'].isin(depressionPrevalence['location_name']))])
+
+
+plt.scatter(depressionPrevalenceReligionSpirituality['val'], mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+plt.show()
+
+mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
+
+
 #depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'location_name', list(countriesInIHMENotInOurWorldInData))
-depressionPrevalence = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByFriendsFamily, 'Entity')
+depressionPrevalenceFriendsFamily = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByFriendsFamily, 'Entity').copy()
 
 # no correlation, but higher proportion of countries that have 3.5-4.0% depression rates with 85% of talking to friends and family
 plt.scatter(depressionPrevalence['val'], mentalIssuesDealtByFriendsFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 plt.show()
 
-print(mentalIssuesDealtByReligionSpirituality['Entity'][mentalIssuesDealtByReligionSpirituality['Entity'].isin(depressionPrevalence['location_name'])])
 
-# no correlation, but higher density of countries between 4.0-4.5%, may investigate into which countries these are
-plt.scatter(depressionPrevalence['val'], mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
-plt.show()
