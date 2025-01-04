@@ -115,7 +115,7 @@ def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, d
     mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on='Entity', right_on='location_name')
     return mergedDataset
 
-def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
+def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, title=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
     mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
     x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
 
@@ -127,10 +127,13 @@ def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssu
         print("Invalid model for this graph")
     else:
         yModel = m * x + c
-        sns.lineplot(x=x, y=yModel, ax=ax)
+        sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
 
     sns.scatterplot(x=x, y=y, ax=ax)
     ax.set_ylabel(depressionDataColumn)
+
+    if title != None:
+        ax.set_title(title)
 
     return fig, ax, mergedDataset
 
@@ -151,7 +154,7 @@ y = mergedDataset['Proportion of people that are depressed (%)']
 m,c = create_model(x, y, 1)
 yModel = m*x+c
 
-sns.lineplot(x=x, y=yModel, ax=ax)
+sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
 
 ax.set_xlim(0, 35000)
 
@@ -162,4 +165,8 @@ for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiet
     fig, ax = plt.subplots()
     sns.histplot(mergedComfortSpeakingAndDepression, x=comfortSpeaking, ax=ax)
 
+amountOfPsychiatristsWorking2020 = amountOfPsychiatristsWorking[amountOfPsychiatristsWorking['Year'] == 2020].copy()
+
+fig, ax, mergedDataset = explore_data_ourworldindata_ihme(amountOfPsychiatristsWorking, depressionPrevalence, 'Total number of psychiatrists per 100,000 population')
+ax.set_xlim(-0.5, 20)
 plt.show()
