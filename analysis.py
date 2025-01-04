@@ -156,8 +156,10 @@ sns.lineplot(x=x, y=yModel, ax=ax)
 ax.set_xlim(0, 35000)
 
 # there is little correlation, histograms are likely to be better suited for this
+mergedComfortSpeakingAndDepression = cleanAndMergeMentalIssueAndDepressionData(perceivedComfortSpeakingAboutAnxietyDepression, depressionPrevalence)
 for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiety.values()):
     print(comfortSpeaking)
-    sns.histplot
+    fig, ax = plt.subplots()
+    sns.histplot(mergedComfortSpeakingAndDepression, x=comfortSpeaking, ax=ax)
 
 plt.show()
