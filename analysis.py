@@ -34,9 +34,56 @@ mentalIssuesDealtByMedication = pd.read_csv('Datasets/mentalIssuesDealtByMedicat
 opinionThatScienceHelpsALotForMentalHealth = pd.read_csv('Datasets/opinionThatScienceHelpsALotForMentalHealth.csv')
 perceivedComfortSpeakingAboutAnxietyDepression = pd.read_csv('Datasets/perceivedComfortSpeakingAboutAnxietyDepression.csv')
 amountOfPsychiatristsWorking = pd.read_csv('Datasets/amountOfPsychiatristsWorking.csv')
-depressionPrevalence = pd.read_csv('Datasets/')
+depressionPrevalence = pd.read_csv('Datasets/IHME-GBD_2021_DATA-56bdf511-1.csv')
 
 # fact sheet from 13/11/2024 cited in Zotero
 socialMediaFactSheet = pd.read_excel('Datasets/Social media fact sheet.xlsx')
 urbanisation = pd.read_excel('Datasets/Wikipedia Data on Urbanisation.xlsx')
+
+mappingDepressionPrevalenceToOurWorldInDataDatasets = {"Democratic People's Republic of Korea": 'North Korea', 
+ "Lao People's Democratic Republic": 'Laos',
+ "Viet Nam": 'Vietnam',
+ "Taiwan (Province of China)": 'Taiwan',
+ "Russian Federation": 'Russia',
+ "Republic of Moldova": 'Moldova',
+ "Brunei Darussalam": 'Brunei',
+ "Republic of Korea": 'South Korea',
+ "United States of America": 'United States',
+ "United Republic of Tanzania": 'Tanzania',
+ "Bolivia (Plurinational State of)": 'Bolivia',
+ "Venezuela (Bolivarian Republic of)": 'Venezuela',
+ "Iran (Islamic Republic of)": 'Iran',
+ 'Syrian Arab Republic': 'Syria',
+ 'Federated States of Micronesia': 'Micronesia',
+ 'Macedonia': 'North Macedonia',
+ }
+
+# conversion of decimal to percentage
+depressionPrevalence['val'] = depressionPrevalence['val'] * 100
+
+# change country names to those that match with ourworldindata datasets
+depressionPrevalence = replace_values_in_column(depressionPrevalence, 'location_name', mapping=mappingDepressionPrevalenceToOurWorldInDataDatasets)
+
+countriesInIHMENotInOurWorldInData = depressionPrevalence['location_name'][np.invert(depressionPrevalence['location_name'].isin(mentalIssuesDealtByFriendsFamily['Entity']))].unique()
+
+# removed continents (asia and europe), and categories of countries (low-income, lower-middle-income, upper-middle-income 
+# and high-income, and north+south america, oceania, kosovo, hong kong, czechia, and world) from ourworldindata datasets 
+# to allow comparison of ways of dealing with mental issues and prevalence of depression
+listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry = ['Asia', 'Africa', 'Europe', 'North America', 'South America', 'World', 'High-income countries', 'Upper-middle-income countries', 'Lower-middle-income countries', 'Low-income countries', 'Kosovo', 'Hong Kong', 'Czechia', 'Oceania']
+
+mentalIssuesDealtByFriendsFamily = remove_rows_from_df(mentalIssuesDealtByFriendsFamily, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+
+# removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
+depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'location_name', list(countriesInIHMENotInOurWorldInData))
+depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', ['Number', 'Rate'])
+
+print(depressionPrevalence['location_name'][np.invert(depressionPrevalence['location_name'].isin(mentalIssuesDealtByFriendsFamily['Entity']))].unique())
+print(mentalIssuesDealtByFriendsFamily['Entity'][np.invert(mentalIssuesDealtByFriendsFamily['Entity'].isin(depressionPrevalence['location_name']))])
+
+print(len(depressionPrevalence['val']))
+print(len(mentalIssuesDealtByFriendsFamily['Entity']))
+
+# no correlation, but higher proportion of countries that have 35-40% depression rates with 85% of talking to friends and family
+plt.scatter(depressionPrevalence['val'], mentalIssuesDealtByFriendsFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+plt.show()
 
