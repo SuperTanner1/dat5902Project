@@ -83,26 +83,31 @@ def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
 # removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
 depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', ['Number', 'Rate'])
 
-mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
-depressionPrevalenceReligionSpirituality = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByReligionSpirituality, 'Entity').copy()
 
-print(len(mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all']))
-print(len(depressionPrevalenceReligionSpirituality))
+def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='val'):
+    mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
+    depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
 
-print(mentalIssuesDealtByReligionSpirituality['Entity'][np.invert(mentalIssuesDealtByReligionSpirituality['Entity'].isin(depressionPrevalence['location_name']))])
+    print(len(mentalIssueData))
+    print(len(depressionDataNew))
 
+    plt.scatter(depressionDataNew[depressionDataColumn], mentalIssueData[mentalIssueDataColumn])
+    plt.show()
 
-plt.scatter(depressionPrevalenceReligionSpirituality['val'], mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
-plt.show()
-
-mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
-
-
-#depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'location_name', list(countriesInIHMENotInOurWorldInData))
-depressionPrevalenceFriendsFamily = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByFriendsFamily, 'Entity').copy()
+#mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
+#depressionPrevalenceFriendsFamily = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByFriendsFamily, 'Entity').copy()
 
 # no correlation, but higher proportion of countries that have 3.5-4.0% depression rates with 85% of talking to friends and family
-plt.scatter(depressionPrevalence['val'], mentalIssuesDealtByFriendsFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
-plt.show()
+#plt.scatter(depressionPrevalenceFriendsFamily['val'], mentalIssuesDealtByFriendsFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+#plt.show()
 
+explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, 'Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all')
+
+#mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
+#depressionPrevalenceReligionSpirituality = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByReligionSpirituality, 'Entity').copy()
+
+#plt.scatter(depressionPrevalenceReligionSpirituality['val'], mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+#plt.show()
+
+explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, 'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all')
 
