@@ -73,6 +73,10 @@ listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry = ['Asia', 'Africa', 
 
 def remove_rows_from_ourworldindata_datasets(df):
     return remove_rows_from_df(df, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
+    unsharedValues = df[columnName][np.invert(df[columnName].isin(df1[columnName1]))].unique()
+    return remove_rows_from_df(df, columnName, list(unsharedValues))
+
 
 mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
 mentalIssuesDealtByMedication = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByMedication)
@@ -82,10 +86,16 @@ perceivedComfortSpeakingAboutAnxietyDepression = remove_rows_from_ourworldindata
 amountOfPsychiatristsWorking = remove_rows_from_ourworldindata_datasets(amountOfPsychiatristsWorking)
 
 # removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
-depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'location_name', list(countriesInIHMENotInOurWorldInData))
 depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', ['Number', 'Rate'])
+#depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'location_name', list(countriesInIHMENotInOurWorldInData))
+depressionPrevalence = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByFriendsFamily, 'Entity')
 
-# no correlation, but higher proportion of countries that have 35-40% depression rates with 85% of talking to friends and family
+# no correlation, but higher proportion of countries that have 3.5-4.0% depression rates with 85% of talking to friends and family
 plt.scatter(depressionPrevalence['val'], mentalIssuesDealtByFriendsFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 plt.show()
 
+print(mentalIssuesDealtByReligionSpirituality['Entity'][mentalIssuesDealtByReligionSpirituality['Entity'].isin(depressionPrevalence['location_name'])])
+
+# no correlation, but higher density of countries between 4.0-4.5%, may investigate into which countries these are
+plt.scatter(depressionPrevalence['val'], mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+plt.show()
