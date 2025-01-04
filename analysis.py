@@ -87,27 +87,22 @@ depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', 
 def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='val'):
     mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
-
+    if len(mentalIssueData) != len(depressionDataNew):
+        mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
     print(len(mentalIssueData))
     print(len(depressionDataNew))
 
-    plt.scatter(depressionDataNew[depressionDataColumn], mentalIssueData[mentalIssueDataColumn])
+    plt.scatter(mentalIssueData[mentalIssueDataColumn], depressionDataNew[depressionDataColumn])
     plt.show()
-
-#mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
-#depressionPrevalenceFriendsFamily = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByFriendsFamily, 'Entity').copy()
-
-# no correlation, but higher proportion of countries that have 3.5-4.0% depression rates with 85% of talking to friends and family
-#plt.scatter(depressionPrevalenceFriendsFamily['val'], mentalIssuesDealtByFriendsFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
-#plt.show()
 
 explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, 'Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all')
 
-#mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
-#depressionPrevalenceReligionSpirituality = remove_rows_unshared_between_datasets(depressionPrevalence, 'location_name', mentalIssuesDealtByReligionSpirituality, 'Entity').copy()
-
-#plt.scatter(depressionPrevalenceReligionSpirituality['val'], mentalIssuesDealtByReligionSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
-#plt.show()
-
 explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, 'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all')
 
+explore_data_ourworldindata_ihme(mentalIssuesDealtByMedication, depressionPrevalence, 'share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all')
+
+opinionThatScienceHelpsALotForMentalHealth.drop('Population (historical)', axis=1)
+opinionThatScienceHelpsALotForMentalHealth = opinionThatScienceHelpsALotForMentalHealth[opinionThatScienceHelpsALotForMentalHealth['Year'] == 2021]
+opinionThatScienceHelpsALotForMentalHealth.to_csv('Datasets/modifiedOpinionThing.csv')
+
+explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
