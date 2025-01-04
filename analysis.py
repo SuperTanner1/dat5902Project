@@ -38,7 +38,12 @@ depressionPrevalence = pd.read_csv('Datasets/IHME-GBD_2021_DATA-56bdf511-1.csv')
 
 # fact sheet from 13/11/2024 cited in Zotero
 socialMediaFactSheet = pd.read_excel('Datasets/Social media fact sheet.xlsx')
+
+# wikipedia
 urbanisation = pd.read_excel('Datasets/Wikipedia Data on Urbanisation.xlsx')
+
+# individualism
+individualisticLevels = pd.read_csv('Datasets/individualistic-countries-2024.csv')
 
 mappingDepressionPrevalenceToOurWorldInDataDatasets = {"Democratic People's Republic of Korea": 'North Korea', 
  "Lao People's Democratic Republic": 'Laos',
@@ -106,13 +111,15 @@ depressionPrevalence = depressionPrevalence.rename(columns={'val': 'Proportion o
 # exploring models and scatter graphs for every our world in dataset against depression prevalence
 
 def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity'):
-    mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
+    if mentalIssueLocationColumn == 'Entity':
+        mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
+    
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
     if len(mentalIssueData) != len(depressionDataNew):
         mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
     print(len(mentalIssueData))
     print(len(depressionDataNew))
-    mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on='Entity', right_on='location_name')
+    mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on=mentalIssueLocationColumn, right_on=depressionLocationColumn)
     return mergedDataset
 
 def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
@@ -173,4 +180,7 @@ amountOfPsychiatristsWorking2020 = amountOfPsychiatristsWorking[amountOfPsychiat
 
 fig, ax, mergedDataset = explore_data_ourworldindata_ihme(amountOfPsychiatristsWorking2020, depressionPrevalence, 'Total number of psychiatrists per 100,000 population')
 ax.set_xlim(-0.5, 20)
+
+explore_data_ourworldindata_ihme(individualisticLevels, depressionPrevalence, 'IndividualismScore_2023', mentalIssueLocationColumn='country')
+
 plt.show()
