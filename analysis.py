@@ -71,17 +71,19 @@ countriesInIHMENotInOurWorldInData = depressionPrevalence['location_name'][np.in
 # to allow comparison of ways of dealing with mental issues and prevalence of depression
 listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry = ['Asia', 'Africa', 'Europe', 'North America', 'South America', 'World', 'High-income countries', 'Upper-middle-income countries', 'Lower-middle-income countries', 'Low-income countries', 'Kosovo', 'Hong Kong', 'Czechia', 'Oceania']
 
-mentalIssuesDealtByFriendsFamily = remove_rows_from_df(mentalIssuesDealtByFriendsFamily, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+def remove_rows_from_ourworldindata_datasets(df):
+    return remove_rows_from_df(df, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+
+mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
+mentalIssuesDealtByMedication = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByMedication)
+mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
+opinionThatScienceHelpsALotForMentalHealth = remove_rows_from_ourworldindata_datasets(opinionThatScienceHelpsALotForMentalHealth)
+perceivedComfortSpeakingAboutAnxietyDepression = remove_rows_from_ourworldindata_datasets(perceivedComfortSpeakingAboutAnxietyDepression)
+amountOfPsychiatristsWorking = remove_rows_from_ourworldindata_datasets(amountOfPsychiatristsWorking)
 
 # removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
 depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'location_name', list(countriesInIHMENotInOurWorldInData))
 depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', ['Number', 'Rate'])
-
-print(depressionPrevalence['location_name'][np.invert(depressionPrevalence['location_name'].isin(mentalIssuesDealtByFriendsFamily['Entity']))].unique())
-print(mentalIssuesDealtByFriendsFamily['Entity'][np.invert(mentalIssuesDealtByFriendsFamily['Entity'].isin(depressionPrevalence['location_name']))])
-
-print(len(depressionPrevalence['val']))
-print(len(mentalIssuesDealtByFriendsFamily['Entity']))
 
 # no correlation, but higher proportion of countries that have 35-40% depression rates with 85% of talking to friends and family
 plt.scatter(depressionPrevalence['val'], mentalIssuesDealtByFriendsFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
