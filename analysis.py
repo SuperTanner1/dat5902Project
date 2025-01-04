@@ -104,7 +104,8 @@ perceivedComfortSpeakingAboutAnxietyDepression = perceivedComfortSpeakingAboutAn
 depressionPrevalence = depressionPrevalence.rename(columns={'val': 'Proportion of people that are depressed (%)'})
 
 # exploring models and scatter graphs for every our world in dataset against depression prevalence
-def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
+
+def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity'):
     mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
     if len(mentalIssueData) != len(depressionDataNew):
@@ -112,6 +113,10 @@ def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssu
     print(len(mentalIssueData))
     print(len(depressionDataNew))
     mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on='Entity', right_on='location_name')
+    return mergedDataset
+
+def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
+    mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
     x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
 
     fig, ax = plt.subplots()
@@ -153,6 +158,6 @@ ax.set_xlim(0, 35000)
 # there is little correlation, histograms are likely to be better suited for this
 for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiety.values()):
     print(comfortSpeaking)
-    explore_data_ourworldindata_ihme(perceivedComfortSpeakingAboutAnxietyDepression, depressionPrevalence, comfortSpeaking)
+    sns.histplot
 
 plt.show()
