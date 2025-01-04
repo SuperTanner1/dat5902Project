@@ -4,9 +4,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy as sp
 import requests
+import re
 
 from functions import *
-
+from functools import reduce
 # this is so I can decide if I want to update the existing data from the source (our world in data) into my repository.
 # If update is false, the program will use the existing data.
 # If update is true, it will request the data, export it into the repository permanently, and the program will use this data.
@@ -83,11 +84,13 @@ mappingFriendsAndFamily = {'Share - Question: mh8c - Talked to friends or family
 mappingReligiousSpirituality = {'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'}
 mappingMedication = {'share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all': 'Proportion that took prescribed medication when anxious/depressed (%)'}
 
-mappingPerceivedComfortSpeakingAboutDepressionAnxiety = {'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_very_comfortable__gender_all__age_group_all': 'Proportion of local people very comfortable speaking about anxiety/depression with someone they know (%)',
-'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_somewhat_comfortable__gender_all__age_group_all': 'Proportion of local people somewhat comfortable speaking about anxiety/depression with someone they know (%)',
-'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_dont_know_refused__gender_all__age_group_all': 'Proportion of local people that don\'t know how comfortable they are speaking about anxiety/depression with someone they know (%)',
-'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_not_at_all_comfortable__gender_all__age_group_all': 'Proportion of local people not comfortable speaking about anxiety/depression with someone they know (%)',
-'very_comfortable and somewhat_comfortable': 'Proportion of local people very or somewhat comfortable speaking about anxiety/depression with someone they know (%)'}
+# each of the below's actual labels are someone local at the beginning and someone they know at the end,
+# so the proportion is always about a local person's comfort in speaking to someone about anxiety/depression with someone they know
+mappingPerceivedComfortSpeakingAboutDepressionAnxiety = {'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_very_comfortable__gender_all__age_group_all': 'Proportion of people very comfortable speaking about anxiety/depression (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_somewhat_comfortable__gender_all__age_group_all': 'Proportion of people somewhat comfortable speaking about anxiety/depression (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_dont_know_refused__gender_all__age_group_all': 'Proportion of people that don\'t know how comfortable they are speaking about anxiety/depression (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_not_at_all_comfortable__gender_all__age_group_all': 'Proportion of people not comfortable speaking about anxiety/depression (%)',
+'very_comfortable and somewhat_comfortable': 'Proportion of people very or somewhat comfortable speaking about anxiety/depression (%)'}
 
 
 def remove_rows_from_ourworldindata_datasets(df):
@@ -105,6 +108,12 @@ mentalIssuesDealtByReligionSpirituality = mentalIssuesDealtByReligionSpiritualit
 mentalIssuesDealtByMedication = mentalIssuesDealtByMedication.rename(columns=mappingMedication)
 perceivedComfortSpeakingAboutAnxietyDepression = perceivedComfortSpeakingAboutAnxietyDepression.rename(columns=mappingPerceivedComfortSpeakingAboutDepressionAnxiety)
 
+# removing unnecessary data
+mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
+mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
+mentalIssuesDealtByMedication = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByMedication)
+perceivedComfortSpeakingAboutAnxietyDepression = remove_rows_from_ourworldindata_datasets(perceivedComfortSpeakingAboutAnxietyDepression)
+amountOfPsychiatristsWorking = remove_rows_from_ourworldindata_datasets(amountOfPsychiatristsWorking)
 
 depressionPrevalence = depressionPrevalence.rename(columns={'val': 'Proportion of people that are depressed (%)'})
 
@@ -122,8 +131,9 @@ def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, d
     mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on=mentalIssueLocationColumn, right_on=depressionLocationColumn)
     return mergedDataset
 
-def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
-    mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
+def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, mentalIssueDataColumn=None, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)', mergedDataset=None):
+    if type(mergedDataset) != pd.DataFrame:
+        mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
     x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
 
     fig, ax = plt.subplots()
@@ -131,7 +141,15 @@ def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssu
     try:
         m, c = create_model(x, y, 1)
     except np.linalg.LinAlgError:
-        print("Invalid model for this graph")
+        x[x.isna()] = x.mean()
+        y[y.isna()] = y.mean()
+        try:
+            m, c = create_model(x, y, 1)
+        except np.linalg.LinAlgError:
+            print("Invalid model")
+        else:
+            yModel = m * x + c
+            sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
     else:
         yModel = m * x + c
         sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
@@ -158,14 +176,6 @@ opinionThatScienceHelpsALotForMentalHealth.drop('Population (historical)', axis=
 opinionThatScienceHelpsALotForMentalHealth = opinionThatScienceHelpsALotForMentalHealth[opinionThatScienceHelpsALotForMentalHealth['Year'] == 2021]
 
 fig,ax, mergedDataset = explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
-mergedDataset = mergedDataset[mergedDataset['GDP per capita, PPP (constant 2017 international $)'] <= 35000]
-x = mergedDataset['GDP per capita, PPP (constant 2017 international $)']
-y = mergedDataset['Proportion of people that are depressed (%)']
-
-m,c = create_model(x, y, 1)
-yModel = m*x+c
-
-sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
 
 ax.set_xlim(0, 35000)
 
@@ -182,5 +192,58 @@ fig, ax, mergedDataset = explore_data_ourworldindata_ihme(amountOfPsychiatristsW
 ax.set_xlim(-0.5, 20)
 
 explore_data_ourworldindata_ihme(individualisticLevels, depressionPrevalence, 'IndividualismScore_2023', mentalIssueLocationColumn='country')
+
+# create heatmap
+listOfMentalHealthDatasets = [mentalIssuesDealtByMedication, mentalIssuesDealtByReligionSpirituality, amountOfPsychiatristsWorking2020, perceivedComfortSpeakingAboutAnxietyDepression, opinionThatScienceHelpsALotForMentalHealth]
+mentalIssueDealtyByMasterDataset = mentalIssuesDealtByFriendsFamily.copy()
+for i in range(len(listOfMentalHealthDatasets)):
+    print(f'{i}th: ' + str(len(mentalIssueDealtyByMasterDataset)))
+    mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(listOfMentalHealthDatasets[i], on='Entity', how='left', suffixes=(f'_x{i}', f'_y{i}'))
+    
+fig, ax = plt.subplots()
+
+for i in range(0,5):
+    try:
+        mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Code_x{i}', axis=1)
+    except KeyError:
+        pass
+    try:
+        mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Code_y{i}', axis=1)
+    except KeyError:
+        pass
+    try:
+        mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Year_x{i}', axis=1)
+    except KeyError:
+        pass
+    try:
+        mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Year_y{i}', axis=1)
+    except KeyError:
+        pass
+    try:
+        mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Unnamed: 0_x{i}', axis=1)
+    except KeyError:
+        pass
+    try:
+        mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Unnamed: 0_y{i}', axis=1)
+    except KeyError:
+        pass
+
+mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(depressionPrevalence.loc[:, ['location_name', 'Proportion of people that are depressed (%)']], how='inner', left_on='Entity', right_on='location_name')
+mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(individualisticLevels, how='inner', left_on='Entity', right_on='country')
+mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop('Entity', axis=1)
+mentalIssueDealtyByMasterDataset.to_csv('Datasets/master mental issues.csv')
+correlationMatrix = mentalIssueDealtyByMasterDataset.select_dtypes('number').corr()
+
+sns.heatmap(correlationMatrix,annot=True)
+
+fig,ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='GDP per capita, PPP (constant 2017 international $)', depressionDataColumn='IndividualismScore_2023')
+
+ax.set_xlim(0, 60000)
+
+print("benchmark")
+fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='GDP per capita, PPP (constant 2017 international $)', depressionDataColumn='Total number of psychiatrists per 100,000 population')
+fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='GDP per capita, PPP (constant 2017 international $)', depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)')
+
+mergedDataset
 
 plt.show()
