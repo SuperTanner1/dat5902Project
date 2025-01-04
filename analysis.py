@@ -138,10 +138,6 @@ def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, 
         m, c = create_model(x, y, 1)
         print(m,c)
     except np.linalg.LinAlgError:
-        print("mean: " + str(mergedDataset[depressionDataColumn].mean()))
-        print("mean2: " + str(mergedDataset[mentalIssueDataColumn].mean()))
-        print(x[x.isna()])
-        print(y[y.isna()])
         try:
             m, c = create_model(x, y, 1)
             print(m,c)
@@ -203,7 +199,8 @@ for i in range(len(listOfMentalHealthDatasets)):
     
 fig, ax = plt.subplots()
 
-for i in range(0,5):
+# removing all duplicate columns
+for i in range(1,5):
     try:
         mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Code_x{i}', axis=1)
     except KeyError:
@@ -231,7 +228,6 @@ for i in range(0,5):
 
 mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(depressionPrevalence.loc[:, ['location_name', 'Proportion of people that are depressed (%)']], how='inner', left_on='Entity', right_on='location_name')
 mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(individualisticLevels, how='inner', left_on='Entity', right_on='country')
-mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop('Entity', axis=1)
 mentalIssueDealtyByMasterDataset.to_csv('Datasets/master mental issues.csv')
 correlationMatrix = mentalIssueDealtyByMasterDataset.select_dtypes('number').corr()
 
