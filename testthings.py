@@ -6,9 +6,10 @@ from functions import *
 # mock datasets similar in structure and properties to the original datasets that have been imported
 dataset1 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_x': [10.3, 22.6, 56.1, 17.9]}
 dataset2 = {'index1': ['a', 'b', 'c', 'd'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]}
-
+dataset3 = {'index1': ['a', 'e', 'g', 'd'], 'index2': ['aa', 'ee', 'gg', 'dd'], 'value_y': [21.4, 29.3, 37.6, 51.9]}
 df1 = pd.DataFrame(dataset1)
 df2 = pd.DataFrame(dataset2)
+df3 = pd.DataFrame(dataset3)
 
 class TestSuite(unittest.TestCase):
     def test_merge_datasets(self):
@@ -56,5 +57,10 @@ class TestSuite(unittest.TestCase):
         df2 = pd.DataFrame(dataset2)
         result = replace_values_in_column(df2, 'index1', mapping=mapping)
         newDataFrame = pd.DataFrame({'index1': ['a', 'b', 'c', 'e'], 'index2': ['aa', 'bb', 'cc', 'dd'], 'value_y': [15.6, 30.1, 74.0, 23.7]})
+        print(pd.testing.assert_frame_equal(newDataFrame, result))
+        self.assertTrue(newDataFrame.equals(result))
+    def test_remove_rows_unshared(self):
+        result = remove_rows_unshared_between_datasets(df1, 'index1', df3, 'index1')
+        newDataFrame = df1.drop([1, 2])
         print(pd.testing.assert_frame_equal(newDataFrame, result))
         self.assertTrue(newDataFrame.equals(result))

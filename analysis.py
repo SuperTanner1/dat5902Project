@@ -103,20 +103,16 @@ mentalIssuesDealtByMedication = mentalIssuesDealtByMedication.rename(columns=map
 perceivedComfortSpeakingAboutAnxietyDepression = perceivedComfortSpeakingAboutAnxietyDepression.rename(columns=mappingPerceivedComfortSpeakingAboutDepressionAnxiety)
 
 # removing unnecessary data
-mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily)
-mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality)
-mentalIssuesDealtByMedication = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByMedication)
-perceivedComfortSpeakingAboutAnxietyDepression = remove_rows_from_ourworldindata_datasets(perceivedComfortSpeakingAboutAnxietyDepression)
-amountOfPsychiatristsWorking = remove_rows_from_ourworldindata_datasets(amountOfPsychiatristsWorking)
+mentalIssuesDealtByFriendsFamily = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByFriendsFamily, listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+mentalIssuesDealtByReligionSpirituality = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByReligionSpirituality, listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+mentalIssuesDealtByMedication = remove_rows_from_ourworldindata_datasets(mentalIssuesDealtByMedication, listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+perceivedComfortSpeakingAboutAnxietyDepression = remove_rows_from_ourworldindata_datasets(perceivedComfortSpeakingAboutAnxietyDepression, listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
+amountOfPsychiatristsWorking = remove_rows_from_ourworldindata_datasets(amountOfPsychiatristsWorking, listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
 
 depressionPrevalence = depressionPrevalence.rename(columns={'val': 'Proportion of people that are depressed (%)'})
 
 # exploring models and scatter graphs for every our world in dataset against depression prevalence
-
 def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity'):
-    if mentalIssueLocationColumn == 'Entity':
-        mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
-    
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
     if len(mentalIssueData) != len(depressionDataNew):
         mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
