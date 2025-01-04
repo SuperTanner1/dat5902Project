@@ -116,7 +116,7 @@ def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssu
 
     sns.scatterplot(x=x, y=y, ax=ax)
 
-    plt.show()
+    return fig, ax, mergedDataset
 
 explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
@@ -127,37 +127,15 @@ explore_data_ourworldindata_ihme(mentalIssuesDealtByMedication, depressionPreval
 opinionThatScienceHelpsALotForMentalHealth.drop('Population (historical)', axis=1)
 opinionThatScienceHelpsALotForMentalHealth = opinionThatScienceHelpsALotForMentalHealth[opinionThatScienceHelpsALotForMentalHealth['Year'] == 2021]
 
-#explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
+fig,ax, mergedDataset = explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
+mergedDataset = mergedDataset[mergedDataset['GDP per capita, PPP (constant 2017 international $)'] <= 35000]
+x = mergedDataset['GDP per capita, PPP (constant 2017 international $)']
+y = mergedDataset['Proportion of people that are depressed (%)']
 
-mentalIssueData = opinionThatScienceHelpsALotForMentalHealth
-depressionData = depressionPrevalence
-mentalIssueDataColumn = 'GDP per capita, PPP (constant 2017 international $)'
-depressionLocationColumn='location_name'
-mentalIssueLocationColumn='Entity'
-depressionDataColumn='Proportion of people that are depressed (%)'
+m,c = create_model(x, y, 1)
+yModel = m*x+c
 
-mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
-depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
-if len(mentalIssueData) != len(depressionDataNew):
-    mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
-print(len(mentalIssueData))
-print(len(depressionDataNew))
-x, y = mentalIssueData[mentalIssueDataColumn], depressionDataNew[depressionDataColumn]
+sns.lineplot(x=x, y=yModel, ax=ax)
 
-fig, ax = plt.subplots()
-
-try:
-    m, c = create_model(x, y, 1)
-except np.linalg.LinAlgError:
-    print("Invalid model for this graph")
-else:
-    yModel = m * x + c
-    sns.lineplot(x=x, y=yModel, ax=ax)
-
-#sns.scatterplot(x=x, y=y, ax=ax)
-print(x)
-print(y)
-sns.scatterplot(x=x, y=y)
-print(x)
-print(y)
+ax.set_xlim(0, 35000)
 plt.show()
