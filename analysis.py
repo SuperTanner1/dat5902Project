@@ -115,7 +115,7 @@ def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, d
     mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on='Entity', right_on='location_name')
     return mergedDataset
 
-def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, title=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
+def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
     mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
     x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
 
@@ -129,7 +129,11 @@ def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssu
         yModel = m * x + c
         sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
 
-    sns.scatterplot(x=x, y=y, ax=ax)
+    if colour != None:
+        sns.scatterplot(mentalIssueData, x=x, y=y, ax=ax, hue=colour)
+    else:
+        sns.scatterplot(x=x, y=y, ax=ax)
+    
     ax.set_ylabel(depressionDataColumn)
 
     if title != None:
@@ -167,6 +171,6 @@ for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiet
 
 amountOfPsychiatristsWorking2020 = amountOfPsychiatristsWorking[amountOfPsychiatristsWorking['Year'] == 2020].copy()
 
-fig, ax, mergedDataset = explore_data_ourworldindata_ihme(amountOfPsychiatristsWorking, depressionPrevalence, 'Total number of psychiatrists per 100,000 population')
+fig, ax, mergedDataset = explore_data_ourworldindata_ihme(amountOfPsychiatristsWorking2020, depressionPrevalence, 'Total number of psychiatrists per 100,000 population')
 ax.set_xlim(-0.5, 20)
 plt.show()
