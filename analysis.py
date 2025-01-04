@@ -163,20 +163,24 @@ def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, 
 
     return fig, ax, mergedDataset
 
+# negative correlation - good line
 explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
+# negative correlation - good line
 explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
+# no correlation
 explore_data_ourworldindata_ihme(mentalIssuesDealtByMedication, depressionPrevalence, mappingMedication['share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all'])
 
 opinionThatScienceHelpsALotForMentalHealth.drop('Population (historical)', axis=1)
 opinionThatScienceHelpsALotForMentalHealth = opinionThatScienceHelpsALotForMentalHealth[opinionThatScienceHelpsALotForMentalHealth['Year'] == 2021]
 
+# good line
 fig,ax, mergedDataset = explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
 
 ax.set_xlim(0, 35000)
 
-# there is little correlation, histograms are likely to be better suited for this
+# histograms of how comfortable people are speaking about depression
 mergedComfortSpeakingAndDepression = cleanAndMergeMentalIssueAndDepressionData(perceivedComfortSpeakingAboutAnxietyDepression, depressionPrevalence)
 for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiety.values()):
     print(comfortSpeaking)
@@ -185,12 +189,14 @@ for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiet
 
 amountOfPsychiatristsWorking2020 = amountOfPsychiatristsWorking[amountOfPsychiatristsWorking['Year'] == 2020].copy()
 
+# bad line, too many missing values
 fig, ax, mergedDataset = explore_data_ourworldindata_ihme(amountOfPsychiatristsWorking2020, depressionPrevalence, 'Total number of psychiatrists per 100,000 population')
 ax.set_xlim(-0.5, 20)
 
+# good line
 explore_data_ourworldindata_ihme(individualisticLevels, depressionPrevalence, 'IndividualismScore_2023', mentalIssueLocationColumn='country')
 
-# create heatmap
+# create correlation heatmap for all variables
 listOfMentalHealthDatasets = [mentalIssuesDealtByMedication, mentalIssuesDealtByReligionSpirituality, amountOfPsychiatristsWorking2020, perceivedComfortSpeakingAboutAnxietyDepression, opinionThatScienceHelpsALotForMentalHealth]
 mentalIssueDealtyByMasterDataset = mentalIssuesDealtByFriendsFamily.copy()
 for i in range(len(listOfMentalHealthDatasets)):
@@ -235,27 +241,27 @@ sns.heatmap(correlationMatrix,annot=True)
 
 GDPColumnName = 'GDP per capita, PPP (constant 2017 international $)'
 
+# good line
 fig,ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='IndividualismScore_2023')
 
 ax.set_xlim(0, 60000)
 
-print("benchmark")
+# bad line
 fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Total number of psychiatrists per 100,000 population')
-#mergedDataset = mergedDataset[np.invert(mergedDataset['Total number of psychiatrists per 100,000 population'].isna())]
-#print(mergedDataset['Total number of psychiatrists per 100,000 population'][mergedDataset['Total number of psychiatrists per 100,000 population'].isna()])
-#x = mergedDataset[GDPColumnName]
-#y = mergedDataset['Total number of psychiatrists per 100,000 population']
 
-#m,c = create_model(x, y, 1)
-
-
-
-#print(m,c)
-
-#yModel = m*x+c
-
-#sns.lineplot(x=x, y=yModel, ax=ax)
-
+# good line
 fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)')
 
-plt.show()
+plt.close('all')
+
+# final graphs
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='IndividualismScore_2023')
+explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
+explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+explore_data_ourworldindata_ihme(individualisticLevels, depressionPrevalence, 'IndividualismScore_2023', mentalIssueLocationColumn='country')
+sns.heatmap(correlationMatrix,annot=True)
+
+
+# check significance
