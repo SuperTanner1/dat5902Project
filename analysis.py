@@ -74,6 +74,10 @@ categoriesOfCountry = ['High-income countries', 'Upper-middle-income countries',
 countries = ['Kosovo', 'Hong Kong', 'Czechia', 'Oceania', 'North America', 'South America']
 listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry = continents + categoriesOfCountry + countries
 
+mappingFriendsAndFamily = {'Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that talked to friends or family when anxious/depressed (%)'}
+mappingReligiousSpirituality = {'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'}
+mappingMedication = {'share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all': 'Proportion that took prescribed medication when anxious/depressed (%)'}
+
 def remove_rows_from_ourworldindata_datasets(df):
     return remove_rows_from_df(df, 'Entity', listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry)
 def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
@@ -83,26 +87,43 @@ def remove_rows_unshared_between_datasets(df, columnName, df1, columnName1):
 # removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
 depressionPrevalence = remove_rows_from_df(depressionPrevalence, 'metric_name', ['Number', 'Rate'])
 
+# renaming columns in depression dataframe and our world in data dataframes
+mentalIssuesDealtByFriendsFamily = mentalIssuesDealtByFriendsFamily.rename(columns=mappingFriendsAndFamily)
+mentalIssuesDealtByReligionSpirituality = mentalIssuesDealtByReligionSpirituality.rename(columns=mappingReligiousSpirituality)
+mentalIssuesDealtByMedication = mentalIssuesDealtByMedication.rename(columns=mappingMedication)
 
-def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='val'):
+depressionPrevalence = depressionPrevalence.rename(columns={'val': 'Proportion of people that are depressed (%)'})
+
+def explore_data_ourworldindata_ihme(mentalIssueData, depressionData, mentalIssueDataColumn, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)'):
     mentalIssueData = remove_rows_from_ourworldindata_datasets(mentalIssueData).copy()
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
     if len(mentalIssueData) != len(depressionDataNew):
         mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
     print(len(mentalIssueData))
     print(len(depressionDataNew))
+    x, y = mentalIssueData[mentalIssueDataColumn], depressionDataNew[depressionDataColumn]
 
-    plt.scatter(mentalIssueData[mentalIssueDataColumn], depressionDataNew[depressionDataColumn])
+    fig, ax = plt.subplots()
+    
+    try:
+        m, c = create_model(x, y, 1)
+    except np.linalg.LinAlgError:
+        print("Invalid model for this graph")
+    else:
+        yModel = m * x + c
+        sns.lineplot(x=x, y=yModel, ax=ax)
+
+    sns.scatterplot(x=x, y=y, ax=ax)
+
     plt.show()
 
-explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, 'Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all')
+explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
-explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, 'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all')
+explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
-explore_data_ourworldindata_ihme(mentalIssuesDealtByMedication, depressionPrevalence, 'share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all')
+explore_data_ourworldindata_ihme(mentalIssuesDealtByMedication, depressionPrevalence, mappingMedication['share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all'])
 
 opinionThatScienceHelpsALotForMentalHealth.drop('Population (historical)', axis=1)
 opinionThatScienceHelpsALotForMentalHealth = opinionThatScienceHelpsALotForMentalHealth[opinionThatScienceHelpsALotForMentalHealth['Year'] == 2021]
-opinionThatScienceHelpsALotForMentalHealth.to_csv('Datasets/modifiedOpinionThing.csv')
 
 explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
