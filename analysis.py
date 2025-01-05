@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import scipy as sp
+import scipy.stats as stats
 import requests
 import re
 
@@ -205,8 +205,8 @@ for i in range(len(listOfMentalHealthDatasets)):
     
 fig, ax = plt.subplots()
 
-# removing all duplicate columns
-for i in range(1,5):
+# removing all duplicate and unnecessary numeric columns
+for i in range(0,5):
     try:
         mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop(f'Code_x{i}', axis=1)
     except KeyError:
@@ -264,4 +264,53 @@ explore_data_ourworldindata_ihme(individualisticLevels, depressionPrevalence, 'I
 sns.heatmap(correlationMatrix,annot=True)
 
 
-# check significance
+# statistical analysis
+fig, ax= plt.subplots(2)
+stats.probplot(mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'], fit=True, plot=ax[0])
+sns.histplot(x=mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'], ax=ax[1])
+fig, ax= plt.subplots()
+stats.probplot(mentalIssueDealtyByMasterDataset['IndividualismScore_2023'], fit=True, plot=ax)
+fig, ax= plt.subplots(2)
+stats.probplot(mentalIssueDealtyByMasterDataset['Proportion of people that are depressed (%)'], fit=True, plot=ax[0])
+sns.histplot(mentalIssueDealtyByMasterDataset['Proportion of people that are depressed (%)'], ax=ax[1])
+
+
+# Individualism Score and Proportion of religious/spiritual activities are non-normal while proportion of people that are depressed is normal
+fig, ax=plt.subplots()
+# GDP excluded due to its large size
+importantVariables = [
+    'Proportion of people that are depressed (%)',
+    'Proportion that engaged in religious/spiritual activities when anxious/depressed (%)', 
+    'IndividualismScore_2023', 
+    mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], 
+    mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all']
+]
+sns.boxplot(mentalIssueDealtyByMasterDataset[importantVariables], ax=ax)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
+plt.show()
+
+# correlation coefficient and significance
+def statisticalTest(mergedDataset, mentalIssueDataColumn, depressionDataColumn, alternative):
+    mergedDataset[mentalIssueDataColumn] = mergedDataset[mentalIssueDataColumn][np.invert(mergedDataset[mentalIssueDataColumn].isna())]
+    mergedDataset[depressionDataColumn] = mergedDataset[depressionDataColumn][np.invert(mergedDataset[depressionDataColumn].isna())]
+    x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
+    x = x.fillna(x.mean())
+    y = y.fillna(y.mean())
+
+    return stats.pearsonr(x,y, alternative=alternative)
+
+importantVariables = importantVariables + [GDPColumnName]
+
+statisticalTestGDPReligiousSpiritual = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[1], alternative='less')
+statisticalTestGDPIndividualism = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[2], alternative='greater')
+statisticalTestGDPDepression = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[0], alternative='less')
+statisticalTestFriendsFamilyDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[3], importantVariables[0], alternative='less')
+statisticalTestReligiousSpiritualityDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[4], importantVariables[0], alternative='less')
+
+significanceLevel = 0.05
+
+print("ReligousSpiritualityDepressionTest: " + f"corrcoeff: {statisticalTestGDPReligiousSpiritual.statistic} " + f"p-value: {statisticalTestGDPReligiousSpiritual.pvalue}, pass: " + str(statisticalTestGDPReligiousSpiritual.pvalue < significanceLevel))
+print("statisticalTestGDPIndividualism: " + f"corrcoeff: {statisticalTestGDPIndividualism.statistic} " + f"p-value: {statisticalTestGDPIndividualism.pvalue}, pass: " + str(statisticalTestGDPIndividualism.pvalue < significanceLevel))
+print("statisticalTestGDPDepression: " + f"corrcoeff: {statisticalTestGDPDepression.statistic} " + f"p-value: {statisticalTestGDPDepression.pvalue}, pass: " + str(statisticalTestGDPDepression.pvalue < significanceLevel))
+print("statisticalTestFriendsFamilyDepression: " + f"corrcoeff: {statisticalTestFriendsFamilyDepression.statistic} " + f"p-value: {statisticalTestFriendsFamilyDepression.pvalue}, pass: " + str(statisticalTestFriendsFamilyDepression.pvalue < significanceLevel))
+print("statisticalTestReligiousSpiritualityDepression: " + f"corrcoeff: {statisticalTestReligiousSpiritualityDepression.statistic} " + f"p-value: {statisticalTestReligiousSpiritualityDepression.pvalue}, pass: " + str(statisticalTestReligiousSpiritualityDepression.pvalue < significanceLevel))
