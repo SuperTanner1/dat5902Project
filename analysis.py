@@ -255,15 +255,19 @@ fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIs
 plt.close('all')
 
 # final graphs
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)')
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='IndividualismScore_2023')
-explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
-explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
-explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
-explore_data_ourworldindata_ihme(individualisticLevels, depressionPrevalence, 'IndividualismScore_2023', mentalIssueLocationColumn='country')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)', title='The higher the gdp per capita, the less religious/spiritual activities are relied upon')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='IndividualismScore_2023', title='The higher the gdp per capita, the more individualistic countries are')
+#explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)', title='') - failed statistical test
+explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people talk about their depression/anxiety to friends or family, they are less depressed/anxious')
+explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people are more engaged in religious/spiritual activity, they are less depressed')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='Talking to friends and family and doing religious/spiritual activity are related')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Religious/spiritual countries are much less individualistic than less religious/spiritual countries')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Countries of all levels of individualism talk to friends or family to varying degrees about anxiety/depression')
+
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='IndividualismScore_2023', mentalIssueLocationColumn='country', title='Higher rates of individualism correlates with depression prevalence in countries')
+
+fig, ax = plt.subplots()
 sns.heatmap(correlationMatrix,annot=True)
-
-
 # statistical analysis
 fig, ax= plt.subplots(2)
 stats.probplot(mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'], fit=True, plot=ax[0])
@@ -287,6 +291,11 @@ importantVariables = [
 ]
 sns.boxplot(mentalIssueDealtyByMasterDataset[importantVariables], ax=ax)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
+
+fig,ax=plt.subplots()
+sns.boxplot(mentalIssueDealtyByMasterDataset[GDPColumnName],ax=ax)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
+
 plt.show()
 
 # correlation coefficient and significance
