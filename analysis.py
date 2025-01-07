@@ -264,7 +264,8 @@ explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset,
 explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Religious/spiritual countries are much less individualistic than less religious/spiritual countries')
 explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Countries of all levels of individualism talk to friends or family to varying degrees about anxiety/depression')
 
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='IndividualismScore_2023', mentalIssueLocationColumn='country', title='Higher rates of individualism correlates with depression prevalence in countries')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='IndividualismScore_2023', title='Higher rates of individualism correlates with depression prevalence in countries')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='IndividualismScore_2023', depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
 fig, ax = plt.subplots()
 sns.heatmap(correlationMatrix,annot=True)
