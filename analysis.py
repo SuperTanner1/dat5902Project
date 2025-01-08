@@ -344,33 +344,34 @@ def statisticalTest(mergedDataset, mentalIssueDataColumn, depressionDataColumn, 
     x = x.fillna(x.mean())
     y = y.fillna(y.mean())
 
-    return stats.pearsonr(x,y, alternative=alternative)
+    return stats.pearsonr(x,y, alternative=alternative), alternative
 
 importantVariables = importantVariables + [GDPColumnName]
 
 statisticalTestGDPReligiousSpiritual = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[1], alternative='less')
 statisticalTestGDPIndividualism = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[2], alternative='greater')
-statisticalTestGDPDepression = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[0], alternative='greater')
+statisticalTestGDPDepression = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[0], alternative='two-sided')
 statisticalTestFriendsFamilyDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[3], importantVariables[0], alternative='less')
-statisticalTestReligiousSpiritualityDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[4], importantVariables[0], alternative='less')
+statisticalTestReligiousSpiritualityDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[4], importantVariables[0], alternative='two-sided')
 
 significanceLevel = 0.05
 statisticalTests = [statisticalTestGDPReligiousSpiritual, statisticalTestGDPIndividualism, statisticalTestGDPDepression, statisticalTestFriendsFamilyDepression, statisticalTestReligiousSpiritualityDepression]
-print("ReligousSpiritualityDepressionTest: " + f"corrcoeff: {statisticalTestGDPReligiousSpiritual.statistic} " + f"p-value: {statisticalTestGDPReligiousSpiritual.pvalue}, pass: " + str(statisticalTestGDPReligiousSpiritual.pvalue < significanceLevel))
-print("statisticalTestGDPIndividualism: " + f"corrcoeff: {statisticalTestGDPIndividualism.statistic} " + f"p-value: {statisticalTestGDPIndividualism.pvalue}, pass: " + str(statisticalTestGDPIndividualism.pvalue < significanceLevel))
-print("statisticalTestGDPDepression: " + f"corrcoeff: {statisticalTestGDPDepression.statistic} " + f"p-value: {statisticalTestGDPDepression.pvalue}, pass: " + str(statisticalTestGDPDepression.pvalue < significanceLevel))
-print("statisticalTestFriendsFamilyDepression: " + f"corrcoeff: {statisticalTestFriendsFamilyDepression.statistic} " + f"p-value: {statisticalTestFriendsFamilyDepression.pvalue}, pass: " + str(statisticalTestFriendsFamilyDepression.pvalue < significanceLevel))
-print("statisticalTestReligiousSpiritualityDepression: " + f"corrcoeff: {statisticalTestReligiousSpiritualityDepression.statistic} " + f"p-value: {statisticalTestReligiousSpiritualityDepression.pvalue}, pass: " + str(statisticalTestReligiousSpiritualityDepression.pvalue < significanceLevel))
 
-statisticalTestTable = {"Tests": ["Religous and Spirituality vs Depression", "GDP vs Individualism", "GDP vs Depression", "Talking to Friends and Family vs Depression", "Religious/Spirituality vs Depression"], "Statistic": [], "P-Value": []}
+statisticalTestTable = {"Tests": ["Religous and Spirituality vs Depression", "GDP vs Individualism", "GDP vs Depression", "Talking to Friends and Family vs Depression", "Religious/Spirituality vs Depression"], "Statistic": [], "P-Value": [], 'Test Type': [], 'Passed Test':[]}
 pValue = []
 statistics = []
+testType = []
+passedTest = []
 for i in statisticalTests:
-    pValue.append(i.pvalue)
-    statistics.append(i.statistic)
+    pValue.append(i[0].pvalue)
+    statistics.append(i[0].statistic)
+    passedTest.append(i[0].pvalue < significanceLevel)
+    testType.append(i[1])
 
 statisticalTestTable['P-Value'] = pValue
 statisticalTestTable['Statistic'] = statistics
+statisticalTestTable['Test Type'] = testType
+statisticalTestTable['Passed Test'] = passedTest
 
 statisticalTestTable = pd.DataFrame(statisticalTestTable)
 statisticalTestTable.to_csv('Datasets/statisticalTests')
