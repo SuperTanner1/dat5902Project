@@ -47,6 +47,10 @@ urbanisation = pd.read_excel('Datasets/Wikipedia Data on Urbanisation.xlsx')
 # individualism
 individualisticLevels = pd.read_csv('Datasets/individualistic-countries-2024.csv')
 
+"""
+NEW SECTION
+Data Cleaning
+"""
 mappingDepressionPrevalenceToOurWorldInDataDatasets = {"Democratic People's Republic of Korea": 'North Korea', 
  "Lao People's Democratic Republic": 'Laos',
  "Viet Nam": 'Vietnam',
@@ -114,7 +118,11 @@ amountOfPsychiatristsWorking = remove_rows_from_ourworldindata_datasets(amountOf
 
 depressionPrevalence = depressionPrevalence.rename(columns={'val': 'Proportion of people that are depressed (%)'})
 
-# exploring models and scatter graphs for every our world in dataset against depression prevalence
+"""
+NEW SECTION
+Data Exploration
+- exploring models and scatter graphs for every 'our world in data' dataset against depression prevalence
+"""
 def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity'):
     depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
     if len(mentalIssueData) != len(depressionDataNew):
@@ -123,7 +131,7 @@ def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, d
     mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on=mentalIssueLocationColumn, right_on=depressionLocationColumn)
     return mergedDataset
 
-def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, mentalIssueDataColumn=None, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)', mergedDataset=None, export=False):
+def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, mentalIssueDataColumn=None, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)', mergedDataset=None, export=False, model=True):
     pathToSaveTo = 'Plots/Custom/'
     fileType = '.png'
     if type(mergedDataset) != pd.DataFrame:
@@ -139,22 +147,25 @@ def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, 
 
     fig, ax = plt.subplots()
 
-    try:
-        m, c = create_model(x, y, 1)
-        print(m,c)
-    except np.linalg.LinAlgError:
+    if model:
         try:
             m, c = create_model(x, y, 1)
-            print(m,c)
+            #print(m,c)
         except np.linalg.LinAlgError:
-            print("Invalid model")
+            try:
+                m, c = create_model(x, y, 1)
+                #print(m,c)
+            except np.linalg.LinAlgError:
+                print("Invalid model")
+            else:
+                yModel = m * x + c
+                #print(yModel)
+                sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
         else:
             yModel = m * x + c
-            print(yModel)
             sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
-    else:
-        yModel = m * x + c
-        sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
+            print(f"{title} graph, gradient: {m}, y-intercept: {c}\n")
+
 
     if colour != None:
         sns.scatterplot(mentalIssueData, x=x, y=y, ax=ax, hue=colour)
@@ -205,6 +216,7 @@ ax.set_xlim(-0.5, 20)
 
 # good line
 explore_data_ourworldindata_ihme(individualisticLevels, depressionPrevalence, 'Individualism Score in 2023', mentalIssueLocationColumn='country')
+
 
 # create correlation heatmap for all variables
 listOfMentalHealthDatasets = [mentalIssuesDealtByMedication, mentalIssuesDealtByReligionSpirituality, amountOfPsychiatristsWorking2020, perceivedComfortSpeakingAboutAnxietyDepression, opinionThatScienceHelpsALotForMentalHealth]
@@ -264,11 +276,17 @@ fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIs
 
 plt.close('all')
 
-# final graphs
+"""
+NEW SECTION
+Final analysis
+- final graphs
+"""
 export = True
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', title='The higher the gdp per capita, the less religious or spiritual activities are relied upon', export=export)
+
+title='The higher the gdp per capita, the less religious or spiritual activities are relied upon'
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', title=title, export=True)
 explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Individualism Score in 2023', title='The higher the gdp per capita, the more individualistic countries are', export=export)
-#explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)', title='') - failed statistical test
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, title='', export=True)
 explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people talk about their depression or anxiety to friends or family\nthey are less anxious or depressed', export=export)
 explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people are more engaged in religious or spiritual activity\nthey are less anxious or depressed', export=export)
 explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='Talking to friends and family \nand doing religious or spiritual activity are related', export=export)
@@ -282,7 +300,13 @@ sns.histplot(mentalIssueDealtyByMasterDataset, x='Individualism Score in 2023', 
 
 fig, ax = plt.subplots()
 sns.heatmap(correlationMatrix,annot=True)
-# statistical analysis
+
+"""
+NEW SECTION
+Final analysis
+- statistical analysis
+"""
+
 fig, ax= plt.subplots(2)
 stats.probplot(mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)'], fit=True, plot=ax[0])
 sns.histplot(x=mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)'], ax=ax[1])
@@ -326,14 +350,27 @@ importantVariables = importantVariables + [GDPColumnName]
 
 statisticalTestGDPReligiousSpiritual = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[1], alternative='less')
 statisticalTestGDPIndividualism = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[2], alternative='greater')
-statisticalTestGDPDepression = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[0], alternative='less')
+statisticalTestGDPDepression = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[0], alternative='greater')
 statisticalTestFriendsFamilyDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[3], importantVariables[0], alternative='less')
 statisticalTestReligiousSpiritualityDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[4], importantVariables[0], alternative='less')
 
 significanceLevel = 0.05
-
+statisticalTests = [statisticalTestGDPReligiousSpiritual, statisticalTestGDPIndividualism, statisticalTestGDPDepression, statisticalTestFriendsFamilyDepression, statisticalTestReligiousSpiritualityDepression]
 print("ReligousSpiritualityDepressionTest: " + f"corrcoeff: {statisticalTestGDPReligiousSpiritual.statistic} " + f"p-value: {statisticalTestGDPReligiousSpiritual.pvalue}, pass: " + str(statisticalTestGDPReligiousSpiritual.pvalue < significanceLevel))
 print("statisticalTestGDPIndividualism: " + f"corrcoeff: {statisticalTestGDPIndividualism.statistic} " + f"p-value: {statisticalTestGDPIndividualism.pvalue}, pass: " + str(statisticalTestGDPIndividualism.pvalue < significanceLevel))
 print("statisticalTestGDPDepression: " + f"corrcoeff: {statisticalTestGDPDepression.statistic} " + f"p-value: {statisticalTestGDPDepression.pvalue}, pass: " + str(statisticalTestGDPDepression.pvalue < significanceLevel))
 print("statisticalTestFriendsFamilyDepression: " + f"corrcoeff: {statisticalTestFriendsFamilyDepression.statistic} " + f"p-value: {statisticalTestFriendsFamilyDepression.pvalue}, pass: " + str(statisticalTestFriendsFamilyDepression.pvalue < significanceLevel))
 print("statisticalTestReligiousSpiritualityDepression: " + f"corrcoeff: {statisticalTestReligiousSpiritualityDepression.statistic} " + f"p-value: {statisticalTestReligiousSpiritualityDepression.pvalue}, pass: " + str(statisticalTestReligiousSpiritualityDepression.pvalue < significanceLevel))
+
+statisticalTestTable = {"Tests": ["Religous and Spirituality vs Depression", "GDP vs Individualism", "GDP vs Depression", "Talking to Friends and Family vs Depression", "Religious/Spirituality vs Depression"], "Statistic": [], "P-Value": []}
+pValue = []
+statistics = []
+for i in statisticalTests:
+    pValue.append(i.pvalue)
+    statistics.append(i.statistic)
+
+statisticalTestTable['P-Value'] = pValue
+statisticalTestTable['Statistic'] = statistics
+
+statisticalTestTable = pd.DataFrame(statisticalTestTable)
+statisticalTestTable.to_csv('Plots/Datasets/statisticalTests')
