@@ -373,4 +373,4 @@ statisticalTestTable['P-Value'] = pValue
 statisticalTestTable['Statistic'] = statistics
 
 statisticalTestTable = pd.DataFrame(statisticalTestTable)
-statisticalTestTable.to_csv('Plots/Datasets/statisticalTests')
+statisticalTestTable.to_csv('Datasets/statisticalTests')
