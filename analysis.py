@@ -5,6 +5,7 @@ import seaborn as sns
 import scipy.stats as stats
 import requests
 import re
+import os
 
 from functions import *
 from functools import reduce
@@ -80,17 +81,17 @@ categoriesOfCountry = ['High-income countries', 'Upper-middle-income countries',
 countries = ['Kosovo', 'Hong Kong', 'Czechia', 'Oceania', 'North America', 'South America']
 listOfRemovalOfTerritoriesContinentsAndCategoriesOfCountry = continents + categoriesOfCountry + countries
 
-mappingFriendsAndFamily = {'Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that talked to friends or family when anxious/depressed (%)'}
-mappingReligiousSpirituality = {'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'}
-mappingMedication = {'share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all': 'Proportion that took prescribed medication when anxious/depressed (%)'}
+mappingFriendsAndFamily = {'Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that talked to friends or family\nwhen anxious/depressed (%)'}
+mappingReligiousSpirituality = {'Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all': 'Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)'}
+mappingMedication = {'share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all': 'Proportion that took prescribed medication\nwhen anxious/depressed (%)'}
 
 # each of the below's actual labels are someone local at the beginning and someone they know at the end,
 # so the proportion is always about a local person's comfort in speaking to someone about anxiety/depression with someone they know
-mappingPerceivedComfortSpeakingAboutDepressionAnxiety = {'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_very_comfortable__gender_all__age_group_all': 'Proportion of people very comfortable speaking about anxiety/depression (%)',
-'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_somewhat_comfortable__gender_all__age_group_all': 'Proportion of people somewhat comfortable speaking about anxiety/depression (%)',
-'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_dont_know_refused__gender_all__age_group_all': 'Proportion of people that don\'t know how comfortable they are speaking about anxiety/depression (%)',
-'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_not_at_all_comfortable__gender_all__age_group_all': 'Proportion of people not comfortable speaking about anxiety/depression (%)',
-'very_comfortable and somewhat_comfortable': 'Proportion of people very or somewhat comfortable speaking about anxiety/depression (%)'}
+mappingPerceivedComfortSpeakingAboutDepressionAnxiety = {'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_very_comfortable__gender_all__age_group_all': 'Proportion of people very comfortable\nspeaking about anxiety/depression (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_somewhat_comfortable__gender_all__age_group_all': 'Proportion of people somewhat comfortable\nspeaking about anxiety/depression (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_dont_know_refused__gender_all__age_group_all': 'Proportion of people that don\'t know how comfortable they are\nspeaking about anxiety/depression (%)',
+'share__question_mh5__someone_local_comfortable_speaking_about_anxiety_depression_with_someone_they_know__answer_not_at_all_comfortable__gender_all__age_group_all': 'Proportion of people not comfortable\nspeaking about anxiety/depression (%)',
+'very_comfortable and somewhat_comfortable': 'Proportion of people very or somewhat comfortable\nspeaking about anxiety/depression (%)'}
 
 
 # removing all countries and terrorities in depression prevalence dataset that are in ourworldindata but not in depression prevalence dataset
@@ -120,7 +121,9 @@ def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, d
     mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on=mentalIssueLocationColumn, right_on=depressionLocationColumn)
     return mergedDataset
 
-def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, mentalIssueDataColumn=None, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)', mergedDataset=None):
+def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, mentalIssueDataColumn=None, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)', mergedDataset=None, export=False):
+    pathToSaveTo = 'Plots/Custom/'
+    fileType = '.png'
     if type(mergedDataset) != pd.DataFrame:
         mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
     
@@ -160,6 +163,11 @@ def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, 
 
     if title != None:
         ax.set_title(title)
+
+    if export:
+        filePathToEnvironment = os.path.dirname(__file__)
+        plotsCustomPath = os.path.join(filePathToEnvironment, pathToSaveTo)
+        fig.savefig(plotsCustomPath + title + fileType, bbox_inches='tight')
 
     return fig, ax, mergedDataset
 
@@ -250,29 +258,32 @@ ax.set_xlim(0, 60000)
 fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Total number of psychiatrists per 100,000 population')
 
 # good line
-fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)')
+fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)')
 
 plt.close('all')
 
 # final graphs
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities when anxious/depressed (%)', title='The higher the gdp per capita, the less religious/spiritual activities are relied upon')
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='IndividualismScore_2023', title='The higher the gdp per capita, the more individualistic countries are')
+export = True
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', title='The higher the gdp per capita, the less religious or spiritual activities are relied upon', export=export)
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='IndividualismScore_2023', title='The higher the gdp per capita, the more individualistic countries are', export=export)
 #explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)', title='') - failed statistical test
-explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people talk about their depression/anxiety to friends or family, they are less depressed/anxious')
-explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people are more engaged in religious/spiritual activity, they are less depressed')
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='Talking to friends and family and doing religious/spiritual activity are related')
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Religious/spiritual countries are much less individualistic than less religious/spiritual countries')
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Countries of all levels of individualism talk to friends or family to varying degrees about anxiety/depression')
+explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people talk about their depression or anxiety to friends or family, they are less depressed or anxious', export=export)
+explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people are more engaged in religious or spiritual activity, they are less depressed', export=export)
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='Talking to friends and family \nand doing religious or spiritual activity are related', export=export)
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Religious or spiritual countries are much less individualistic than less religious or spiritual countries', export=export)
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='IndividualismScore_2023', title='Countries of all levels of individualism talk to friends or family to varying degrees about anxiety or depression', export=export)
 
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='IndividualismScore_2023', title='Higher rates of individualism correlates with depression prevalence in countries')
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='IndividualismScore_2023', depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='IndividualismScore_2023', title='Higher rates of individualism correlates with depression prevalence in countries', export=export)
+
+fig,ax=plt.subplots()
+sns.histplot(mentalIssueDealtyByMasterDataset, x='IndividualismScore_2023', y=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
 fig, ax = plt.subplots()
 sns.heatmap(correlationMatrix,annot=True)
 # statistical analysis
 fig, ax= plt.subplots(2)
-stats.probplot(mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'], fit=True, plot=ax[0])
-sns.histplot(x=mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities when anxious/depressed (%)'], ax=ax[1])
+stats.probplot(mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)'], fit=True, plot=ax[0])
+sns.histplot(x=mentalIssueDealtyByMasterDataset['Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)'], ax=ax[1])
 fig, ax= plt.subplots()
 stats.probplot(mentalIssueDealtyByMasterDataset['IndividualismScore_2023'], fit=True, plot=ax)
 fig, ax= plt.subplots(2)
@@ -285,7 +296,7 @@ fig, ax=plt.subplots()
 # GDP excluded due to its large size
 importantVariables = [
     'Proportion of people that are depressed (%)',
-    'Proportion that engaged in religious/spiritual activities when anxious/depressed (%)', 
+    'Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', 
     'IndividualismScore_2023', 
     mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], 
     mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all']
