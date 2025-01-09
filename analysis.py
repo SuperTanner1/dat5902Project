@@ -416,7 +416,7 @@ def createModel(desc, dataset, title):
     print(f"result:{result}")
     print(f"test:\n{test}")
     print(f"indices for fit:\n{sm.calc_stats(model)}")
-    sm.semplot(model, f"Plots/Custom/{title}.png")
+    sm.semplot(model, f"Plots/Custom/Models/{title}.png")
 
 desc = f"""
 Depression ~  RS + FF + Individualism
@@ -463,8 +463,9 @@ Individualism ~ GDP
 RS ~ Individualism
 """
 desc7 = f"""
-Depression ~ Individualism + FF
+Depression ~  Individualism
 Individualism ~ GDP
+RS ~ GDP + Individualism
 """
 
 # all commented models reject the null hypothesis
