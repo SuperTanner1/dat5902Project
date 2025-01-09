@@ -401,17 +401,29 @@ for i in range(len(importantVariables)):
 
 mergedDatasetCleaned = mergedDatasetCleaned.rename(columns=mappingImportantVariablesToReadableSemopy)
 
+def createModel(desc, dataset, title):
+    model = sm.Model(desc)
+    result = model.fit(dataset)
+    test = model.inspect()
+    print(f"result:{result}")
+    print(f"test:\n{test}")
+    sm.semplot(model, f"Plots/Custom/{title}.png")
+
 desc = f"""
+Depression ~  RS + FF + Individualism
+RS ~ Individualism
+Individualism ~ GDP
+"""
+desc1 = f"""
 Depression ~  RS + FF + Individualism
 Individualism ~ GDP
 """
+desc2 = f"""
+Depression ~  FF + Individualism
+Individualism ~ RS
+Individualism ~ GDP
+"""
 
-model = sm.Model(desc)
-result = model.fit(mergedDatasetCleaned)
-
-print(result)
-test = model.inspect()
-
-print(f"test:\n{test}")
-
-plotAnalysis = sm.semplot(model, "Plots/Custom/SMA.png")
+createModel(desc, mergedDatasetCleaned, "Model1")
+createModel(desc1, mergedDatasetCleaned, "Model2")
+createModel(desc2, mergedDatasetCleaned, "Model3")

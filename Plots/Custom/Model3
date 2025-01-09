@@ -1,0 +1,15 @@
+digraph G {
+	overlap=scale splines=true
+	edge [fontsize=12]
+	node [fillcolor="#cae6df" shape=circle style=filled]
+	node [shape=box style=""]
+	Depression [label=Depression]
+	FF [label=FF]
+	GDP [label=GDP]
+	Individualism [label=Individualism]
+	RS [label=RS]
+	RS -> Individualism [label="-0.482\np-val: 0.00"]
+	GDP -> Individualism [label="0.001\np-val: 0.00"]
+	FF -> Depression [label="-0.037\np-val: 0.01"]
+	Individualism -> Depression [label="0.017\np-val: 0.00"]
+}
