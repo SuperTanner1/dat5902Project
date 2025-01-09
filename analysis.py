@@ -423,7 +423,13 @@ Depression ~  FF + Individualism
 Individualism ~ RS
 Individualism ~ GDP
 """
+desc3 = f"""
+Depression ~  FF + Individualism
+RS ~ Individualism
+Individualism ~ GDP
+"""
 
-createModel(desc, mergedDatasetCleaned, "Model1")
-createModel(desc1, mergedDatasetCleaned, "Model2")
-createModel(desc2, mergedDatasetCleaned, "Model3")
+createModel(desc, mergedDatasetCleaned, "Model")
+createModel(desc1, mergedDatasetCleaned, "Model1")
+createModel(desc2, mergedDatasetCleaned, "Model2")
+createModel(desc3, mergedDatasetCleaned, "Model3")
