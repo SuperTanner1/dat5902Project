@@ -6,6 +6,7 @@ import scipy.stats as stats
 import requests
 import re
 import os
+import semopy as sm
 
 from functions import *
 from functools import reduce
@@ -182,7 +183,7 @@ def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, 
         plotsCustomPath = os.path.join(filePathToEnvironment, pathToSaveTo)
         fig.savefig(plotsCustomPath + title + fileType, bbox_inches='tight')
 
-    return fig, ax, mergedDataset
+    return fig, ax, m,c
 
 # negative correlation - good line
 explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
@@ -197,7 +198,7 @@ opinionThatScienceHelpsALotForMentalHealth.drop('Population (historical)', axis=
 opinionThatScienceHelpsALotForMentalHealth = opinionThatScienceHelpsALotForMentalHealth[opinionThatScienceHelpsALotForMentalHealth['Year'] == 2021]
 
 # good line
-fig,ax, mergedDataset = explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
+fig, ax, m, c = explore_data_ourworldindata_ihme(opinionThatScienceHelpsALotForMentalHealth, depressionPrevalence, 'GDP per capita, PPP (constant 2017 international $)')
 
 ax.set_xlim(0, 35000)
 
@@ -211,7 +212,7 @@ for comfortSpeaking in list(mappingPerceivedComfortSpeakingAboutDepressionAnxiet
 amountOfPsychiatristsWorking2020 = amountOfPsychiatristsWorking[amountOfPsychiatristsWorking['Year'] == 2020].copy()
 
 # bad line, too many missing values
-fig, ax, mergedDataset = explore_data_ourworldindata_ihme(amountOfPsychiatristsWorking2020, depressionPrevalence, 'Total number of psychiatrists per 100,000 population')
+fig, ax, m, c = explore_data_ourworldindata_ihme(amountOfPsychiatristsWorking2020, depressionPrevalence, 'Total number of psychiatrists per 100,000 population')
 ax.set_xlim(-0.5, 20)
 
 # good line
@@ -264,15 +265,15 @@ sns.heatmap(correlationMatrix,annot=True)
 GDPColumnName = 'GDP per capita, PPP (constant 2017 international $)'
 
 # good line
-fig,ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Individualism Score in 2023')
+fig,ax, m, c = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Individualism Score in 2023')
 
 ax.set_xlim(0, 60000)
 
 # bad line
-fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Total number of psychiatrists per 100,000 population')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Total number of psychiatrists per 100,000 population')
 
 # good line
-fig, ax, mergedDataset = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)')
+explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)')
 
 plt.close('all')
 
@@ -284,16 +285,16 @@ Final analysis
 export = True
 
 title='The higher the gdp per capita, the less religious or spiritual activities are relied upon'
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', title=title, export=True)
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Individualism Score in 2023', title='The higher the gdp per capita, the more individualistic countries are', export=export)
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, title='', export=True)
-explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people talk about their depression or anxiety to friends or family\nthey are less anxious or depressed', export=export)
-explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people are more engaged in religious or spiritual activity\nthey are less anxious or depressed', export=export)
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='Talking to friends and family \nand doing religious or spiritual activity are related', export=export)
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='Individualism Score in 2023', title='More religious or spiritual countries are less individualistic\nthan less religious or spiritual countries', export=export)
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='Individualism Score in 2023', title='Countries of all levels of individualism talk to friends or family at\nvarying degrees about anxiety or depression', export=export)
+GDPReligiousSpiritual = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', title=title, export=True)
+GDPIndividiualism = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Individualism Score in 2023', title='The higher the gdp per capita, the more individualistic countries are', export=export)
+GDPDepression = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, title='', export=True)
+FriendsAndFamilyDepression = explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people talk about their depression or anxiety to friends or family\nthey are less anxious or depressed', export=export)
+ReligiousSpiritualityDepression = explore_data_ourworldindata_ihme(mentalIssuesDealtByReligionSpirituality, depressionPrevalence, mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='When people are more engaged in religious or spiritual activity\nthey are less anxious or depressed', export=export)
+ReligiousSpiritualityFriendsAndFamily = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], title='Talking to friends and family \nand doing religious or spiritual activity are related', export=export)
+ReligiousSpiritualityIndividualism = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='Individualism Score in 2023', title='More religious or spiritual countries are less individualistic\nthan less religious or spiritual countries', export=export)
+FriendsAndFamilyIndividualism = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='Individualism Score in 2023', title='Countries of all levels of individualism talk to friends or family at\nvarying degrees about anxiety or depression', export=export)
 
-explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='Individualism Score in 2023', title='Higher rates of individualism correlates with depression prevalence in countries', export=export)
+IndividualismDepression = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='Individualism Score in 2023', title='Higher rates of individualism correlates with depression prevalence in countries', export=export)
 
 fig,ax=plt.subplots()
 sns.histplot(mentalIssueDealtyByMasterDataset, x='Individualism Score in 2023', y=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
@@ -325,7 +326,6 @@ importantVariables = [
     'Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', 
     'Individualism Score in 2023', 
     mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], 
-    mappingReligiousSpirituality['Share - Question: mh8b - Engaged in religious/spiritual activities when anxious/depressed - Answer: Yes - Gender: all - Age group: all']
 ]
 sns.boxplot(mentalIssueDealtyByMasterDataset[importantVariables], ax=ax)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
@@ -334,7 +334,7 @@ fig,ax=plt.subplots()
 sns.boxplot(mentalIssueDealtyByMasterDataset[GDPColumnName],ax=ax)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
 
-plt.show()
+# plt.show()
 
 # correlation coefficient and significance
 def statisticalTest(mergedDataset, mentalIssueDataColumn, depressionDataColumn, alternative):
@@ -343,7 +343,7 @@ def statisticalTest(mergedDataset, mentalIssueDataColumn, depressionDataColumn, 
     x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
     x = x.fillna(x.mean())
     y = y.fillna(y.mean())
-
+ 
     return stats.pearsonr(x,y, alternative=alternative), alternative
 
 importantVariables = importantVariables + [GDPColumnName]
@@ -375,3 +375,34 @@ statisticalTestTable['Passed Test'] = passedTest
 
 statisticalTestTable = pd.DataFrame(statisticalTestTable)
 statisticalTestTable.to_csv('Datasets/statisticalTests')
+
+# test that individualism -> depression which is impacted by religious/spiritual practice (or vice versa), talking to friends and family, and GDP
+
+
+
+pathAnalysisTable = {'Cause': ['GDP', 'Religion and Spirituality', 'Talking to friends and family', 'Individiualism'], 'Effect': ['Individualism', 'Individualism', 'Individualism', 'Depression'], 'Beta Regression': [GDPIndividiualism[2], ReligiousSpiritualityIndividualism[2], FriendsAndFamilyIndividualism[2], IndividualismDepression[2]]}
+pathAnalysisTable2 = {'Cause': ['GDP', 'Religion and Spirituality', 'Talking to friends and family', 'Individiualism'], 'Effect': ['Individualism', 'Depression', 'Depression', 'Depression'], 'Beta Regression': []}
+
+def fillNullsWithMeans(mergedDataset, columnName):
+    mergedDataset[columnName] = mergedDataset[columnName][np.invert(mergedDataset[columnName].isna())]
+    missingValuesNumber = len(mergedDataset[columnName][mergedDataset[columnName].isna()])
+    print(f"{columnName} has {missingValuesNumber} missing values\n")
+    if missingValuesNumber <= 10:
+        mergedDataset[columnName] = mergedDataset[columnName].fillna(mergedDataset[columnName].mean())
+    return mergedDataset
+for i in importantVariables:
+    mergedDatasetCleaned = fillNullsWithMeans(mentalIssueDealtyByMasterDataset, i)
+
+mappingImportantVariablesToReadableSemopy = {}
+newImportantVariables = []
+for i in range(len(importantVariables)):
+    replaceString = 'y' + str(i)
+    newImportantVariables.append(replaceString)
+    mappingImportantVariablesToReadableSemopy[importantVariables[i]] = replaceString
+
+
+mergedDatasetCleaned = mergedDatasetCleaned.rename(columns=mappingImportantVariablesToReadableSemopy)
+
+"""
+
+"""
