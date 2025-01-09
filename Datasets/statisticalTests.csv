@@ -3,4 +3,5 @@
 1,GDP vs Individualism,0.7797000326949587,3.0702752470256018e-18,greater,True
 2,GDP vs Depression,0.34322988185777914,0.0015948257621909302,two-sided,True
 3,Talking to Friends and Family vs Depression,-0.24021565291753416,0.014860550848354461,less,True
-4,Religious/Spirituality vs Depression,0.34322988185777914,0.0015948257621909302,two-sided,True
+4,Religious/Spirituality vs Depression,-0.43846217280459954,3.786318962707169e-05,two-sided,True
+5,Individualism vs Religions/Spirituality,-0.681842961100351,8.820682727072863e-13,less,True

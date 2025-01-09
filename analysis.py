@@ -262,6 +262,7 @@ correlationMatrix = mentalIssueDealtyByMasterDataset.select_dtypes('number').cor
 
 sns.heatmap(correlationMatrix,annot=True)
 
+
 GDPColumnName = 'GDP per capita, PPP (constant 2017 international $)'
 
 # good line
@@ -295,12 +296,16 @@ ReligiousSpiritualityIndividualism = explore_data_ourworldindata_ihme(mergedData
 FriendsAndFamilyIndividualism = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], depressionDataColumn='Individualism Score in 2023', title='Countries of all levels of individualism talk to friends or family at\nvarying degrees about anxiety or depression', export=export)
 
 IndividualismDepression = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='Individualism Score in 2023', title='Higher rates of individualism correlates with depression prevalence in countries', export=export)
+IndividualismReligionSpirituality = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='Individualism Score in 2023', depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)')
 
 fig,ax=plt.subplots()
 sns.histplot(mentalIssueDealtyByMasterDataset, x='Individualism Score in 2023', y=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
 
 fig, ax = plt.subplots()
 sns.heatmap(correlationMatrix,annot=True)
+plt.savefig('Plots/Custom/Heatmap.png', bbox_inches='tight')
+
+plt.show()
 
 """
 NEW SECTION
@@ -317,6 +322,7 @@ fig, ax= plt.subplots(2)
 stats.probplot(mentalIssueDealtyByMasterDataset['Proportion of people that are depressed (%)'], fit=True, plot=ax[0])
 sns.histplot(mentalIssueDealtyByMasterDataset['Proportion of people that are depressed (%)'], ax=ax[1])
 
+# table of linear regressions
 
 # Individualism Score and Proportion of religious/spiritual activities are non-normal while proportion of people that are depressed is normal
 fig, ax=plt.subplots()
@@ -350,12 +356,13 @@ statisticalTestGDPReligiousSpiritual = statisticalTest(mentalIssueDealtyByMaster
 statisticalTestGDPIndividualism = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[2], alternative='greater')
 statisticalTestGDPDepression = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[0], alternative='two-sided')
 statisticalTestFriendsFamilyDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[3], importantVariables[0], alternative='less')
-statisticalTestReligiousSpiritualityDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[4], importantVariables[0], alternative='two-sided')
+statisticalTestReligiousSpiritualityDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[1], importantVariables[0], alternative='two-sided')
+statisticalTestIndividualismReligiousSpiritual = statisticalTest(mentalIssueDealtyByMasterDataset, 'Individualism Score in 2023', importantVariables[1], alternative='less')
 
 significanceLevel = 0.05
-statisticalTests = [statisticalTestGDPReligiousSpiritual, statisticalTestGDPIndividualism, statisticalTestGDPDepression, statisticalTestFriendsFamilyDepression, statisticalTestReligiousSpiritualityDepression]
+statisticalTests = [statisticalTestGDPReligiousSpiritual, statisticalTestGDPIndividualism, statisticalTestGDPDepression, statisticalTestFriendsFamilyDepression, statisticalTestReligiousSpiritualityDepression, statisticalTestIndividualismReligiousSpiritual]
 
-statisticalTestTable = {"Tests": ["Religous and Spirituality vs Depression", "GDP vs Individualism", "GDP vs Depression", "Talking to Friends and Family vs Depression", "Religious/Spirituality vs Depression"], "Statistic": [], "P-Value": [], 'Test Type': [], 'Passed Test':[]}
+statisticalTestTable = {"Tests": ["Religous and Spirituality vs Depression", "GDP vs Individualism", "GDP vs Depression", "Talking to Friends and Family vs Depression", "Religious/Spirituality vs Depression", "Individualism vs Religions/Spirituality"], "Statistic": [], "P-Value": [], 'Test Type': [], 'Passed Test':[]}
 pValue = []
 statistics = []
 testType = []
@@ -372,14 +379,16 @@ statisticalTestTable['Test Type'] = testType
 statisticalTestTable['Passed Test'] = passedTest
 
 statisticalTestTable = pd.DataFrame(statisticalTestTable)
-statisticalTestTable.to_csv('Datasets/statisticalTests')
+statisticalTestTable.to_csv('Datasets/statisticalTests.csv')
 
 # test that individualism -> depression which is impacted by religious/spiritual practice (or vice versa), talking to friends and family, and GDP
 
 
 
 pathAnalysisTable = {'Cause': ['GDP', 'Religion and Spirituality', 'Talking to friends and family', 'Individiualism'], 'Effect': ['Individualism', 'Individualism', 'Individualism', 'Depression'], 'Beta Regression': [GDPIndividiualism[2], ReligiousSpiritualityIndividualism[2], FriendsAndFamilyIndividualism[2], IndividualismDepression[2]]}
-pathAnalysisTable2 = {'Cause': ['GDP', 'Religion and Spirituality', 'Talking to friends and family', 'Individiualism'], 'Effect': ['Individualism', 'Depression', 'Depression', 'Depression'], 'Beta Regression': []}
+pathAnalysisTable2 = {'Cause': ['GDP', 'Individualism', 'Individualism'], 'Effect': ['Individualism', 'Depression', 'Religion and Spirituality'], 'Beta Regression': [GDPIndividiualism[2], IndividualismDepression[2], IndividualismReligionSpirituality[2]]}
+
+pd.DataFrame(pathAnalysisTable2).to_csv('Datasets/pathAnalysis.csv')
 
 def fillNullsWithMeans(mergedDataset, columnName):
     mergedDataset[columnName] = mergedDataset[columnName][np.invert(mergedDataset[columnName].isna())]
