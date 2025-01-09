@@ -258,6 +258,7 @@ for i in range(0,5):
 mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(depressionPrevalence.loc[:, ['location_name', 'Proportion of people that are depressed (%)']], how='inner', left_on='Entity', right_on='location_name')
 mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(individualisticLevels, how='inner', left_on='Entity', right_on='country')
 mentalIssueDealtyByMasterDataset.to_csv('Datasets/master mental issues.csv')
+mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop('Share - Question: mh3b - How much science helps to treat anxiety or depression - Answer: A lot - Gender: all - Age group: all', axis=1)
 correlationMatrix = mentalIssueDealtyByMasterDataset.select_dtypes('number').corr()
 
 sns.heatmap(correlationMatrix,annot=True)
