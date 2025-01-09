@@ -462,6 +462,10 @@ Depression ~  Individualism
 Individualism ~ GDP
 RS ~ Individualism
 """
+desc7 = f"""
+Depression ~ Individualism + FF
+Individualism ~ GDP
+"""
 
 # all commented models reject the null hypothesis
 
@@ -482,3 +486,4 @@ low parameter model
 createModel(desc4, mergedDatasetCleaned, "Model4")
 # no implication on depression from RS
 createModel(desc5, mergedDatasetCleaned, "Model5")
+createModel(desc7, mergedDatasetCleaned, "Model7")
