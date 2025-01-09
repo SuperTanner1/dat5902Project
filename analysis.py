@@ -334,7 +334,7 @@ fig,ax=plt.subplots()
 sns.boxplot(mentalIssueDealtyByMasterDataset[GDPColumnName],ax=ax)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
 
-# plt.show()
+plt.show()
 
 # correlation coefficient and significance
 def statisticalTest(mergedDataset, mentalIssueDataColumn, depressionDataColumn, alternative):
@@ -403,6 +403,17 @@ for i in range(len(importantVariables)):
 
 mergedDatasetCleaned = mergedDatasetCleaned.rename(columns=mappingImportantVariablesToReadableSemopy)
 
+desc = f"""
+y0 ~  y1 + y3 + y2
+y2 ~ y4
 """
 
-"""
+model = sm.Model(desc)
+result = model.fit(mergedDatasetCleaned)
+
+print(result)
+test = model.inspect()
+
+print(f"test:\n{test}")
+
+plotAnalysis = sm.semplot(model, "Plots/Custom/SMA.png")
