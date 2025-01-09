@@ -334,8 +334,6 @@ fig,ax=plt.subplots()
 sns.boxplot(mentalIssueDealtyByMasterDataset[GDPColumnName],ax=ax)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
 
-plt.show()
-
 # correlation coefficient and significance
 def statisticalTest(mergedDataset, mentalIssueDataColumn, depressionDataColumn, alternative):
     mergedDataset[mentalIssueDataColumn] = mergedDataset[mentalIssueDataColumn][np.invert(mergedDataset[mentalIssueDataColumn].isna())]
@@ -400,36 +398,51 @@ for i in range(len(importantVariables)):
 
 
 mergedDatasetCleaned = mergedDatasetCleaned.rename(columns=mappingImportantVariablesToReadableSemopy)
-
+print(f"N = {len(mergedDatasetCleaned)}")
 def createModel(desc, dataset, title):
     model = sm.Model(desc)
     result = model.fit(dataset)
     test = model.inspect()
     print(f"result:{result}")
     print(f"test:\n{test}")
+    print(f"indices for fit:\n{sm.calc_stats(model)}")
     sm.semplot(model, f"Plots/Custom/{title}.png")
 
 desc = f"""
 Depression ~  RS + FF + Individualism
 RS ~ Individualism
 Individualism ~ GDP
+
+RS ~~ FF
 """
 desc1 = f"""
 Depression ~  RS + FF + Individualism
 Individualism ~ GDP
+
+RS ~~ FF
 """
 desc2 = f"""
 Depression ~  FF + Individualism
-Individualism ~ RS
-Individualism ~ GDP
+Individualism ~ RS + GDP
+
+RS ~~ FF
 """
 desc3 = f"""
 Depression ~  FF + Individualism
 RS ~ Individualism
 Individualism ~ GDP
+
+RS ~~ FF
+"""
+desc4 = f"""
+Depression ~  Individualism
+Individualism ~ RS + GDP + FF
+
+RS ~~ FF
 """
 
 createModel(desc, mergedDatasetCleaned, "Model")
 createModel(desc1, mergedDatasetCleaned, "Model1")
 createModel(desc2, mergedDatasetCleaned, "Model2")
 createModel(desc3, mergedDatasetCleaned, "Model3")
+createModel(desc4, mergedDatasetCleaned, "Model4")
