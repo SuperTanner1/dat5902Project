@@ -415,12 +415,6 @@ Individualism ~ GDP
 
 RS ~~ FF
 """
-desc1 = f"""
-Depression ~  RS + FF + Individualism
-Individualism ~ GDP
-
-RS ~~ FF
-"""
 desc2 = f"""
 Depression ~  FF + Individualism
 Individualism ~ RS + GDP
@@ -434,15 +428,47 @@ Individualism ~ GDP
 
 RS ~~ FF
 """
-desc4 = f"""
-Depression ~  Individualism
-Individualism ~ RS + GDP + FF
+
+desc1 = f"""
+Depression ~  RS + FF + Individualism
+Individualism ~ GDP
+
+RS ~~ FF
+"""
+desc6 = f"""
+Depression ~  FF + Individualism
+Individualism ~ GDP
+RS ~ Individualism
 
 RS ~~ FF
 """
 
-createModel(desc, mergedDatasetCleaned, "Model")
+desc4 = f"""
+Depression ~  RS + Individualism
+Individualism ~ GDP
+"""
+desc5 = f"""
+Depression ~  Individualism
+Individualism ~ GDP
+RS ~ Individualism
+"""
+
+# all commented models reject the null hypothesis
+
+#createModel(desc, mergedDatasetCleaned, "Model")
+#createModel(desc2, mergedDatasetCleaned, "Model2")
+#createModel(desc3, mergedDatasetCleaned, "Model3")
+
+"""
+higher parameter model
+"""
 createModel(desc1, mergedDatasetCleaned, "Model1")
-createModel(desc2, mergedDatasetCleaned, "Model2")
-createModel(desc3, mergedDatasetCleaned, "Model3")
+# no implication on depression from RS
+createModel(desc6, mergedDatasetCleaned, "Model6")
+
+"""
+low parameter model
+"""
 createModel(desc4, mergedDatasetCleaned, "Model4")
+# no implication on depression from RS
+createModel(desc5, mergedDatasetCleaned, "Model5")

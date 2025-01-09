@@ -4,10 +4,10 @@ digraph G {
 	node [fillcolor="#cae6df" shape=circle style=filled]
 	node [shape=box style=""]
 	Depression [label=Depression]
+	RS [label=RS]
 	GDP [label=GDP]
 	Individualism [label=Individualism]
-	RS [label=RS]
 	GDP -> Individualism [label="0.001\np-val: 0.00"]
-	RS -> Depression [label="-0.021\np-val: 0.00"]
-	Individualism -> Depression [label="0.005\np-val: 0.30"]
+	Individualism -> Depression [label="0.017\np-val: 0.00"]
+	Individualism -> RS [label="-0.570\np-val: 0.00"]
 }
