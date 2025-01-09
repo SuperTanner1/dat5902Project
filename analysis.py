@@ -394,18 +394,16 @@ for i in importantVariables:
     mergedDatasetCleaned = fillNullsWithMeans(mentalIssueDealtyByMasterDataset, i)
 
 mappingImportantVariablesToReadableSemopy = {}
-newImportantVariables = []
+newImportantVariables = ['Depression', 'RS', 'Individualism', 'FF', 'GDP']
 for i in range(len(importantVariables)):
-    replaceString = 'y' + str(i)
-    newImportantVariables.append(replaceString)
-    mappingImportantVariablesToReadableSemopy[importantVariables[i]] = replaceString
+    mappingImportantVariablesToReadableSemopy[importantVariables[i]] = newImportantVariables[i]
 
 
 mergedDatasetCleaned = mergedDatasetCleaned.rename(columns=mappingImportantVariablesToReadableSemopy)
 
 desc = f"""
-y0 ~  y1 + y3 + y2
-y2 ~ y4
+Depression ~  RS + FF + Individualism
+Individualism ~ GDP
 """
 
 model = sm.Model(desc)
