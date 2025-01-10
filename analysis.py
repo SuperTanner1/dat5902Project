@@ -9,7 +9,7 @@ import os
 import semopy as sm
 
 from functions import *
-from functools import reduce
+
 # this is so I can decide if I want to update the existing data from the source (our world in data) into my repository.
 # If update is false, the program will use the existing data.
 # If update is true, it will request the data, export it into the repository permanently, and the program will use this data.
@@ -124,66 +124,6 @@ NEW SECTION
 Data Exploration
 - exploring models and scatter graphs for every 'our world in data' dataset against depression prevalence
 """
-def cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity'):
-    depressionDataNew = remove_rows_unshared_between_datasets(depressionData, depressionLocationColumn, mentalIssueData, mentalIssueLocationColumn).copy()
-    if len(mentalIssueData) != len(depressionDataNew):
-        mentalIssueData = remove_rows_unshared_between_datasets(mentalIssueData, mentalIssueLocationColumn, depressionDataNew, depressionLocationColumn)
-    
-    mergedDataset = pd.merge(mentalIssueData, depressionDataNew, left_on=mentalIssueLocationColumn, right_on=depressionLocationColumn)
-    return mergedDataset
-
-def explore_data_ourworldindata_ihme(mentalIssueData=None, depressionData=None, mentalIssueDataColumn=None, title=None, colour=None, depressionLocationColumn='location_name', mentalIssueLocationColumn='Entity', depressionDataColumn='Proportion of people that are depressed (%)', mergedDataset=None, export=False, model=True):
-    pathToSaveTo = 'Plots/Custom/'
-    fileType = '.png'
-    if type(mergedDataset) != pd.DataFrame:
-        mergedDataset = cleanAndMergeMentalIssueAndDepressionData(mentalIssueData, depressionData, depressionLocationColumn, mentalIssueLocationColumn)
-    
-    
-    mergedDataset[mentalIssueDataColumn] = mergedDataset[mentalIssueDataColumn][np.invert(mergedDataset[mentalIssueDataColumn].isna())]
-    mergedDataset[depressionDataColumn] = mergedDataset[depressionDataColumn][np.invert(mergedDataset[depressionDataColumn].isna())]
-    x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
-
-    x = x.fillna(x.mean())
-    y = y.fillna(y.mean())
-
-    fig, ax = plt.subplots()
-
-    if model:
-        try:
-            m, c = create_model(x, y, 1)
-            #print(m,c)
-        except np.linalg.LinAlgError:
-            try:
-                m, c = create_model(x, y, 1)
-                #print(m,c)
-            except np.linalg.LinAlgError:
-                print("Invalid model")
-            else:
-                yModel = m * x + c
-                #print(yModel)
-                sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
-        else:
-            yModel = m * x + c
-            sns.lineplot(x=x, y=yModel, ax=ax, c='orange')
-            print(f"{title} graph, gradient: {m}, y-intercept: {c}\n")
-
-
-    if colour != None:
-        sns.scatterplot(mentalIssueData, x=x, y=y, ax=ax, hue=colour)
-    else:
-        sns.scatterplot(x=x, y=y, ax=ax)
-    
-    ax.set_ylabel(depressionDataColumn)
-
-    if title != None:
-        ax.set_title(title)
-
-    if export:
-        filePathToEnvironment = os.path.dirname(__file__)
-        plotsCustomPath = os.path.join(filePathToEnvironment, pathToSaveTo)
-        fig.savefig(plotsCustomPath + title + fileType, bbox_inches='tight')
-
-    return fig, ax, m,c
 
 # negative correlation - good line
 explore_data_ourworldindata_ihme(mentalIssuesDealtByFriendsFamily, depressionPrevalence, mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
@@ -345,16 +285,6 @@ fig,ax=plt.subplots()
 sns.boxplot(mentalIssueDealtyByMasterDataset[GDPColumnName],ax=ax)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
 
-# correlation coefficient and significance
-def statisticalTest(mergedDataset, mentalIssueDataColumn, depressionDataColumn, alternative):
-    mergedDataset[mentalIssueDataColumn] = mergedDataset[mentalIssueDataColumn][np.invert(mergedDataset[mentalIssueDataColumn].isna())]
-    mergedDataset[depressionDataColumn] = mergedDataset[depressionDataColumn][np.invert(mergedDataset[depressionDataColumn].isna())]
-    x, y = mergedDataset[mentalIssueDataColumn], mergedDataset[depressionDataColumn]
-    x = x.fillna(x.mean())
-    y = y.fillna(y.mean())
- 
-    return stats.pearsonr(x,y, alternative=alternative), alternative
-
 importantVariables = importantVariables + [GDPColumnName]
 
 statisticalTestGDPReligiousSpiritual = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, importantVariables[1], alternative='less')
@@ -404,6 +334,7 @@ def fillNullsWithMeans(mergedDataset, columnName):
     if missingValuesNumber <= 10:
         mergedDataset[columnName] = mergedDataset[columnName].fillna(mergedDataset[columnName].mean())
     return mergedDataset
+
 for i in importantVariables:
     mergedDatasetCleaned = fillNullsWithMeans(mentalIssueDealtyByMasterDataset, i)
 
@@ -415,16 +346,7 @@ for i in range(len(importantVariables)):
 
 mergedDatasetCleaned = mergedDatasetCleaned.rename(columns=mappingImportantVariablesToReadableSemopy)
 print(f"N = {len(mergedDatasetCleaned)}")
-def createModel(desc, dataset, title, export=False):
-    model = sm.Model(desc)
-    result = model.fit(dataset)
-    test = model.inspect()
-    print(f"result:{result}")
-    print(f"test:\n{test}")
-    print(f"indices for fit:\n{sm.calc_stats(model)}")
-    sm.semplot(model, f"Plots/Custom/Models/{title}.png")
-    if export:
-        test.to_csv(f'Plots/Custom/Models/{title}Test.csv')
+
 
 desc = f"""
 Depression ~  RS + FF + Individualism
@@ -478,21 +400,21 @@ RS ~ GDP + Individualism
 
 # all commented models reject the null hypothesis
 
-#createModel(desc, mergedDatasetCleaned, "Model")
-#createModel(desc2, mergedDatasetCleaned, "Model2")
-#createModel(desc3, mergedDatasetCleaned, "Model3")
+#createSMAModel(desc, mergedDatasetCleaned, "Model")
+#createSMAModel(desc2, mergedDatasetCleaned, "Model2")
+#createSMAModel(desc3, mergedDatasetCleaned, "Model3")
 export = True
 """
 higher parameter model
 """
-createModel(desc1, mergedDatasetCleaned, "Model1", export=export)
+createSMAModel(desc1, mergedDatasetCleaned, "Model1", export=export)
 # no implication on depression from RS
-createModel(desc6, mergedDatasetCleaned, "Model6", export=export)
+createSMAModel(desc6, mergedDatasetCleaned, "Model6", export=export)
 
 """
 low parameter model
 """
-createModel(desc4, mergedDatasetCleaned, "Model4", export=export)
+createSMAModel(desc4, mergedDatasetCleaned, "Model4", export=export)
 # no implication on depression from RS
-createModel(desc5, mergedDatasetCleaned, "Model5", export=export)
-createModel(desc7, mergedDatasetCleaned, "Model7", export=export)
+createSMAModel(desc5, mergedDatasetCleaned, "Model5", export=export)
+createSMAModel(desc7, mergedDatasetCleaned, "Model7", export=export)
