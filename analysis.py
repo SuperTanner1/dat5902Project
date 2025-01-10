@@ -402,7 +402,7 @@ createSMAModel(desc6, mergedDatasetCleaned, "Model6", export=export)
 """
 low parameter model
 """
-createSMAModel(desc4, mergedDatasetCleaned, "Model4", export=export)
+createSMAModel(desc4, mergedDatasetCleaned, "HypothesisModel", export=export)
 # no implication on depression from RS
 createSMAModel(desc5, mergedDatasetCleaned, "Model5", export=export)
-createSMAModel(desc7, mergedDatasetCleaned, "Model7", export=export)
+createSMAModel(desc7, mergedDatasetCleaned, "AlternativeModel", export=export)
