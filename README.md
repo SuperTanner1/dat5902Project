@@ -6,7 +6,7 @@ The unit tests is located in 'testthings.py' and they are described in 'testsExp
 
 The data analysis workflow is located in analysis.py.
 
-All tables imported from third-party sources are located in the Datasets directory. All statistical tables processed through a combination of the datasets are located in Datasets/StatisticalTables.
+All tables imported from third-party sources are located in the Datasets directory. All statistical tables processed through a combination of the datasets are located in Datasets/StatisticalTables. It contains the indices of fit for the structured model analyses, the linear regression values between the individual parameters, and statistical tests for the relationships between individual parameters.
 
 Plots from third-party sources are located in the Plots directory. All custom plots are located within the directory Plots/Custom. Not all of these are used in the analysis, but many were used for exploration. 
 
