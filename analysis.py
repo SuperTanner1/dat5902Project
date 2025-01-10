@@ -42,9 +42,6 @@ depressionPrevalence = pd.read_csv('Datasets/IHME-GBD_2021_DATA-56bdf511-1.csv')
 # fact sheet from 13/11/2024 cited in Zotero
 socialMediaFactSheet = pd.read_excel('Datasets/Social media fact sheet.xlsx')
 
-# wikipedia
-urbanisation = pd.read_excel('Datasets/Wikipedia Data on Urbanisation.xlsx')
-
 # individualism
 individualisticLevels = pd.read_csv('Datasets/individualistic-countries-2024.csv')
 
@@ -197,7 +194,6 @@ for i in range(0,5):
 
 mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(depressionPrevalence.loc[:, ['location_name', 'Proportion of people that are depressed (%)']], how='inner', left_on='Entity', right_on='location_name')
 mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.merge(individualisticLevels, how='inner', left_on='Entity', right_on='country')
-mentalIssueDealtyByMasterDataset.to_csv('Datasets/master mental issues.csv')
 mentalIssueDealtyByMasterDataset = mentalIssueDealtyByMasterDataset.drop('Share - Question: mh3b - How much science helps to treat anxiety or depression - Answer: A lot - Gender: all - Age group: all', axis=1)
 correlationMatrix = mentalIssueDealtyByMasterDataset.select_dtypes('number').corr()
 
@@ -316,7 +312,7 @@ statisticalTestTable['Test Type'] = testType
 statisticalTestTable['Passed Test'] = passedTest
 
 statisticalTestTable = pd.DataFrame(statisticalTestTable)
-statisticalTestTable.to_csv('Datasets/statisticalTests.csv')
+statisticalTestTable.to_csv('Datasets/StatisticalTables/statisticalTests.csv')
 
 # test that individualism -> depression which is impacted by religious/spiritual practice (or vice versa), talking to friends and family, and GDP
 
@@ -325,15 +321,7 @@ statisticalTestTable.to_csv('Datasets/statisticalTests.csv')
 pathAnalysisTable = {'Cause': ['GDP', 'Religion and Spirituality', 'Talking to friends and family', 'Individiualism'], 'Effect': ['Individualism', 'Individualism', 'Individualism', 'Depression'], 'Beta Regression': [GDPIndividiualism[2], ReligiousSpiritualityIndividualism[2], FriendsAndFamilyIndividualism[2], IndividualismDepression[2]]}
 pathAnalysisTable2 = {'Cause': ['GDP', 'GDP', 'Individualism', 'Individualism'], 'Effect': ['Individualism', 'Religion and Spirituality', 'Depression', 'Religion and Spirituality'], 'Beta Regression': [GDPIndividiualism[2], GDPReligiousSpiritual[2],IndividualismDepression[2], IndividualismReligionSpirituality[2]]}
 
-pd.DataFrame(pathAnalysisTable2).to_csv('Datasets/pathAnalysis.csv')
-
-def fillNullsWithMeans(mergedDataset, columnName):
-    mergedDataset[columnName] = mergedDataset[columnName][np.invert(mergedDataset[columnName].isna())]
-    missingValuesNumber = len(mergedDataset[columnName][mergedDataset[columnName].isna()])
-    print(f"{columnName} has {missingValuesNumber} missing values\n")
-    if missingValuesNumber <= 10:
-        mergedDataset[columnName] = mergedDataset[columnName].fillna(mergedDataset[columnName].mean())
-    return mergedDataset
+pd.DataFrame(pathAnalysisTable2).to_csv('Datasets/StatisticalTables/pathAnalysis.csv')
 
 for i in importantVariables:
     mergedDatasetCleaned = fillNullsWithMeans(mentalIssueDealtyByMasterDataset, i)
