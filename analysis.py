@@ -298,6 +298,8 @@ FriendsAndFamilyIndividualism = explore_data_ourworldindata_ihme(mergedDataset=m
 
 IndividualismDepression = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='Individualism Score in 2023', title='Higher rates of individualism correlates with depression prevalence in countries', export=export)
 IndividualismReligionSpirituality = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn='Individualism Score in 2023', depressionDataColumn='Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', title='Higher individualism leads to a lower proportion of religious or spiritual activities\nwhen anxious or depressed', export=export)
+GDPMedication = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn=mappingMedication['share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all'], title='Higher GDP leads to increased use of medication\nwhen anxious or depressed', export=export)
+#GDPPsychatrist = explore_data_ourworldindata_ihme(mergedDataset=mentalIssueDealtyByMasterDataset, mentalIssueDataColumn=GDPColumnName, depressionDataColumn='Total number of psychiatrists per 100,000 population', title='Higher GDP leads to a greater density of psychiatrists', export=export) - too many missing values to use
 
 fig,ax=plt.subplots()
 sns.histplot(mentalIssueDealtyByMasterDataset, x='Individualism Score in 2023', y=mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'])
@@ -332,7 +334,8 @@ importantVariables = [
     'Proportion of people that are depressed (%)',
     'Proportion that engaged in religious/spiritual activities\nwhen anxious/depressed (%)', 
     'Individualism Score in 2023', 
-    mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'], 
+    mappingFriendsAndFamily['Share - Question: mh8c - Talked to friends or family when anxious/depressed - Answer: Yes - Gender: all - Age group: all'],
+    mappingMedication['share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all'],
 ]
 sns.boxplot(mentalIssueDealtyByMasterDataset[importantVariables], ax=ax)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=30)
@@ -359,11 +362,12 @@ statisticalTestGDPDepression = statisticalTest(mentalIssueDealtyByMasterDataset,
 statisticalTestFriendsFamilyDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[3], importantVariables[0], alternative='less')
 statisticalTestReligiousSpiritualityDepression = statisticalTest(mentalIssueDealtyByMasterDataset, importantVariables[1], importantVariables[0], alternative='two-sided')
 statisticalTestIndividualismReligiousSpiritual = statisticalTest(mentalIssueDealtyByMasterDataset, 'Individualism Score in 2023', importantVariables[1], alternative='less')
+statisticalTestGDPMedication = statisticalTest(mentalIssueDealtyByMasterDataset, GDPColumnName, mappingMedication['share__question_mh8d__took_prescribed_medication_when_anxious_depressed__answer_yes__gender_all__age_group_all'], alternative='greater')
 
 significanceLevel = 0.05
-statisticalTests = [statisticalTestGDPReligiousSpiritual, statisticalTestGDPIndividualism, statisticalTestGDPDepression, statisticalTestFriendsFamilyDepression, statisticalTestReligiousSpiritualityDepression, statisticalTestIndividualismReligiousSpiritual]
+statisticalTests = [statisticalTestGDPReligiousSpiritual, statisticalTestGDPIndividualism, statisticalTestGDPDepression, statisticalTestFriendsFamilyDepression, statisticalTestReligiousSpiritualityDepression, statisticalTestIndividualismReligiousSpiritual, statisticalTestGDPMedication]
 
-statisticalTestTable = {"Tests": ["Religous and Spirituality vs Depression", "GDP vs Individualism", "GDP vs Depression", "Talking to Friends and Family vs Depression", "Religious/Spirituality vs Depression", "Individualism vs Religions/Spirituality"], "Statistic": [], "P-Value": [], 'Test Type': [], 'Passed Test':[]}
+statisticalTestTable = {"Tests": ["Religous and Spirituality vs Depression", "GDP vs Individualism", "GDP vs Depression", "Talking to Friends and Family vs Depression", "Religious/Spirituality vs Depression", "Individualism vs Religions/Spirituality", 'GDP VS Use of Medication'], "Statistic": [], "P-Value": [], 'Test Type': [], 'Passed Test':[]}
 pValue = []
 statistics = []
 testType = []
@@ -387,7 +391,7 @@ statisticalTestTable.to_csv('Datasets/statisticalTests.csv')
 
 
 pathAnalysisTable = {'Cause': ['GDP', 'Religion and Spirituality', 'Talking to friends and family', 'Individiualism'], 'Effect': ['Individualism', 'Individualism', 'Individualism', 'Depression'], 'Beta Regression': [GDPIndividiualism[2], ReligiousSpiritualityIndividualism[2], FriendsAndFamilyIndividualism[2], IndividualismDepression[2]]}
-pathAnalysisTable2 = {'Cause': ['GDP', 'Individualism', 'Individualism'], 'Effect': ['Individualism', 'Depression', 'Religion and Spirituality'], 'Beta Regression': [GDPIndividiualism[2], IndividualismDepression[2], IndividualismReligionSpirituality[2]]}
+pathAnalysisTable2 = {'Cause': ['GDP', 'GDP', 'Individualism', 'Individualism'], 'Effect': ['Individualism', 'Religion and Spirituality', 'Depression', 'Religion and Spirituality'], 'Beta Regression': [GDPIndividiualism[2], GDPReligiousSpiritual[2],IndividualismDepression[2], IndividualismReligionSpirituality[2]]}
 
 pd.DataFrame(pathAnalysisTable2).to_csv('Datasets/pathAnalysis.csv')
 
@@ -402,14 +406,14 @@ for i in importantVariables:
     mergedDatasetCleaned = fillNullsWithMeans(mentalIssueDealtyByMasterDataset, i)
 
 mappingImportantVariablesToReadableSemopy = {}
-newImportantVariables = ['Depression', 'RS', 'Individualism', 'FF', 'GDP']
+newImportantVariables = ['Depression', 'RS', 'Individualism', 'FF', 'GDP', 'MU']
 for i in range(len(importantVariables)):
     mappingImportantVariablesToReadableSemopy[importantVariables[i]] = newImportantVariables[i]
 
 
 mergedDatasetCleaned = mergedDatasetCleaned.rename(columns=mappingImportantVariablesToReadableSemopy)
 print(f"N = {len(mergedDatasetCleaned)}")
-def createModel(desc, dataset, title):
+def createModel(desc, dataset, title, export=False):
     model = sm.Model(desc)
     result = model.fit(dataset)
     test = model.inspect()
@@ -417,6 +421,8 @@ def createModel(desc, dataset, title):
     print(f"test:\n{test}")
     print(f"indices for fit:\n{sm.calc_stats(model)}")
     sm.semplot(model, f"Plots/Custom/Models/{title}.png")
+    if export:
+        test.to_csv(f'Plots/Custom/Models/{title}Test.csv')
 
 desc = f"""
 Depression ~  RS + FF + Individualism
@@ -473,18 +479,18 @@ RS ~ GDP + Individualism
 #createModel(desc, mergedDatasetCleaned, "Model")
 #createModel(desc2, mergedDatasetCleaned, "Model2")
 #createModel(desc3, mergedDatasetCleaned, "Model3")
-
+export = True
 """
 higher parameter model
 """
-createModel(desc1, mergedDatasetCleaned, "Model1")
+createModel(desc1, mergedDatasetCleaned, "Model1", export=export)
 # no implication on depression from RS
-createModel(desc6, mergedDatasetCleaned, "Model6")
+createModel(desc6, mergedDatasetCleaned, "Model6", export=export)
 
 """
 low parameter model
 """
-createModel(desc4, mergedDatasetCleaned, "Model4")
+createModel(desc4, mergedDatasetCleaned, "Model4", export=export)
 # no implication on depression from RS
-createModel(desc5, mergedDatasetCleaned, "Model5")
-createModel(desc7, mergedDatasetCleaned, "Model7")
+createModel(desc5, mergedDatasetCleaned, "Model5", export=export)
+createModel(desc7, mergedDatasetCleaned, "Model7", export=export)

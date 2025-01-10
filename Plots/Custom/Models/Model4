@@ -7,7 +7,7 @@ digraph G {
 	GDP [label=GDP]
 	Individualism [label=Individualism]
 	RS [label=RS]
-	GDP -> Individualism [label="0.001\np-val: 0.00"]
-	RS -> Depression [label="-0.021\np-val: 0.00"]
-	Individualism -> Depression [label="0.005\np-val: 0.30"]
+	GDP -> Individualism [label="0.847\np-val: 0.00"]
+	RS -> Depression [label="-0.020\np-val: 0.00"]
+	Individualism -> Depression [label="0.005\np-val: 0.27"]
 }

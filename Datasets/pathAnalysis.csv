@@ -1,4 +1,5 @@
 ,Cause,Effect,Beta Regression
 0,GDP,Individualism,0.0008971539792535177
-1,Individualism,Depression,0.016839252280965635
-2,Individualism,Religion and Spirituality,-0.5704498648146865
+1,GDP,Religion and Spirituality,-0.0004561155905174679
+2,Individualism,Depression,0.016839252280965635
+3,Individualism,Religion and Spirituality,-0.5704498648146865
