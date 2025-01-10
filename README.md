@@ -1,2 +1,2 @@
-# dat5902Project
+# Exploration of causes of social media addiction
 
